@@ -3,7 +3,7 @@ import './videoslider.css'
 function VideoSlider() {
     return (
         <div className="youtubeVideo">
-            <iframe src="https://www.youtube.com/embed/xNRJwmlRBNU?si=8HVvGAp8MzRHstpb" title="Youtube Video" allowFullScrean></iframe>
+            <iframe src="https://www.youtube.com/embed/xNRJwmlRBNU?si=8HVvGAp8MzRHstpb" title="Youtube Video"></iframe>
         </div>
     );
 }
