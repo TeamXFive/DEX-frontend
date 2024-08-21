@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Chat from "./pages/Chat/Chat";
+import Home from "./pages/Home/Home";
 
 export function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -23,7 +24,7 @@ export function App() {
         <a href="/chat">Chat</a>
       </div>
       {/* Placeholder Header */}
-      {currentPage === "" && <h1>Home</h1>}
+      {currentPage === "" && <Home/>}
 
       {currentPage === "sobre" && <h1>Sobre</h1>}
 
