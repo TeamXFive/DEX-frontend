@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { useEffect,  } from "react";
 import "./App.css";
 import Chat from "./pages/Chat/Chat";
 import Home from "./pages/Home/Home";
