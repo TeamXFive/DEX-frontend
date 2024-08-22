@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./App.css";
 
 export function App() {
