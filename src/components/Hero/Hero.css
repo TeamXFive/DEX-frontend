@@ -1,3 +1,4 @@
+
 .hero {
     display: flex;
     width: 100%;
@@ -5,4 +6,5 @@
     position: relative;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
