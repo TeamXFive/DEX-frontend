@@ -1,28 +1,24 @@
+/* eslint-disable react/prop-types */
 import "./Chat.css";
 import { useEffect, useRef, useState } from "react";
+import { FullPageChat } from "./FullPageChat/FullPageChat";
+import { Widget } from "./Widget/Widget";
 
-function Chat() {
+function Chat({ type }) {
   const [messages, setMessages] = useState([]);
-  const [messageInput, setMessageInput] = useState("");
-
   const [isIaTyping, setIsIaTyping] = useState(false);
 
   const chatBodyRef = useRef();
 
-  // Big set of full random messages said by an IA pretending to be human
-  const iaPossibleMessages = [
-    "Bacana",
-    "Entendi",
-    "Legal",
-    "Interessante",
-    "Vou pesquisar mais sobre isso",
-    "Que legal",
-    "Bem legal",
-    "Bem bacana",
-    "Bem interessante",
-  ];
-
   useEffect(() => {
+    const iaPossibleMessages = [
+      "Entendi, posso te ajudar com mais alguma coisa?",
+      "Acho que entendi, você poderia me dar mais detalhes?",
+      "Hmm, interessante, me fale mais sobre isso.",
+      "Você sabia que eu sou uma inteligência artificial?",
+      "Que legal, você poderia me explicar melhor?",
+    ];
+
     const lastMessage = messages.at(-1);
 
     if (messages.length === 0) {
@@ -61,68 +57,20 @@ function Chat() {
         behavior: "smooth",
       });
     }
-  }, [iaPossibleMessages, isIaTyping, messages]);
+  }, [isIaTyping, messages]);
 
-  return (
-    <div className="container chat-wrapper">
-      <div ref={chatBodyRef} className="chat-body">
-        {messages.map((message) => (
-          <div
-            key={message.timestamp.getTime()}
-            className={["message-wrapper", message.author].join(" ")}
-          >
-            <div key={message.timestamp.getTime()} className="message-body">
-              <p>{message.content}</p>
-            </div>
-            <small className="secondary-data">
-              {message.timestamp.toLocaleDateString("pt-BR", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </small>
-          </div>
-        ))}
-        {isIaTyping && (
-          <div className="message-wrapper ia">
-            <div className="message-body">
-              <p>...</p>
-            </div>
-          </div>
-        )}
-      </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (!e.target.message.value?.trim() || isIaTyping) {
-            return;
-          }
-
-          setMessages((prev) => [
-            ...prev,
-            { author: "user", content: messageInput, timestamp: new Date() },
-          ]);
-          setMessageInput("");
-        }}
-      >
-        <div className="mb-3 d-flex">
-          <input
-            type="text"
-            name="message"
-            className={`form-control me-2  ${isIaTyping && "disabled"}`}
-            placeholder="Escreva aqui sua dúvida"
-            value={messageInput}
-            onChange={(e) => setMessageInput(e.target.value)}
-          />
-          <button
-            disabled={isIaTyping}
-            type="submit"
-            className={`btn btn-primary ${isIaTyping && "disabled"}`}
-          >
-            Enviar
-          </button>
-        </div>
-      </form>
-    </div>
+  return type === "widget" ? (
+    <Widget
+      messages={messages}
+      onNewMessage={setMessages}
+      isIaTyping={isIaTyping}
+    />
+  ) : (
+    <FullPageChat
+      messages={messages}
+      onNewMessage={setMessages}
+      isIaTyping={isIaTyping}
+    />
   );
 }
 
