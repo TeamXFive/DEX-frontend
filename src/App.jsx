@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./App.css";
 
 export function App() {
+  const [currentPage, setCurrentPage] = useState("");
+
   useEffect(() => {
     console.log("INITIAL LOAD");
   }, []);
