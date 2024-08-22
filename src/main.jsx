@@ -9,17 +9,26 @@ import "./index.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <>
+        <App />      
+        <Home />
+      </>
+    ),
   },
   {
     path: "/chat",
-    element: <Chat />,
+    element: (
+      <>
+        <App />      
+        <Chat />
+      </>
+    ),
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
     <RouterProvider router={router} />
   </StrictMode>
 );
