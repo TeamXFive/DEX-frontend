@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Chat from "./pages/Chat/Chat";
 import Home from "./pages/Home/Home";
 
 export function App() {
-  const [currentPage, setCurrentPage] = useState("home");
-
   useEffect(() => {
     console.log("INITIAL LOAD");
   }, []);
@@ -18,19 +17,18 @@ export function App() {
     <React.Fragment>
       {/* Placeholder Header */}
       <div>
-        <a href="/">Home</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/login">Login</a>
-        <a href="/chat">Chat</a>
+        <Link to="/">Home</Link>
+        <Link to="/sobre">Sobre</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/chat">Chat</Link>
       </div>
       {/* Placeholder Header */}
-      {currentPage === "" && <Home/>}
-
-      {currentPage === "sobre" && <h1>Sobre</h1>}
-
-      {currentPage === "login" && <h1>Login</h1>}
-
-      {currentPage === "chat" && <Chat />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sobre" element={<h1>Sobre</h1>} />
+        <Route path="/login" element={<h1>Login</h1>} />
+        <Route path="/chat" element={<Chat />} />
+      </Routes>
     </React.Fragment>
   );
 }
