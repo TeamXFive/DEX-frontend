@@ -1,0 +1,58 @@
+.account-card {
+    top: inherit;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--white-gray);
+    border-radius: .75em;
+    padding: 10px 20px;
+}
+
+.account-card > div {
+    margin: 10px 0;
+}
+
+.account-card-title {
+    font-size: 12px;
+}
+
+.account-card-form-container {
+    height: 100%;
+    width: 85%;
+    flex: 1;
+}
+.account-card-form {
+    height: 100%;
+    width: calc(100% - 10px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.account-card-form > fieldset {
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.account-card-form > fieldset > label {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-card-form > fieldset > input {
+    width: 100%;
+}
+
+.switch-btn {
+    cursor: pointer;
+}
