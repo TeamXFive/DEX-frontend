@@ -1,0 +1,33 @@
+.account-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-card-container {
+    min-height: 300px;
+    min-width: 400px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-----===| EFFECTS |===-----*/
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+}
