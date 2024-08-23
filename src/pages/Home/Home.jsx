@@ -1,10 +1,13 @@
+import './Home.css'
 import Hero from '../../components/Hero/Hero'
 
 function Home() {
     return (
-        <div>
-            <Hero/>
-        </div>
+        <>
+            <div className="hero-container">
+                <Hero/>
+            </div>
+        </>
     );
 }
 
