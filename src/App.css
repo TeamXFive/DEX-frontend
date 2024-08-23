@@ -1,5 +1,4 @@
 /*-----===| App.jsx |===-----*/
-
 .page {
     min-height: 100vh;
     min-width: 100vw;
@@ -7,6 +6,7 @@
     align-items: center;
     justify-content: start;
     flex-direction: column;
+    background-color: var(--black-gray);
 }
 
 .page-header {
@@ -14,16 +14,30 @@
     width: 100vw;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: var(--dark-gray);
+    justify-content: center;
+    position: sticky;
+    z-index: 999;
+}
+
+nav {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Fira Code Retina", monospace;
+    font-size: 24px;
+    font-weight: bolder;
+}
+nav a:hover {
+    text-shadow: var(--white-gray) 0 0 20px;
 }
 
 .page-content {
-    height: 90vh;
+    min-height: 90vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: var(--light-gray);
 }

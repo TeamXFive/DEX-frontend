@@ -9,14 +9,17 @@ export function App() {
   return (
       <div className="page">
           <React.Fragment>
-          {/* Placeholder Header */}
-          <header className="page-header">
-              <Link to="/">Home</Link>
-              <Link to="/sobre">Sobre</Link>
-              <Link to="/chat">Chat</Link>
-              <Link to="/account">Login</Link>
-          </header>
-          {/* Placeholder Header */}
+              {/* Placeholder Header */}
+              <header className="page-header">
+                  <nav className="glass-effect">
+                      <Link to="/">HOME</Link>
+                      <Link to="/sobre">SOBRE</Link>
+                      <Link to="/chat">CHAT</Link>
+                      <Link to="/account">LOGIN</Link>
+                  </nav>
+              </header>
+              {/* Placeholder Header */}
+
               <div className="page-content">
                   <Routes>
                       <Route path="/" element={<Home />} />
