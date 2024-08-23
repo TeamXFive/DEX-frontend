@@ -1,3 +1,4 @@
+/*-----===| CONFIG + VARIÁVEIS |===-----*/
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,12 +6,44 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: var(--light-gray);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /*---=| COLORS |=---*/
+  --white-gray: #f9f9f9;
+  --light-gray: #cccccc;
+  --medium-gray: #8c8c8c;
+  --dark-gray: #454545;
+  --black-gray: #1a1a1a;
+}
+
+/*-----===| index.html |===-----*/
+
+body {
+  margin: 0;
+  min-height: 90vh;
+  min-width: 100vw;
+  background-color: var(--light-gray);
+}
+
+/*-----===| UNIVERSAL |===-----*/
+
+.p {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark-gray);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
 a {
@@ -20,19 +53,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
@@ -57,7 +77,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: var(--light-gray);
   }
   a:hover {
     color: #747bff;
