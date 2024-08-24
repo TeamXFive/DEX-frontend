@@ -1,5 +1,6 @@
 .youtubeVideo {
     flex: 1;
+    max-width: 100%;
     z-index: 1;
     object-fit: cover;
     display: flex;
@@ -9,8 +10,10 @@
     aspect-ratio: 16/9;
 
     & iframe {
-        width: 75%;
-        height: 75%;
+        max-height: 80%;
+        max-width: 80%;
+        width: 100%;
         border-radius: 10px;
+        aspect-ratio: 16/9;
     }
 }

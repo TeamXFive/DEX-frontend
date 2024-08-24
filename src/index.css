@@ -7,7 +7,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--white-gray);
   background-color: var(--light-gray);
 
   font-synthesis: none;
@@ -15,7 +15,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  transition: all .3s ease-in-out;
+  box-sizing: border-box;
 
   /*---=| COLORS |=---*/
   --white-gray: #f9f9f9;
@@ -28,13 +28,24 @@
 /*-----===| index.html |===-----*/
 
 body {
-  margin: 0;
-  min-height: 90vh;
-  min-width: 100vw;
-  background-color: var(--light-gray);
+  background-color: var(--black-gray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#root {
+  width: 100%;
 }
 
 /*-----===| UNIVERSAL |===-----*/
+figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
 
 .p {
   height: 10vh;
@@ -91,7 +102,7 @@ button:focus-visible {
 
 /*-----===| UNIVERSAL EFFECTS |===-----*/
 .glass-effect {
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
