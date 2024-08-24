@@ -4,7 +4,6 @@ import {Link, Navigate, Route, Routes, useLocation} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
 import Account from "./pages/Account/Account.jsx";
-import EstudoRapido from "./pages/EstudoRapido/EstudoRapido";
 import SignIn from "./components/Account/SignIn/SignIn.jsx";
 
 export function App() {
@@ -82,7 +81,6 @@ export function App() {
                       <Route path="/sobre" element={<div>Sobre</div>} />
                       <Route path="/chat" element={<Chat />} />
                       <Route path="/account" element={<Account />} />
-                      <Route path="/estudo-rapido" element={<EstudoRapido />} />
                       <Route path="*" element={<Navigate to="/" />} />
                   </Routes>
                   <Chat type="widget" />
