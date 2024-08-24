@@ -1,6 +1,6 @@
 import "./App.css";
 import React, {useEffect, useState} from "react";
-import { Link, Navigate, Route, Routes } from "react-router-dom";
+import {Link, Navigate, Route, Routes, useLocation} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
 import Account from "./pages/Account/Account.jsx";
@@ -8,6 +8,7 @@ import Account from "./pages/Account/Account.jsx";
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
     const [lastScrollY, setLastScrollY] = useState(0);
+    const location = useLocation(); // Obtenha a localização atual
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,6 +29,11 @@ export function App() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [lastScrollY]);
+
+    // Rola para o topo sempre que a rota mudar
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.key]);
 
   return (
       <div className="page">
