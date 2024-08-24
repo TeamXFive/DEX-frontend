@@ -1,6 +1,6 @@
-import "./SignInUp.css";
+import "./SignUp.css";
 
-function SignUp({ showSignIn }) {
+function SignUp() {
     return (
         <>
             <div className="account-card">
@@ -36,7 +36,7 @@ function SignUp({ showSignIn }) {
                 <input type="submit" value="SIGN UP"/>
 
                 <div className="account-card-switch">
-                    <p>Já tem uma conta? <a onClick={showSignIn} className="switch-btn">Login</a></p>
+                    <p>Já tem uma conta? <a onClick={console.log("oi")} className="switch-btn">Login</a></p>
                 </div>
             </div>
         </>
