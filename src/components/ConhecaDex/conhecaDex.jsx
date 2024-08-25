@@ -2,7 +2,7 @@ import './conhecaDex.css'
 
 function ConhecaDex() {
     return (
-        <h2 className="conhecaDex">Conheca Dex</h2>
+        <h2 className="conhecaDex">CONHEÇA O DEX</h2>
     );
 }
 

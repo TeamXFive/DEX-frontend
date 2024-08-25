@@ -9,6 +9,7 @@ function Hero() {
             <Background/>
             <ConhecaDex/>
             <VideoSlider/>
+            
         </div>
     )
 
