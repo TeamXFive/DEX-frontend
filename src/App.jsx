@@ -4,11 +4,14 @@ import {Link, Navigate, Route, Routes, useLocation} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
 import Account from "./pages/Account/Account.jsx";
+import SignIn from "./components/Account/SignIn/SignIn.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
     const [lastScrollY, setLastScrollY] = useState(0);
     const location = useLocation(); // Obtenha a localização atual
+    const [isSignInVisible, setIsSignInVisible] = useState(false);
+    const [isUserLogged, setisUserLogged] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,16 +33,32 @@ export function App() {
         };
     }, [lastScrollY]);
 
-    // Rola para o topo sempre que a rota mudar
+    // Evento em qualquer Rota
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location.key]);
 
+    // Evento na Rota do CHAT
+    useEffect(() => {
+        if (location.pathname === "/chat") {    
+            setisUserLogged(false);
+            setIsSignInVisible(true);
+        } else {
+            setisUserLogged(true);
+            setIsSignInVisible(false);
+        }
+
+    }, [location.pathname])
+
   return (
       <div className="page">
+            <section className={`login-modal-container ${!isSignInVisible && "hidden"} ${scrollDirection === "down" && "cover-hidden-header"}`}>
+                <SignIn isSignInVisible={isSignInVisible} setIsSignInVisible={setIsSignInVisible} />
+            </section>
+
           <React.Fragment>
               {/* Placeholder Header */}
-              <header className={`page-header glass-effect ${scrollDirection === "down" ? "hide-header" : ""}`}>
+              <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
                   <figure className="header-logo">
                       <img src="src/assets/icons/chat.svg" alt="Logo Header"/>
                   </figure>

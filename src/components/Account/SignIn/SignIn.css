@@ -1,22 +1,37 @@
+/*
 .account-card {
-    top: inherit;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: var(--white-gray);
-    border-radius: .75em;
-    padding: 10px 20px;
+    height: auto;
+    width: 50vw;
+    z-index: 801;
+    transform: translateY(0);
+    transition: all .5s cubic-bezier(0.85, 0.15, 0.15, 0.85);
 }
+.hidden {
+    opacity: 1;
+    visibility: hidden;
+    transform: translateY(-100vh);
+    pointer-events: none;
+}
+
 
 .account-card > div {
     margin: 10px 0;
 }
 
-.account-card-title {
+.account-card-header {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 12px;
+}
+.close-card-btn {
+    top: 0;
+    right: 0;
+    position: absolute;
+    cursor: pointer;
 }
 
 .account-card-form-container {
