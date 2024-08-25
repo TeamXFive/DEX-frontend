@@ -1,3 +1,4 @@
+/*
 .account-card {
     height: auto;
     width: 50vw;
@@ -11,6 +12,7 @@
     transform: translateY(-100vh);
     pointer-events: none;
 }
+
 
 .account-card > div {
     margin: 10px 0;

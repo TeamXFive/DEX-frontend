@@ -52,13 +52,13 @@ export function App() {
 
   return (
       <div className="page">
-            <section className={isSignInVisible ? 'login-modal-container' : 'login-modal-container hidden'}>
+            <section className={`login-modal-container ${!isSignInVisible && "hidden"} ${scrollDirection === "down" && "cover-hidden-header"}`}>
                 <SignIn isSignInVisible={isSignInVisible} setIsSignInVisible={setIsSignInVisible} />
             </section>
 
           <React.Fragment>
               {/* Placeholder Header */}
-              <header className={`page-header glass-effect ${scrollDirection === "down" ? "hide-header" : ""}`}>
+              <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
                   <figure className="header-logo">
                       <img src="src/assets/icons/chat.svg" alt="Logo Header"/>
                   </figure>

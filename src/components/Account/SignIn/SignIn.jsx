@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import "./SignIn.css";
+import "../AccountCard.css";
 import { Link } from "react-router-dom";
+import { IoIosClose } from "react-icons/io"
 
 SignIn.propTypes = {
     isSignInVisible: PropTypes.bool.isRequired,
@@ -19,15 +20,10 @@ function SignIn({ isSignInVisible, setIsSignInVisible}) {
 
     return (
         <>
-            <div className={isSignInVisible ? 'account-card' : 'account-card hidden'}>
+            <div className={`account-card ${!isSignInVisible && "hidden"}`}>
                 <div className="account-card-header">
-                    <h1>ENTRAR</h1>
-                    <p 
-                        className="close-card-btn"
-                        onClick={handleCloseBtn}
-                    >
-                        X
-                    </p>
+                    <h1>Log In</h1>
+                    <IoIosClose className="close-card-btn" onClick={handleCloseBtn} />
                 </div>
 
                 <div className="account-card-form-container">
@@ -48,7 +44,7 @@ function SignIn({ isSignInVisible, setIsSignInVisible}) {
 
 
                 <div className="account-card-switch">
-                    <p>Não tem conta? <Link to="/account" className="switch-btn">Criar</Link></p>
+                    <p>Não tem conta? <Link to="/account" className="switch-link">Criar</Link></p>
                 </div>
             </div>
         </>

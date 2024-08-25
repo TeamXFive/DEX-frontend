@@ -57,7 +57,7 @@ figure {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--dark-gray);
+  color: var(--white-gray);
 }
 
 h1 {
