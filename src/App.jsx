@@ -69,7 +69,6 @@ export function App() {
                           <Link to="/sobre">SOBRE</Link>
                           <Link to="/chat">CHAT</Link>
                           <Link to="/account">LOGIN</Link>
-                          <Link to="/estudo-rapido">ESTUDO RÁPIDO</Link>
                       </div>
                   </nav>
               </header>
