@@ -22,11 +22,18 @@
   box-sizing: border-box;
 
   /*---=| COLORS |=---*/
-  --white-gray: #f9f9f9;
-  --light-gray: #cccccc;
-  --medium-gray: #8c8c8c;
-  --dark-gray: #454545;
-  --black-gray: #1a1a1a;
+  /*-| Original |-*/
+  --white-gray: #F9F9F9FF;
+  --light-gray: #CCCCCCFF;
+  --medium-gray:  #8C8C8CFF;
+  --dark-gray: #454545FF;
+  --black-gray: #191919FF;
+  /*-| When alpha is necessary |-*/
+  --white-gray-rgb: 249, 249, 249;
+  --light-gray-rgb: 204, 204, 204;
+  --medium-gray-rgb: 140, 140, 140;
+  --dark-gray-rgb: 69, 69, 69;
+  --black-gray-rgb: 25, 25, 25;
 }
 
 /*-----===| index.html |===-----*/

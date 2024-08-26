@@ -1,9 +1,24 @@
 import "../AccountCard.css";
+import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
-function SignUp() {
+SignUp.propTypes = {
+    isSignUpVisible: PropTypes.bool.isRequired,
+    setIsSignUpVisible: PropTypes.func.isRequired,
+    setIsSignInVisible: PropTypes.func.isRequired
+}
+
+function SignUp({ isSignUpVisible, setIsSignUpVisible, setIsSignInVisible }) {
+
+    const handleFazerLoginBtn = () => {
+        // setIsSignInVisible(false);
+        setIsSignUpVisible(false);
+        setIsSignInVisible(true);
+    };
+
     return (
         <>
-            <div className="account-card">
+            <div className={`account-card`} id="signUp">
                 <div className="account-card-title">
                     <h1>CRIAR CONTA</h1>
                 </div>
@@ -36,7 +51,9 @@ function SignUp() {
                 <input type="submit" value="SIGN UP"/>
 
                 <div className="account-card-switch">
-                    <p>Já tem uma conta? <a onClick={console.log("oi")} className="switch-btn">Login</a></p>
+                    <p>
+                        Já tem conta? <span  className={`switch-link`} onClick={handleFazerLoginBtn}>Fazer Login</span>
+                    </p>
                 </div>
             </div>
         </>

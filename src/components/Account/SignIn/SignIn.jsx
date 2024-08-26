@@ -1,29 +1,57 @@
 import PropTypes from 'prop-types';
 import "../AccountCard.css";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { IoIosClose } from "react-icons/io"
+import {useEffect} from "react";
 
 SignIn.propTypes = {
-    isSignInVisible: PropTypes.bool.isRequired,
-    setIsSignInVisible: PropTypes.func.isRequired
+    setIsSignInVisible: PropTypes.func.isRequired,
+    setIsSignUpVisible: PropTypes.func,
+    setIsUserLogged: PropTypes.func.isRequired,
+    isShowCloseBtn: PropTypes.bool,
+    setIsModalVisible: PropTypes.func
+}
+SignIn.defaultProps = {
+    isShowCloseBtn: false,
+    setIsModalVisible: () => {},
+    setIsSignUpVisible: () => {}
 }
 
-function SignIn({ isSignInVisible, setIsSignInVisible}) {
+function SignIn({ setIsSignInVisible,
+                    setIsSignUpVisible,
+                    setIsUserLogged, isShowCloseBtn,
+                    setIsModalVisible }) {
+
+    const navigate = useNavigate(); // Navega para rota especificada
+
     const handleCloseBtn = () => {
         setIsSignInVisible(false);
+        setIsModalVisible(false);
     };
 
     const handleSignInSubmit = (event) => {
         setIsSignInVisible(false);
+        setIsModalVisible(false);
+        setIsUserLogged(true);
         event.preventDefault();
     };
 
+    const handleCriarContaBtn = () => {
+        setIsSignInVisible(false);
+        setIsModalVisible(false);
+        setIsSignUpVisible(true);
+
+        if (location.pathname !== "/account") {
+            navigate("/account");
+        }
+    }
+
     return (
         <>
-            <div className={`account-card ${!isSignInVisible && "hidden"}`}>
+            <div className={`account-card`} id="signIn">
                 <div className="account-card-header">
                     <h1>Log In</h1>
-                    <IoIosClose className="close-card-btn" onClick={handleCloseBtn} />
+                    {isShowCloseBtn && <IoIosClose className="close-card-btn" onClick={handleCloseBtn} />}
                 </div>
 
                 <div className="account-card-form-container">
@@ -44,7 +72,9 @@ function SignIn({ isSignInVisible, setIsSignInVisible}) {
 
 
                 <div className="account-card-switch">
-                    <p>Não tem conta? <Link to="/account" className="switch-link">Criar</Link></p>
+                    <p>
+                        Não tem conta? <span className="switch-link" onClick={handleCriarContaBtn}>Criar conta</span>
+                    </p>
                 </div>
             </div>
         </>
