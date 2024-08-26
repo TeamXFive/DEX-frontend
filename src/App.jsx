@@ -1,36 +1,76 @@
-import React, { useEffect, useState } from "react";
 import "./App.css";
-import Chat from "./pages/Chat/Chat";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Chat from "./pages/Chat/Chat";
+import Account from "./pages/Account/Account.jsx";
+import SignIn from "./components/Account/SignIn/SignIn.jsx";
+import Header from "./components/header/header";
 
 export function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+    const [scrollDirection, setScrollDirection] = useState("up");
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const location = useLocation(); // Obtenha a localização atual
+    const [isSignInVisible, setIsSignInVisible] = useState(false);
+    const [isUserLogged, setisUserLogged] = useState(false);
 
-  useEffect(() => {
-    console.log("INITIAL LOAD");
-  }, []);
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
 
-  useEffect(() => {
-    setCurrentPage(window.location.pathname.replace("/", ""));
-  }, []);
+            if (currentScrollY > lastScrollY) {
+                setScrollDirection("down");
+            } else {
+                setScrollDirection("up");
+            }
 
-  return (
-    <React.Fragment>
-      {/* Placeholder Header */}
-      <div>
-        <a href="/">Home</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/login">Login</a>
-        <a href="/chat">Chat</a>
-      </div>
-      {/* Placeholder Header */}
-      {currentPage === "" && <Home/>}
+            setLastScrollY(currentScrollY);
+        };
 
-      {currentPage === "sobre" && <h1>Sobre</h1>}
+        window.addEventListener("scroll", handleScroll);
 
-      {currentPage === "login" && <h1>Login</h1>}
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [lastScrollY]);
 
-      {currentPage === "chat" && <Chat />}
-    </React.Fragment>
-  );
+    // Evento em qualquer Rota
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.key]);
+
+    // Evento na Rota do CHAT
+    useEffect(() => {
+        if (location.pathname === "/chat") {
+            setisUserLogged(false);
+            setIsSignInVisible(true);
+        } else {
+            setisUserLogged(true);
+            setIsSignInVisible(false);
+        }
+
+    }, [location.pathname])
+
+    return (
+        <div className="page">
+            <section className={`login-modal-container ${!isSignInVisible && "hidden"} ${scrollDirection === "down" && "cover-hidden-header"}`}>
+                <SignIn isSignInVisible={isSignInVisible} setIsSignInVisible={setIsSignInVisible} />
+            </section>
+
+            <React.Fragment>
+                <Header />
+
+                <div className="page-content">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/sobre" element={<div>Sobre</div>} />
+                        <Route path="/chat" element={<Chat />} />
+                        <Route path="/account" element={<Account />} />
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+                    <Chat type="widget" />
+                </div>
+            </React.Fragment>
+        </div>
+    );
 }

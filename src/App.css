@@ -1,4 +1,96 @@
-#root {
-  width: 100%;
-  /* max-width: 1280px; */
+/*-----===| App.jsx |===-----*/
+.page {
+    min-height: 200vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.login-modal-container {
+    position: fixed;
+    top: calc(8vh + 30px);
+    left: 0;
+    height: calc(100% - 8vh - 30px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(150, 150, 150, 0.5);
+    z-index: 800;
+    transform: translateY(0);
+    transition: all .22s ease-in-out;
+}
+.hidden {
+    opacity: 1;
+    visibility: hidden;
+    transform: translateY(-100vh);
+    pointer-events: none;
+}
+.cover-hidden-header {
+    transform: translateY(calc(-3vh - 30px));
+    height: calc(100% - 5vh);
+}
+
+.page-header {
+    top: 0;
+    position: sticky;
+    height: calc(8vh + 30px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease-in-out;
+    z-index: 900;
+}
+
+.header-logo {
+    height: calc(3vh + 30px);
+    width: 100%;
+    padding: 15px 0;
+    filter: invert(0.75);
+}
+
+.header-nav {
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-nav-links {
+    height: auto;
+    max-width: 1080px;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Fira Code Retina", monospace;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.header-nav a {
+    color: var(--light-gray);
+}
+.header-nav a:hover {
+    color: var(--white-gray);
+    text-shadow: var(--white-gray) 0 0 20px;
+}
+
+.page-content {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/*-----===| EFFECTS |===-----*/
+.hide-header {
+    transform: translateY(calc(-3vh - 30px));
+    transition: all .2s ease-in-out;
 }

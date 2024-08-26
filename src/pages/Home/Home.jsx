@@ -4,9 +4,11 @@ import './Home.css'
 
 function Home() {
     return (
-        <div>
-            <Hero/>
-        </div>
+        <>
+            <div className="hero-container">
+                <Hero/>
+            </div>
+        </>
     );
 }
 
