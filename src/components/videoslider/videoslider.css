@@ -1,13 +1,19 @@
 .youtubeVideo {
     flex: 1;
-    max-width: 50%;
+    max-width: 100%;
     z-index: 1;
-    max-height: 80%;
-    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16/9;
 
     & iframe {
+        max-height: 80%;
+        max-width: 80%;
         width: 100%;
-        height: 100%;
         border-radius: 10px;
+        aspect-ratio: 16/9;
     }
 }

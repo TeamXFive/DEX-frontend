@@ -4,10 +4,12 @@ import VideoSlider from "../videoslider/videoslider";
 
 function Hero() {
     return (
-        <div className= "hero">
-            <Background/>
+        <>
+            <figure className="hero-background-container">
+                <Background/>
+            </figure>
             <VideoSlider/>
-        </div>
+        </>
     )
 
 }
