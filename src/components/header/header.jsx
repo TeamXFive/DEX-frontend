@@ -14,7 +14,7 @@ function Header() {
 
     return(
         <header>
-                <img></img>
+                <h1 className="Logo">DEX</h1>
                 <div>
                     <ul className="list">
                         <Link to="/"><li>Home</li></Link>
