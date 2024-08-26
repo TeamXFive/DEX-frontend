@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3A3A3B;
+    height: 100px;
+}
+
+img {
+    margin-right: auto;
+}
+.list{
+    display: flex;
+    list-style: none;
+}
+
+li {
+    color: white;
+    padding-right: 30px;
+}
+
+button {
+    margin-left: auto;
+    margin-right: 5%;
+}
+
