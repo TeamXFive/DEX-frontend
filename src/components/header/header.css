@@ -16,6 +16,7 @@ header {
     display: flex;
     list-style: none;
     align-items: center;
+    font-family:sans-serif;
 }
 
 li {
@@ -26,7 +27,6 @@ li {
 button {
     margin-left: auto;
     margin-right: 5%;
-    align-items: center;
-    justify-content: center;
+    font-family: sans-serif;
 }
 
