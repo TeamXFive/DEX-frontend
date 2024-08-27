@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
 /*-----===| CONFIG + VARIÁVEIS |===-----*/
 * {
   margin: 0;
@@ -12,7 +13,6 @@
 
   color-scheme: light dark;
   color: var(--white-gray);
-  background-color: var(--light-gray);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,17 +23,26 @@
 
   /*---=| COLORS |=---*/
   /*-| Original |-*/
+  /*Black n White*/
   --white-gray: #F9F9F9FF;
   --light-gray: #CCCCCCFF;
   --medium-gray:  #8C8C8CFF;
   --dark-gray: #454545FF;
   --black-gray: #191919FF;
+  /*Colors*/
+  --medium-red: #ff0000;
+  --medium-green: #00ff00;
+
   /*-| When alpha is necessary |-*/
+  /*Black n White*/
   --white-gray-rgb: 249, 249, 249;
   --light-gray-rgb: 204, 204, 204;
   --medium-gray-rgb: 140, 140, 140;
   --dark-gray-rgb: 69, 69, 69;
   --black-gray-rgb: 25, 25, 25;
+  /*Colors*/
+  --medium-red-rgb: 255, 0, 0;
+  --medium-green-rgb: 0, 255, 0;
 
   --all-500ms-custom: all .5s cubic-bezier(0.85, 0.15, 0.15, 0.85);
   --all-200ms-ease-in-out: all .2s cubic-bezier(0.85, 0.15, 0.15, 0.85);
@@ -111,7 +120,6 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: var(--light-gray);
   }
   a:hover {
     color: #747bff;
