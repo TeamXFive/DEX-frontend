@@ -99,9 +99,9 @@ export function App() {
 
             <React.Fragment>
                 <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
-                    <figure className="header-logo">
-                        <img src="src/assets/icons/chat.svg" alt="Logo Header"/>
-                    </figure>
+                    <div className="header-title-container">
+                        <h1 className={`header-title`}>DEX</h1>
+                    </div>
 
                     <nav className="header-nav">
                         <div className="header-nav-links">

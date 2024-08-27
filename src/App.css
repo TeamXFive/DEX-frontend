@@ -1,6 +1,5 @@
 /*-----===| App.jsx |===-----*/
 .page {
-    min-height: 200vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -46,11 +45,18 @@
     z-index: 900;
 }
 
-.header-logo {
+.header-title-container {
     height: calc(3vh + 30px);
     width: 100%;
     padding: 15px 0;
     filter: invert(0.75);
+}
+.header-title {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 3vh;
+    padding: 0;
+    margin: 0;
+    line-height: auto;
 }
 
 .header-nav {
