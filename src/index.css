@@ -22,11 +22,21 @@
   box-sizing: border-box;
 
   /*---=| COLORS |=---*/
-  --white-gray: #f9f9f9;
-  --light-gray: #cccccc;
-  --medium-gray: #8c8c8c;
-  --dark-gray: #454545;
-  --black-gray: #1a1a1a;
+  /*-| Original |-*/
+  --white-gray: #F9F9F9FF;
+  --light-gray: #CCCCCCFF;
+  --medium-gray:  #8C8C8CFF;
+  --dark-gray: #454545FF;
+  --black-gray: #191919FF;
+  /*-| When alpha is necessary |-*/
+  --white-gray-rgb: 249, 249, 249;
+  --light-gray-rgb: 204, 204, 204;
+  --medium-gray-rgb: 140, 140, 140;
+  --dark-gray-rgb: 69, 69, 69;
+  --black-gray-rgb: 25, 25, 25;
+
+  --all-500ms-custom: all .5s cubic-bezier(0.85, 0.15, 0.15, 0.85);
+  --all-200ms-ease-in-out: all .2s cubic-bezier(0.85, 0.15, 0.15, 0.85);
 }
 
 /*-----===| index.html |===-----*/
@@ -37,6 +47,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background:
+          linear-gradient(90deg, var(--black-gray) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+          linear-gradient(var(--black-gray) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+          var(--medium-gray);
 }
 
 #root {
@@ -69,7 +86,7 @@ a {
   font-weight: 500;
   color: var(--white-gray);
   text-decoration: inherit;
-  transition: all .2s ease-in-out;
+  transition: var(--all-200ms-ease-in-out);
 }
 
 button {

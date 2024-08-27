@@ -17,12 +17,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(150, 150, 150, 0.5);
+    background-color: rgba(var(--medium-gray-rgb), 0.5);
     z-index: 800;
     transform: translateY(0);
-    transition: all .22s ease-in-out;
+    transition: var(--all-200ms-ease-in-out);
 }
-.hidden {
+.hidden-modal {
     opacity: 1;
     visibility: hidden;
     transform: translateY(-100vh);
@@ -42,7 +42,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all .2s ease-in-out;
+    transition: var(--all-200ms-ease-in-out);
     z-index: 900;
 }
 
@@ -92,5 +92,5 @@
 /*-----===| EFFECTS |===-----*/
 .hide-header {
     transform: translateY(calc(-3vh - 30px));
-    transition: all .2s ease-in-out;
+    transition: var(--all-200ms-ease-in-out);
 }
