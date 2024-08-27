@@ -63,7 +63,7 @@ export function App() {
                 <div className="page-content">
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/sobre" element={<div>Sobre</div>} />
+                        <Route path="/sobre" element={<div>Sobre o projeto</div>} />
                         <Route path="/chat" element={<Chat />} />
                         <Route path="/account" element={<Account />} />
                         <Route path="*" element={<Navigate to="/" />} />

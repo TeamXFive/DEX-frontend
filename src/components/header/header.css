@@ -3,7 +3,8 @@
 header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
     background-color: #1a1a1a;
     height: 100px;
 }
@@ -25,8 +26,7 @@ li {
 }
 
 button {
-    margin-left: auto;
-    margin-right: 5%;
+    margin-right: 0;
     font-family: sans-serif;
 }
 

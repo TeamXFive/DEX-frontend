@@ -14,7 +14,9 @@ function Header() {
 
     return(
         <header>
+                <div>
                 <h1 className="Logo">DEX</h1>
+                </div>
                 <div>
                     <ul className="list">
                         <Link to="/"><li>HOME</li></Link>
@@ -22,7 +24,9 @@ function Header() {
                         <Link to="/chat"><li>CHAT</li></Link>
                     </ul>
                 </div>
-                <button>Login</button>
+                <div>
+                    <button>Login</button>
+                </div>
         </header>
     );
 }
