@@ -14,15 +14,19 @@ function Header() {
 
     return(
         <header>
-                <img></img>
+                <div>
+                <h1 className="Logo">DEX</h1>
+                </div>
                 <div>
                     <ul className="list">
-                        <Link to="/"><li>Home</li></Link>
-                        <Link to="/sobre"><li>Sobre o Projeto</li></Link>
-                        <Link to="/chat"><li>Chat</li></Link>
+                        <Link to="/"><li>HOME</li></Link>
+                        <Link to="/sobre"><li>SOBRE O PROJETO</li></Link>
+                        <Link to="/chat"><li>CHAT</li></Link>
                     </ul>
                 </div>
-                <button>Login</button>
+                <div>
+                    <button>Login</button>
+                </div>
         </header>
     );
 }
