@@ -6,6 +6,7 @@ import Chat from "./pages/Chat/Chat";
 import Account from "./pages/Account/Account.jsx";
 import SignIn from "./components/Account/SignIn/SignIn.jsx";
 import useAccountContext from "./hook/useAccountContext.jsx";
+import Header from "./components/header/header";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
