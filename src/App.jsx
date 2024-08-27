@@ -1,39 +1,46 @@
 import "./App.css";
-import React, {useEffect, useState} from "react";
-import {Link, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
 import Account from "./pages/Account/Account.jsx";
 import SignIn from "./components/Account/SignIn/SignIn.jsx";
+import useAccountContext from "./hook/useAccountContext.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
     const [lastScrollY, setLastScrollY] = useState(0);
-    const location = useLocation(); // Obtenha a localização atual
-    const navigate = useNavigate(); // Navega para rota especificada
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isSignInVisible, setIsSignInVisible] = useState(false);
-    const [isUserLogged, setIsUserLogged] = useState(false);
-    const [isShowCloseBtn, setShowSignInCLoseBtn] = useState(false);
+    //  Variáveis do CONTEXTO (tipo variáveis globais)
+    const {
+        isModalVisible, setIsModalVisible,
+        setIsSignInVisible,
+        isUserLogged,
+        setIsShowSignInCloseBtn
+    } = useAccountContext();
 
+    // Clicar no LINK do HEADER do LOGIN
     const handleLogin = (event) => {
+        // Se já estiver logado segue o fluxo
         if (isUserLogged) {
             return;
         }
 
-        // Se estiver no /account, não mostrar popup quando clicar em LOGIN
+        // Se já estiver na página de login, não mexe com o MODAL
         if (location.pathname === "/account") {
-            setIsSignInVisible(true);
             setIsModalVisible(false);
         } else {
-            setIsSignInVisible(true);
             setIsModalVisible(true);
         }
 
-        event.preventDefault();
+        setIsSignInVisible(true);
+
+        event.preventDefault(); // Previne o comportamento padrão de redirecionamento do LINK
     };
 
+    // Scroll gostoso do header
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
@@ -55,31 +62,30 @@ export function App() {
 
     }, [lastScrollY]);
 
-    // Evento em qualquer Rota
+    // Voltar para o topo da página ao mudar de rota
     useEffect(() => {
-        // Scroll para o topo da página
         window.scrollTo(0, 0);
-
     }, [location.key]);
 
+    // Mostrar o modal de LOGIN ao acessar a página de CHAT
     useEffect(() => {
-        // Pedir Login no CHAT
+        // Se não estiver logado e for para a página de CHAT, mostra o pop-up de LOGIN
         if (location.pathname === "/chat" && !isUserLogged) {
             setIsSignInVisible(true);
             setIsModalVisible(true);
         }
 
-        // Não mostrar popup quando MUDAR para HOME ou SOBRE
+        // Quando for para a página HOME ou SOBRE, o pop-up de LOGIN some
         if (location.pathname === "/" || location.pathname === "/sobre") {
             setIsSignInVisible(false);
             setIsModalVisible(false);
         }
 
-        // Mostrar botão de fechar no popup somente se for CHAT
-        if (location.pathname === "/chat") {
-            setShowSignInCLoseBtn(false);
+        // Botão de fechar só mostra se não estiver na página de CHAT
+        if (location.pathname === "/chat" || location.pathname === "/account") {
+            setIsShowSignInCloseBtn(false);
         } else {
-            setShowSignInCLoseBtn(true);
+            setIsShowSignInCloseBtn(true);
         }
 
     }, [isUserLogged, location.pathname, navigate]);
@@ -87,50 +93,37 @@ export function App() {
     return (
         <div className="page">
             <section className={`login-modal-container ${!isModalVisible && "hidden-modal"} ${scrollDirection === "down" && "cover-hidden-header"}`}>
-                <SignIn
-                    setIsSignInVisible={setIsSignInVisible}
-                    setIsUserLogged={setIsUserLogged}
-                    isShowCloseBtn={isShowCloseBtn}
-                    setIsModalVisible={setIsModalVisible}
-                />
+                <SignIn />
             </section>
 
-          <React.Fragment>
-              {/* Placeholder Header */}
-              <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
-                  <figure className="header-logo">
-                      <img src="src/assets/icons/chat.svg" alt="Logo Header"/>
-                  </figure>
+            <React.Fragment>
+                <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
+                    <figure className="header-logo">
+                        <img src="src/assets/icons/chat.svg" alt="Logo Header"/>
+                    </figure>
 
-                  <nav className="header-nav">
-                      <div className="header-nav-links">
-                          <Link to="/">HOME</Link>
-                          <Link to="/sobre">SOBRE</Link>
-                          <Link to="/chat">CHAT</Link>
-                          <Link to="/account" onClick={handleLogin}>LOGIN</Link>
-                      </div>
-                  </nav>
-              </header>
-              {/* Placeholder Header */}
+                    <nav className="header-nav">
+                        <div className="header-nav-links">
+                            <Link to="/">HOME</Link>
+                            <Link to="/sobre">SOBRE</Link>
+                            <Link to="/chat">CHAT</Link>
+                            <Link to="/account" onClick={handleLogin}>LOGIN</Link>
+                        </div>
+                    </nav>
+                </header>
 
-              <div className="page-content">
-                  <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/sobre" element={<div>Sobre</div>} />
-                      <Route path="/chat" element={<Chat />} />
+                <div className="page-content">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/sobre" element={<div>Sobre</div>} />
+                        <Route path="/chat" element={<Chat />} />
+                        <Route path="/account" element={<Account />} />
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
 
-                      <Route path="/account" element={
-                          <Account
-                              isSignInVisible={isSignInVisible} setIsSignInVisible={setIsSignInVisible}
-                              isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}
-                          />
-                      } />
-
-                      <Route path="*" element={<Navigate to="/" />} />
-                  </Routes>
-                  <Chat type="widget" />
-              </div>
-        </React.Fragment>
+                    <Chat type="widget" />
+                </div>
+            </React.Fragment>
         </div>
     );
 }

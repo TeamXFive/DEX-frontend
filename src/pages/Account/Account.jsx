@@ -1,19 +1,16 @@
 import SignUp from "../../components/Account/SignUp/SignUp.jsx";
 import "./Account.css";
 import SignIn from "../../components/Account/SignIn/SignIn.jsx";
-import PropTypes from "prop-types";
-import {useEffect, useState} from "react";
+import useAccountContext from "../../hook/useAccountContext.jsx";
+import AccountSettings from "./AccountSettings/AccountSettings.jsx";
 
-Account.propTypes = {
-    isSignInVisible: PropTypes.bool.isRequired,
-    setIsSignInVisible: PropTypes.func.isRequired,
-    isUserLogged: PropTypes.bool.isRequired,
-    setIsUserLogged: PropTypes.func.isRequired,
-    isShowCloseBtn: PropTypes.bool.isRequired,
-}
+function Account () {
 
-function Account ({ isSignInVisible, setIsSignInVisible, isUserLogged, setIsUserLogged }) {
-    const [isSignUpVisible, setIsSignUpVisible] = useState(true);
+    const {
+        isSignInVisible, setIsSignInVisible,
+        isSignUpVisible, setIsSignUpVisible,
+        isUserLogged, setIsUserLogged
+    } = useAccountContext();
 
     return (
         <>
@@ -37,7 +34,7 @@ function Account ({ isSignInVisible, setIsSignInVisible, isUserLogged, setIsUser
                             </section>
                         </article>
                     ) : (
-                        <p>fodase</p>
+                        <AccountSettings />
                     )
                 }
             </div>
