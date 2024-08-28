@@ -2,7 +2,7 @@ import "../AccountCard.css";
 import { IoIosClose } from "react-icons/io";
 import useAccountContext from "../../../hook/useAccountContext.jsx";
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function SignIn() {
 
@@ -14,7 +14,10 @@ function SignIn() {
         setIsUserLogged, setIsSignInVisible,
         setIsSignUpVisible, isShowSignInCloseBtn,
         setIsModalVisible,
-        userEmail, userPassword
+        registeredUsersList, setRegisteredUsersList,
+        setHasInteractedOnce,
+        isSignInErrorAlertVisible, setIsSignInErrorAlertVisible,
+        isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible
     } = useAccountContext();
 
     const handleCloseBtn = () => {
@@ -22,14 +25,26 @@ function SignIn() {
         setIsModalVisible(false);
     };
 
+    const findUser = (email) => {
+        return registeredUsersList.find(user => user.email === email);
+    }
+
     const handleSignInSubmit = (event) => {
 
         event.preventDefault();
 
-        if (email !== userEmail || password !== userPassword) {
-            alert("Email ou senha inválidos");
+        const user = findUser(email);
+
+        if (!user || user.password !== password) {
+            setIsSignInErrorAlertVisible(true);
+            setIsUserLogged(false);
 
         } else {
+            setRegisteredUsersList(registeredUsersList.map((user) => {
+                return [{user, email, password}];
+            }));
+            
+            setIsSignInSuccessfulAlertVisible(true);
 
             setIsUserLogged(true);
             setIsSignInVisible(false);
@@ -41,11 +56,31 @@ function SignIn() {
         setIsSignInVisible(false);
         setIsModalVisible(false);
         setIsSignUpVisible(true);
+        setHasInteractedOnce(false);
 
         if (location.pathname !== "/account") {
             navigate("/account");
         }
     }
+
+    useEffect(() => {
+        if (isSignInErrorAlertVisible) {
+            const timer = setTimeout(() => {
+                setIsSignInErrorAlertVisible(false);
+            }, 2500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [isSignInErrorAlertVisible]);
+    useEffect(() => {
+        if (isSignInSuccessfulAlertVisible) {
+            const timer = setTimeout(() => {
+                setIsSignInSuccessfulAlertVisible(false);
+            }, 2500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [isSignInSuccessfulAlertVisible]);
 
     return (
         <>
@@ -76,7 +111,7 @@ function SignIn() {
                             />
                         </fieldset>
 
-                        <input type="submit" value="LOGIN" />
+                        <input type="submit" value="LOGIN"/>
                     </form>
                 </div>
 
