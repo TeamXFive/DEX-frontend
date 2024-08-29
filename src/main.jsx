@@ -1,10 +1,10 @@
 import { Analytics } from '@vercel/analytics/react';
-import "./index.css";
+import "./style/index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
-import AccountProvider from "./context/AccountProvider.jsx";
+import AccountProvider from "./context/Account/AccountProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>

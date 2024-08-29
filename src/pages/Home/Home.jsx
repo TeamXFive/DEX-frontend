@@ -1,6 +1,6 @@
-import ConhecaDex from '../../components/ConhecaDex/conhecaDex';
-import Hero from '../../components/Hero/Hero'
-import './Home.css'
+import ConhecaDex from '../../components/Home/ConhecaDex/ConhecaDex.jsx';
+import Hero from '../../components/Home/Hero/Hero'
+import '../../style/Home/Home.css'
 
 function Home() {
     return (

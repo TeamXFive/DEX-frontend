@@ -1,7 +1,7 @@
-import SignUp from "../../components/Account/SignUp/SignUp.jsx";
-import "./Account.css";
-import SignIn from "../../components/Account/SignIn/SignIn.jsx";
-import useAccountContext from "../../hook/useAccountContext.jsx";
+import SignUp from "../../components/AccountCard/SignUp.jsx";
+import "../../style/Account/Account.css";
+import SignIn from "../../components/AccountCard/SignIn.jsx";
+import useAccountContext from "../../hook/Account/useAccountContext.jsx";
 import AccountSettings from "./AccountSettings/AccountSettings.jsx";
 
 function Account () {

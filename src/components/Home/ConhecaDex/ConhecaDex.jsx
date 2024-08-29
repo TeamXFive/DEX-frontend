@@ -1,4 +1,4 @@
-import './conhecaDex.css'
+import '../../../style/Home/ConhecaDex/ConhecaDex.css'
 
 function ConhecaDex() {
     return (
