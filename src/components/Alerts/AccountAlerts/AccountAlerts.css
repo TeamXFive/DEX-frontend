@@ -31,5 +31,5 @@
 }
 .show-card-alert {
     opacity: 1;
-    transform: translateY(calc(8vh + 30px + 100%)); /* header + ele 1 dele mesmo*/
+    transform: translateY(calc(8vh + 30px + 100%)); /* Header + ele 1 dele mesmo*/
 }

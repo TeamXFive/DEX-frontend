@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AccountContext from '../context/AccountContext.jsx';
+import AccountContext from '../../context/Account/AccountContext.jsx';
 
 const useAccountContext = () => {
     const context = useContext(AccountContext);

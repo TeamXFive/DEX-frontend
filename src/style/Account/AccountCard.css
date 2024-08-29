@@ -13,7 +13,7 @@
 
 /*-----===| Styling |===-----*/
 .account-card {
-    max-height: calc(85vh - (8vh + 30px)); /*(Altura máxima) - (header)*/
+    max-height: calc(85vh - (8vh + 30px)); /*(Altura máxima) - (Header)*/
     width: 90vw;
     z-index: 801;
     padding: 10px 20px;

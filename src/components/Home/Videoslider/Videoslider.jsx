@@ -2,12 +2,12 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import './videoslider.css';
+import '../../../style/Home/Videoslider/Videoslider.css';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
-function VideoSlider() {
+function Videoslider() {
     return (
         <div className="container-swiper">
             <Swiper
@@ -52,4 +52,4 @@ function VideoSlider() {
     );
 }
 
-export default VideoSlider;
+export default Videoslider;

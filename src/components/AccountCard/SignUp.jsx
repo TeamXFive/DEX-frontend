@@ -1,5 +1,5 @@
-import "../AccountCard.css";
-import useAccountContext from "../../../hook/useAccountContext.jsx";
+import "../../style/Account/AccountCard.css";
+import useAccountContext from "../../hook/Account/useAccountContext.jsx";
 import {useEffect, useState} from "react";
 
 function SignUp() {

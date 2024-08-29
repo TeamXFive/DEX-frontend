@@ -1,12 +1,12 @@
-import "./App.css";
+import "./style/App.css";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
 import Account from "./pages/Account/Account.jsx";
-import SignIn from "./components/Account/SignIn/SignIn.jsx";
-import useAccountContext from "./hook/useAccountContext.jsx";
-import Header from "./components/header/header";
+import SignIn from "./components/AccountCard/SignIn.jsx";
+import useAccountContext from "./hook/Account/useAccountContext.jsx";
+import Header from "./layouts/Header/header";
 import AccountAlerts from "./components/Alerts/AccountAlerts/AccountAlerts.jsx";
 
 export function App() {
@@ -42,7 +42,7 @@ export function App() {
         event.preventDefault(); // Previne o comportamento padrão de redirecionamento do LINK
     };
 
-    // Scroll gostoso do header
+    // Scroll gostoso do Header
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
