@@ -2,10 +2,10 @@
 
 .conhecaDexDiv {
     display: flex;
-    height: 10%;
+    height: 10vh;
     width: 100%;
+    align-items: center;
     justify-content: center;
-    margin-top: calc(80vh * 0.1); /*10% de 80vh (10% é o espaço q sobrou e 80vh é a altura do banner)*/
 }
 
 .conhecaDex {
