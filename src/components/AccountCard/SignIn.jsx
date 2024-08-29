@@ -1,4 +1,4 @@
-import "../../style/Account/AccountCard.css";
+import "../../style/Account/AccountCard/AccountCard.css";
 import { IoIosClose } from "react-icons/io";
 import useAccountContext from "../../hook/Account/useAccountContext.jsx";
 import {useNavigate} from "react-router-dom";

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./FullPageChat.css";
+import "../../../style/Chat/FullPageChat/FullPageChat.css";
 import { useEffect, useRef, useState } from "react";
 
 export function FullPageChat(props) {

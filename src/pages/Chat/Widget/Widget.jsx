@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./Widget.css";
+import "../../../style/Chat/Widget/Widget.css";
 import { useEffect, useRef, useState } from "react";
 import ChatIcon from "../../../assets/icons/chat.svg?react";
 import CloseIcon from "../../../assets/icons/close.svg?react";
