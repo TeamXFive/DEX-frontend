@@ -1,0 +1,56 @@
+.accountsettings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 85vh;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    /* border: 2px solid red; */
+}
+
+.container-accountsetting {
+    max-height: 80vh;
+    height: 100%;
+    width: 80%;
+    border-radius: .75em;
+    background-color: var(--black-gray);
+    border: solid 1px var(--dark-gray);
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* border: 1px solid green; */
+}
+
+.settingsTitle {
+    font-size: 40px;
+    color: white;
+    /* font-weight: bold; */
+}
+
+.settings-options {
+    height: 100%;
+    width: 25%;
+    border-right: solid 1px var(--dark-gray);
+    border-top-left-radius: .50em;
+    border-top: solid 20px var(--dark-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.settings-menu {
+    color: white;
+    position: relative;
+}
+
+/* 
+border-radius: .75em;
+transform: translateY(0);
+transition: var(--all-500ms-custom);
+background-color: var(--black-gray);
+color: var(--light-gray); */
