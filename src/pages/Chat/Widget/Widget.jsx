@@ -27,10 +27,16 @@ export function Widget(props) {
         }
     }, [messages]);
 
+    const isAccountPage = location.pathname === "/account";
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [isAccountPage]);
+
     return (
         <>
             <button
-                className={`widget-button ${isOpen ? "open" : ""}`}
+                className={`widget-button ${isOpen ? "open" : ""} ${isAccountPage ? "hidden-widget" : ""}`}
                 onClick={() => setIsOpen((prev) => !prev)}
             >
                 <ChatIcon/>
