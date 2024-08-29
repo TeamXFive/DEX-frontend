@@ -7,11 +7,16 @@
   width: 64px;
   aspect-ratio: 1;
 
-  transition: right 0.5s;
+  transition: var(--all-500ms-custom);
 
   &.open {
     right: -100px;
   }
+
+}
+
+.hidden-widget {
+  display: none;
 }
 
 .chat-wrapper.widget {
@@ -28,7 +33,7 @@
   padding: 1rem;
   border-radius: 20px;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
-  transition: right 0.5s;
+  transition: var(--all-500ms-custom);
 
   display: flex;
   flex-direction: column;
