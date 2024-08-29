@@ -19,7 +19,7 @@
     background-color: rgba(var(--medium-gray-rgb), 0.5);
     z-index: 800;
     transform: translateY(0);
-    transition: var(--all-200ms-ease-in-out);
+    transition: var(--all-500ms-custom);
 }
 .hidden-modal {
     opacity: 1;

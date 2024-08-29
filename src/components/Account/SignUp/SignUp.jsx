@@ -100,6 +100,10 @@ function SignUp() {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
+
+        setIsUserInputInvalid(false);
+        setIsEmailInputInvalid(false);
+        setIsPasswordInputInvalid(false);
     }, [location.key]);
 
     useEffect(() => {
