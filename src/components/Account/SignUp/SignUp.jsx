@@ -10,7 +10,7 @@ function SignUp() {
     const {
         // CARDS //
         setIsSignInVisible,
-        setIsSignUpVisible,
+        isSignUpVisible, setIsSignUpVisible,
 
         // USER //
         setIsUserLogged,
@@ -30,20 +30,18 @@ function SignUp() {
         isPasswordInputInvalid, setIsPasswordInputInvalid,
         hasInteractedOnce, setHasInteractedOnce,
 
+        isUserAlertVisible, setIsUserAlertVisible,
+        isEmailAlertVisible, setIsEmailAlertVisible,
+        isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible
+
     } = useAccountContext();
 
-    // Zerando form quando mudar de página
-    useEffect(() => {
-        setUser("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-    }, [location.key]);
-
     const handleUserValidation = () => {
-        setIsUserValid(user.length > 0);
+        setIsUserValid(user.trim().length > 0);
 
         setIsUserInputInvalid(false);
+
+        setIsUserAlertVisible(!isUserValid);
     }
 
     const handleEmailValidation = () => {
@@ -51,12 +49,16 @@ function SignUp() {
         setIsEmailValid(emailRegex.test(email) && email.trim().length > 0);
 
         setIsEmailInputInvalid(false);
+
+        setIsEmailAlertVisible(!isEmailValid);
     }
 
     const handleConfirmPassword = () => {
-        setIsPasswordMatch((password === confirmPassword) && (password.length > 0));
+        setIsPasswordMatch((password === confirmPassword) && (password.trim().length > 0));
 
         setIsPasswordInputInvalid(false);
+
+        setIsPasswordMatchAlertVisible(!isPasswordMatch);
     }
 
     const handleSignUpSubmit = (event) => {
@@ -78,9 +80,11 @@ function SignUp() {
     }
 
     const handleHasInteractedOnce = () => {
-        if (!hasInteractedOnce) {
-            setHasInteractedOnce(true);
+        if (hasInteractedOnce) {
+            return;
         }
+
+        setHasInteractedOnce(true);
     }
 
     const handleFazerLoginBtn = () => {
@@ -89,6 +93,36 @@ function SignUp() {
         setIsSignInVisible(true);
         setHasInteractedOnce(false);
     };
+
+    // Zerando form quando mudar de página
+    useEffect(() => {
+        setUser("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+    }, [location.key]);
+
+    useEffect(() => {
+        if (isPasswordMatchAlertVisible) {
+            setIsUserAlertVisible(false);
+            setIsEmailAlertVisible(false);
+        }
+
+        if (isEmailAlertVisible) {
+            setIsUserAlertVisible(false);
+        }
+    }, [isUserAlertVisible, isEmailAlertVisible, isPasswordMatchAlertVisible]);
+
+    // tirando alertas ao mudar de card (Sign Up -> Sign In)
+    useEffect(() => {
+        if(isSignUpVisible) {
+            return;
+        }
+
+        setIsUserAlertVisible(false);
+        setIsEmailAlertVisible(false);
+        setIsPasswordMatchAlertVisible(false);
+    }, [isSignUpVisible]);
 
     return (
         <>

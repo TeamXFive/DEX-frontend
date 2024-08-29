@@ -1,54 +1,25 @@
 import "./AccountAlerts.css";
 import useAccountContext from "../../../hook/useAccountContext.jsx";
-import { useEffect, useState } from "react";
+import {useEffect} from "react";
 
 function AccountAlerts() {
-    const [isUserAlertVisible, setIsUserAlertVisible] = useState(false);
-    const [isEmailAlertVisible, setIsEmailAlertVisible] = useState(false);
-    const [isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible] = useState(false);
-
 
     const {
-        isUserValid,
-        isEmailValid,
-        isPasswordMatch,
-        hasInteractedOnce,
         isSignInErrorAlertVisible,
         isSignInSuccessfulAlertVisible,
+
+        isUserAlertVisible, setIsUserAlertVisible,
+        isEmailAlertVisible, setIsEmailAlertVisible,
+        isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible
     } = useAccountContext();
 
-    const handleShowPasswordMatchAlert = () => {
-        setIsPasswordMatchAlertVisible(!isPasswordMatch);
-    };
-
-    const handleShowEmailAlert = () => {
-        setIsEmailAlertVisible(!isEmailValid);
-    };
-
-    const handleShowUserAlert = () => {
-        setIsUserAlertVisible(!isUserValid);
-    };
-
     useEffect(() => {
-        if (!hasInteractedOnce) {
+        if (location.pathname === "/account") {
             return;
         }
-
-        handleShowPasswordMatchAlert();
-        handleShowEmailAlert();
-        handleShowUserAlert();
-    }, [isUserValid, isEmailValid, isPasswordMatch, hasInteractedOnce]);
-
-    useEffect(() => {
-        if (isPasswordMatchAlertVisible) {
-            setIsUserAlertVisible(false);
-            setIsEmailAlertVisible(false);
-        }
-
-        if (isEmailAlertVisible) {
-            setIsUserAlertVisible(false);
-        }
-    }, [isEmailAlertVisible, isPasswordMatchAlertVisible]);
+        
+        setIsUserAlertVisible && setIsEmailAlertVisible && setIsPasswordMatchAlertVisible(false);
+    }, [location.pathname]);
 
     return (
         <section className="account-card-alerts">

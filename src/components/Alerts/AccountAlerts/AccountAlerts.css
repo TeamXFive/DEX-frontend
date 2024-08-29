@@ -6,7 +6,7 @@
     width: 100vw;
     position: fixed;
     color: var(--light-gray);
-    z-index: 900;
+    z-index: 901;
     pointer-events: none;
 }
 
@@ -23,7 +23,7 @@
     border-radius: 5px;
     padding: 3px 6px;
     opacity: 0;
-    transform: translateY(0%);
+    transform: translateY(-100%);
     align-self: flex-start;
     transition: var(--all-500ms-custom);
     position: absolute;
@@ -31,5 +31,5 @@
 }
 .show-card-alert {
     opacity: 1;
-    transform: translateY(500%);
+    transform: translateY(calc(8vh + 30px + 100%)); /* header + ele 1 dele mesmo*/
 }

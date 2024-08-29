@@ -58,6 +58,9 @@ function SignIn() {
         setIsSignUpVisible(true);
         setHasInteractedOnce(false);
 
+        // Resetando validações
+        setIsSignInErrorAlertVisible(false);
+
         if (location.pathname !== "/account") {
             navigate("/account");
         }
@@ -95,7 +98,7 @@ function SignIn() {
                         <fieldset className="fs-email">
                             <label htmlFor="email">Email</label>
                             <input
-                                type="text" name="email" id="email" placeholder="Email"  required
+                                type="text" name="email" id="email" placeholder="Email"
                                 value={email}
                                 autoFocus={true}
                                 onChange={(event) => setEmail(event.target.value)}
@@ -105,7 +108,7 @@ function SignIn() {
                         <fieldset className="fs-password">
                             <label htmlFor="password">Senha</label>
                             <input
-                                type="password" name="password" id="password" placeholder="Senha" required
+                                type="password" name="password" id="password" placeholder="Senha"
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                             />
