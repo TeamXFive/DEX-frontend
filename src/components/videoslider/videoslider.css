@@ -3,7 +3,8 @@
     position: relative;
     max-width: 70%;
     height: 80%;
-    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .youtubeVideo {
@@ -24,6 +25,7 @@
         border-radius: 15px;
         margin-left: auto;
         margin-right: auto;
+        /* margin: auto; */
     }
 
 }
@@ -42,3 +44,40 @@
     width: 15px;
 }
 
+
+.slider-controler {
+    width: 10%;
+    height: 100px;
+    margin: auto;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-100%); /* Adjust for the height of the button */
+    z-index: 2; /* Ensure they are above other elements */
+}
+
+.swiper-button-next {
+    right: 10px; /* Adjust as needed */
+}
+
+.swiper-button-prev {
+    left: 10px; /* Adjust as needed */
+}
+
+/* .slider-controler {
+    width: 10%;
+    height: 100px;
+    margin: auto;
+}
+
+.swiper-button-next {
+    color: #ffffff;
+}
+
+.swiper-button-prev {
+    color: #ffffff;
+} */
