@@ -31,15 +31,15 @@ function Videoslider() {
                 <SwiperSlide>
                     <div className="youtubeVideo">
                         <iframe
-                            src="https://www.youtube.com/embed/ipnBPEQviUM?si=YMXQpdkRiJbksHtB"
-                            title="Youtube Video"
+                                src="https://www.youtube.com/embed/qgjfKKskmzg?si=nh6CdXqOlwx4W2c8"
+                                title="YouTube Video"
                         ></iframe>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="youtubeVideo">
                         <iframe
-                            src="https://www.youtube.com/embed/OtqxDT0IlHI?si=BeWAsZ6Y8Y7ipc2K"
+                            src="https://www.youtube.com/embed/ipnBPEQviUM?si=YMXQpdkRiJbksHtB"
                             title="Youtube Video"
                         ></iframe>
                     </div>
