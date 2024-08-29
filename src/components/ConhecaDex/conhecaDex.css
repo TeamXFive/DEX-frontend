@@ -5,8 +5,7 @@
     height: 10%;
     width: 100%;
     justify-content: center;
-    margin-top: 5%;
-    /* align-items: flex-end; */
+    margin-top: calc(80vh * 0.1); /*10% de 80vh (10% é o espaço q sobrou e 80vh é a altura do banner)*/
 }
 
 .conhecaDex {
@@ -16,4 +15,5 @@
     font-family: 'Saira';
     color:  #C3C3C3;
     font-size: 40px;
+    margin: 0;
 }
