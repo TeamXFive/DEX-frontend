@@ -1,34 +1,65 @@
-import { Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import '../../style/Header/Header.css';
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import useAccountContext from "../../hook/Account/useAccountContext.jsx";
 
-function Header() {
-    const[currentPage,setCurrentPage]=useState("")
+function Header({ scrollDirection, setScrollDirection }) {
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    const {
+        setIsModalVisible,
+        setIsSignInVisible,
+        isUserLogged,
+    } = useAccountContext();
+
+    const handleLogin = (event) => {
+        if (isUserLogged) {
+            return;
+        }
+
+        if (location.pathname === "/account") {
+            setIsModalVisible(false);
+        } else {
+            setIsModalVisible(true);
+            setIsSignInVisible(true);
+        }
+
+        event.preventDefault();
+    };
+
     useEffect(() => {
-        console.log("INITIAL LOAD");
-    }, []);
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
 
-    useEffect(() => {
-        setCurrentPage(window.location.pathname.replace("/", ""));
-    }, []);
+            (currentScrollY > lastScrollY) ? setScrollDirection("down") : setScrollDirection("up");
 
-    return(
-        <header>
-                <div>
-                <h1 className="Logo">DEX</h1>
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [lastScrollY]);
+
+    return (
+        <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
+            <div className="header-title-container">
+                <h1 className={`header-title`}>DEX</h1>
+            </div>
+
+            <nav className="header-nav">
+                <div className="header-nav-links">
+                    <Link to="/">HOME</Link>
+                    <Link to="/sobre">SOBRE</Link>
+                    <Link to="/chat">CHAT</Link>
+                    <Link to="/account" onClick={handleLogin}>LOGIN</Link>
                 </div>
-                <div>
-                    <ul className="list">
-                        <Link to="/"><li>HOME</li></Link>
-                        <Link to="/sobre"><li>SOBRE O PROJETO</li></Link>
-                        <Link to="/chat"><li>CHAT</li></Link>
-                    </ul>
-                </div>
-                <div>
-                    <button>Login</button>
-                </div>
+            </nav>
         </header>
-    );
+    )
+    ;
 }
 
 export default Header;
