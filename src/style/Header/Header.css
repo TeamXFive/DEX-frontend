@@ -1,32 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.page-header {
+    top: 0;
+    position: sticky;
+    height: calc(8vh + 30px);
     width: 100%;
-    background-color: #1a1a1a;
-    height: 100px;
-}
-.Logo {
-    font-family: 'Syncopate', sans-serif;
-    color: white;
-}
-
-.list{
     display: flex;
-    list-style: none;
+    flex-direction: column;
     align-items: center;
-    font-family:sans-serif;
+    justify-content: center;
+    transition: var(--all-200ms-ease-in-out);
+    z-index: 900;
 }
 
-li {
-    color: white;
-    padding-right: 30px;
+.header-title-container {
+    height: calc(3vh + 30px);
+    width: 100%;
+    padding: 15px 0;
+    filter: invert(0.75);
 }
 
-button {
-    margin-right: 0;
-    font-family: sans-serif;
+.header-title {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 3vh;
+    padding: 0;
+    margin: 0;
 }
 
+
+.header-nav {
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-nav-links {
+    height: auto;
+    max-width: 1080px;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Fira Code Retina", monospace;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.header-nav a {
+    color: var(--light-gray);
+}
+.header-nav a:hover {
+    color: var(--white-gray);
+    text-shadow: var(--white-gray) 0 0 20px;
+}
+
+/*-----===| EFFECTS |===-----*/
+.hide-header {
+    transform: translateY(calc(-3vh - 30px));
+    transition: var(--all-200ms-ease-in-out);
+}
