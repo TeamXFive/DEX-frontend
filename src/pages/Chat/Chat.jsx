@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./Chat.css";
+import "../../style/Chat/Chat.css";
 import { useEffect, useRef, useState } from "react";
 import { FullPageChat } from "./FullPageChat/FullPageChat";
 import { Widget } from "./Widget/Widget";
