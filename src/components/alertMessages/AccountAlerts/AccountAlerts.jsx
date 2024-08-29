@@ -1,4 +1,4 @@
-import "./AccountAlerts.css";
+import "../../../style/alertMessages/AccountAlerts/AccountAlerts.css";
 import useAccountContext from "../../../hook/Account/useAccountContext.jsx";
 import {useEffect} from "react";
 
