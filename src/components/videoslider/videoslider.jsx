@@ -20,7 +20,12 @@ function VideoSlider() {
                 }}
                 grabCursor={true}
                 pagination={{ el: '.swiper-pagination', clickable: true }}
-                modules={[EffectCoverflow, Pagination]}
+                navigation={{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                    clickable: true,
+                }}
+                modules={[EffectCoverflow, Pagination, Navigation]}
                 className="swiper_container"
             >
                 <SwiperSlide>
@@ -41,9 +46,8 @@ function VideoSlider() {
                 </SwiperSlide>
 
             </Swiper>
-            <div className="slider-controler">
-                <div className="swiper-pagination"></div>
-            </div>
+            <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
         </div>
     );
 }

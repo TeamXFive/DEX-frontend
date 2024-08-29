@@ -8,4 +8,8 @@
     /* background-size: cover; */
     z-index: 0;
     object-fit: cover;
+    background:
+    linear-gradient(90deg, var(--black-gray) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--black-gray) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    var(--medium-gray);
 }

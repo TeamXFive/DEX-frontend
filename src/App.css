@@ -1,6 +1,6 @@
 /*-----===| App.jsx |===-----*/
 .page {
-    min-height: 200vh;
+    /* min-height: 1%; */
     width: 100%;
     display: flex;
     flex-direction: column;
