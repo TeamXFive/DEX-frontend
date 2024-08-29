@@ -188,17 +188,10 @@
     "@babel/helper-validator-identifier" "^7.24.7"
     to-fast-properties "^2.0.0"
 
-<<<<<<< HEAD
 "@esbuild/win32-x64@0.21.5":
   version "0.21.5"
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
-=======
-"@esbuild/darwin-x64@0.21.5":
-  version "0.21.5"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.21.5.tgz"
-  integrity sha512-se/JjF8NlmKVG4kNIuyWMV/22ZaerB+qaSi5MdrXtd6R08kvs2qCN4C09miupktDitvh8jRFflwGFBQcxZRjbw==
->>>>>>> 17dddc911cc479e5026d56a86a6cb3d1edab8e82
 
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
@@ -212,10 +205,10 @@
   resolved "https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.11.0.tgz"
   integrity sha512-G/M/tIiMrTAxEWRfLfQJMmGNX28IxBg4PBz8XqQhqUHLFI6TL2htpIB1iQCj144V5ee/JaKyT9/WZ0MGZWfA7A==
 
-"@eslint/config-array@^0.17.1":
-  version "0.17.1"
-  resolved "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.17.1.tgz"
-  integrity sha512-BlYOpej8AQ8Ev9xVqroV7a02JK3SkBAaN9GfMMH9W6Ch8FlQlkjGw4Ir7+FgYwfirivAf4t+GtzuAxqfukmISA==
+"@eslint/config-array@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.18.0.tgz"
+  integrity sha512-fTxvnS1sRMu3+JjXwJG0j/i4RT9u4qJ+lqS/yCGap4lH4zZGzQ7tu+xZqQmcMZq5OBZDL4QRxQzRjkWcGt8IVw==
   dependencies:
     "@eslint/object-schema" "^2.1.4"
     debug "^4.3.1"
@@ -236,10 +229,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@eslint/js@^9.9.0", "@eslint/js@9.9.0":
-  version "9.9.0"
-  resolved "https://registry.npmjs.org/@eslint/js/-/js-9.9.0.tgz"
-  integrity sha512-hhetes6ZHP3BlXLxmd8K2SNgkhNSi+UcecbnwWKwpP7kyi/uC75DJ1lOOBO3xrC4jyojtGE3YxKZPHfk4yrgug==
+"@eslint/js@^9.9.1", "@eslint/js@9.9.1":
+  version "9.9.1"
+  resolved "https://registry.npmjs.org/@eslint/js/-/js-9.9.1.tgz"
+  integrity sha512-xIDQRsfg5hNBqHz04H1R3scSVwmI+KUbqjsQKHKQ1DAUSaUjYPReZZmS/5PNiKu1fUvzDd6H7DEDKACSEhu+TQ==
 
 "@eslint/object-schema@^2.1.4":
   version "2.1.4"
@@ -309,12 +302,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-<<<<<<< HEAD
-"@rollup/rollup-win32-x64-msvc@4.20.0":
-  version "4.20.0"
-  resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.20.0.tgz"
-  integrity sha512-aJ1EJSuTdGnM6qbVC4B5DSmozPTqIag9fSzXRNNo+humQLG89XpPgdt16Ia56ORD7s+H8Pmyx44uczDQ0yDzpg==
-=======
 "@remix-run/router@1.19.1":
   version "1.19.1"
   resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.19.1.tgz"
@@ -329,10 +316,10 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@rollup/rollup-darwin-x64@4.20.0":
+"@rollup/rollup-win32-x64-msvc@4.20.0":
   version "4.20.0"
-  resolved "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.20.0.tgz"
-  integrity sha512-xbrMDdlev53vNXexEa6l0LffojxhqDTBeL+VUxuuIXys4x6xyvbKq5XqTXBCEUA8ty8iEJblHvFaWRJTk/icAQ==
+  resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.20.0.tgz"
+  integrity sha512-aJ1EJSuTdGnM6qbVC4B5DSmozPTqIag9fSzXRNNo+humQLG89XpPgdt16Ia56ORD7s+H8Pmyx44uczDQ0yDzpg==
 
 "@svgr/babel-plugin-add-jsx-attribute@8.0.0":
   version "8.0.0"
@@ -416,7 +403,6 @@
     "@svgr/babel-preset" "8.1.0"
     "@svgr/hast-util-to-babel-ast" "8.0.0"
     svg-parser "^2.0.4"
->>>>>>> 17dddc911cc479e5026d56a86a6cb3d1edab8e82
 
 "@types/babel__core@^7.20.5":
   version "7.20.5"
@@ -468,17 +454,10 @@
   dependencies:
     "@types/react" "*"
 
-<<<<<<< HEAD
-"@types/react@*", "@types/react@^18.3.3":
-  version "18.3.3"
-  resolved "https://registry.npmjs.org/@types/react/-/react-18.3.3.tgz"
-  integrity sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==
-=======
 "@types/react@*", "@types/react@^18.3.4":
   version "18.3.4"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.3.4.tgz"
   integrity sha512-J7W30FTdfCxDDjmfRM+/JqLHBIyl7xUIp9kwK637FGmY7+mkSFSe6L4jpZzhj5QMfLssSDP4/i75AKkrdC7/Jw==
->>>>>>> 17dddc911cc479e5026d56a86a6cb3d1edab8e82
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -1011,16 +990,6 @@ escape-string-regexp@^4.0.0:
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
 eslint-plugin-react-hooks@^5.1.0-rc.0:
-<<<<<<< HEAD
-  version "5.1.0-rc-fb9a90fa48-20240614"
-  resolved "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.1.0-rc-fb9a90fa48-20240614.tgz"
-  integrity sha512-xsiRwaDNF5wWNC4ZHLut+x/YcAxksUd9Rizt7LaEn3bV8VyYRpXnRJQlLOfYaVy9esk4DFP4zPPnoNVjq5Gc0w==
-
-eslint-plugin-react-refresh@^0.4.9:
-  version "0.4.9"
-  resolved "https://registry.npmjs.org/eslint-plugin-react-refresh/-/eslint-plugin-react-refresh-0.4.9.tgz"
-  integrity sha512-QK49YrBAo5CLNLseZ7sZgvgTy21E6NEw22eZqc4teZfH8pxV3yXc9XXOYfUI6JNpw7mfHNkAeWtBxrTyykB6HA==
-=======
   version "5.1.0-rc.0"
   resolved "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.1.0-rc.0.tgz"
   integrity sha512-xBc+mRT2KSyzKm78GyaOFPyF4EnSRfTSmre88Ak8jG1HnpNGEiHETbCuXih8Xl796DryrJej/8IdW4oQ+m5kPg==
@@ -1029,7 +998,6 @@ eslint-plugin-react-refresh@^0.4.11:
   version "0.4.11"
   resolved "https://registry.npmjs.org/eslint-plugin-react-refresh/-/eslint-plugin-react-refresh-0.4.11.tgz"
   integrity sha512-wrAKxMbVr8qhXTtIKfXqAn5SAtRZt0aXxe5P23Fh4pUAdC6XEsybGLB8P0PI4j1yYqOgUEUlzKAGDfo7rJOjcw==
->>>>>>> 17dddc911cc479e5026d56a86a6cb3d1edab8e82
 
 eslint-plugin-react@^7.35.0:
   version "7.35.0"
@@ -1073,16 +1041,16 @@ eslint-visitor-keys@^4.0.0:
   resolved "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-4.0.0.tgz"
   integrity sha512-OtIRv/2GyiF6o/d8K7MYKKbXrOUBIK6SfkIRM4Z0dY3w+LiQ0vy3F57m0Z71bjbyeiWFiHJ8brqnmE6H6/jEuw==
 
-"eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7", "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0", "eslint@^6.0.0 || ^7.0.0 || >=8.0.0", eslint@^9.9.0, eslint@>=7:
-  version "9.9.0"
-  resolved "https://registry.npmjs.org/eslint/-/eslint-9.9.0.tgz"
-  integrity sha512-JfiKJrbx0506OEerjK2Y1QlldtBxkAlLxT5OEcRF8uaQ86noDe2k31Vw9rnSWv+MXZHj7OOUV/dA0AhdLFcyvA==
+"eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7", "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0", "eslint@^6.0.0 || ^7.0.0 || >=8.0.0", eslint@^9.9.1, eslint@>=7:
+  version "9.9.1"
+  resolved "https://registry.npmjs.org/eslint/-/eslint-9.9.1.tgz"
+  integrity sha512-dHvhrbfr4xFQ9/dq+jcVneZMyRYLjggWjk6RVsIiHsP8Rz6yZ8LvZ//iU4TrZF+SXWG+JkNF2OyiZRvzgRDqMg==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.11.0"
-    "@eslint/config-array" "^0.17.1"
+    "@eslint/config-array" "^0.18.0"
     "@eslint/eslintrc" "^3.1.0"
-    "@eslint/js" "9.9.0"
+    "@eslint/js" "9.9.1"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@humanwhocodes/retry" "^0.3.0"
     "@nodelib/fs.walk" "^1.2.8"
@@ -1208,14 +1176,6 @@ for-each@^0.3.3:
   dependencies:
     is-callable "^1.1.3"
 
-<<<<<<< HEAD
-=======
-fsevents@~2.3.2, fsevents@~2.3.3:
-  version "2.3.3"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
-
->>>>>>> 17dddc911cc479e5026d56a86a6cb3d1edab8e82
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz"
@@ -2178,17 +2138,15 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-<<<<<<< HEAD
-swiper@^11.1.10:
-  version "11.1.10"
-  resolved "https://registry.npmjs.org/swiper/-/swiper-11.1.10.tgz"
-  integrity sha512-pAVM6vCb6bumj2B9aSh67l3wP1j5YR8dPQM1YhQKMpnBc33vs+RpyVz6NZYZl/ZopCBSYbbWK5nvESwbmU0QXQ==
-=======
 svg-parser@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/svg-parser/-/svg-parser-2.0.4.tgz"
   integrity sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==
->>>>>>> 17dddc911cc479e5026d56a86a6cb3d1edab8e82
+
+swiper@^11.1.10:
+  version "11.1.10"
+  resolved "https://registry.npmjs.org/swiper/-/swiper-11.1.10.tgz"
+  integrity sha512-pAVM6vCb6bumj2B9aSh67l3wP1j5YR8dPQM1YhQKMpnBc33vs+RpyVz6NZYZl/ZopCBSYbbWK5nvESwbmU0QXQ==
 
 text-table@^0.2.0:
   version "0.2.0"
@@ -2281,12 +2239,6 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-<<<<<<< HEAD
-"vite@^4.2.0 || ^5.0.0", vite@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.npmjs.org/vite/-/vite-5.4.1.tgz"
-  integrity sha512-1oE6yuNXssjrZdblI9AfBbHCC41nnyoVoEZxQnID6yvQZAFBzxxkqoFLtHUMkYunL8hwOLEjgTuxpkRxvba3kA==
-=======
 vite-plugin-svgr@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/vite-plugin-svgr/-/vite-plugin-svgr-4.2.0.tgz"
@@ -2300,7 +2252,6 @@ vite-plugin-svgr@^4.2.0:
   version "5.4.2"
   resolved "https://registry.npmjs.org/vite/-/vite-5.4.2.tgz"
   integrity sha512-dDrQTRHp5C1fTFzcSaMxjk6vdpKvT+2/mIdE07Gw2ykehT49O0z/VHS3zZ8iV/Gh8BJJKHWOe5RjaNrW5xf/GA==
->>>>>>> 17dddc911cc479e5026d56a86a6cb3d1edab8e82
   dependencies:
     esbuild "^0.21.3"
     postcss "^8.4.41"

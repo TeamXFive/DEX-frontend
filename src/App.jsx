@@ -7,6 +7,7 @@ import Account from "./pages/Account/Account.jsx";
 import SignIn from "./components/Account/SignIn/SignIn.jsx";
 import useAccountContext from "./hook/useAccountContext.jsx";
 import Header from "./components/header/header";
+import AccountAlerts from "./components/Alerts/AccountAlerts/AccountAlerts.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
@@ -19,7 +20,7 @@ export function App() {
         isModalVisible, setIsModalVisible,
         setIsSignInVisible,
         isUserLogged,
-        setIsShowSignInCloseBtn
+        setIsShowSignInCloseBtn,
     } = useAccountContext();
 
     // Clicar no LINK do HEADER do LOGIN
@@ -34,9 +35,9 @@ export function App() {
             setIsModalVisible(false);
         } else {
             setIsModalVisible(true);
+            setIsSignInVisible(true);
         }
 
-        setIsSignInVisible(true);
 
         event.preventDefault(); // Previne o comportamento padrão de redirecionamento do LINK
     };
@@ -93,15 +94,17 @@ export function App() {
 
     return (
         <div className="page">
+            <AccountAlerts />
+
             <section className={`login-modal-container ${!isModalVisible && "hidden-modal"} ${scrollDirection === "down" && "cover-hidden-header"}`}>
                 <SignIn />
             </section>
 
             <React.Fragment>
                 <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
-                    <figure className="header-logo">
-                        <img src="src/assets/icons/chat.svg" alt="Logo Header"/>
-                    </figure>
+                    <div className="header-title-container">
+                        <h1 className={`header-title`}>DEX</h1>
+                    </div>
 
                     <nav className="header-nav">
                         <div className="header-nav-links">

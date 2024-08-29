@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .account-cards-container {
@@ -16,20 +17,4 @@
     align-items: center;
     justify-content: center;
     position: relative;
-}
-
-/*-----===| EFFECTS |===-----*/
-.fade-enter {
-    opacity: 0;
-}
-.fade-enter-active {
-    opacity: 1;
-    transition: opacity 300ms;
-}
-.fade-exit {
-    opacity: 1;
-}
-.fade-exit-active {
-    opacity: 0;
-    transition: opacity 300ms;
 }
