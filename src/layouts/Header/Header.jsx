@@ -1,7 +1,13 @@
 import {Link } from "react-router-dom";
 import '../../style/Header/Header.css';
 import { useEffect, useState } from "react";
-import useAccountContext from "../../hook/Account/useAccountContext.jsx";
+import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
+import PropTypes from "prop-types";
+
+Header.propTypes = {
+    scrollDirection: PropTypes.string.isRequired,
+    setScrollDirection: PropTypes.func.isRequired,
+}
 
 function Header({ scrollDirection, setScrollDirection }) {
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -10,14 +16,18 @@ function Header({ scrollDirection, setScrollDirection }) {
         setIsModalVisible,
         setIsSignInVisible,
         isUserLogged,
-    } = useAccountContext();
+    } = useAuthenticationContext();
 
     const handleLogin = (event) => {
         if (isUserLogged) {
             return;
         }
 
-        if (location.pathname === "/account") {
+        if (isUserLogged) {
+
+        }
+
+        if (location.pathname === "/authentication") {
             setIsModalVisible(false);
         } else {
             setIsModalVisible(true);
@@ -43,6 +53,10 @@ function Header({ scrollDirection, setScrollDirection }) {
         };
     }, [lastScrollY]);
 
+    useEffect(() => {
+
+    }, []);
+
     return (
         <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
             <div className="header-title-container">
@@ -54,7 +68,7 @@ function Header({ scrollDirection, setScrollDirection }) {
                     <Link to="/">HOME</Link>
                     <Link to="/sobre">SOBRE</Link>
                     <Link to="/chat">CHAT</Link>
-                    <Link to="/account" onClick={handleLogin}>LOGIN</Link>
+                    <Link to={isUserLogged ? "/account" : "/authentication"} onClick={handleLogin}>LOGIN</Link>
                 </div>
             </nav>
         </header>

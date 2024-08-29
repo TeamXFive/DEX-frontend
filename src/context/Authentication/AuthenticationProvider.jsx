@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import AccountContext from './AccountContext.jsx';
+import AuthenticationContext from './AuthenticationContext.jsx';
 import PropTypes from 'prop-types';
 
-AccountProvider.propTypes = {
+AuthenticationProvider.propTypes = {
     children: PropTypes.node.isRequired
 };
 
-function AccountProvider({ children }) {
+function AuthenticationProvider({ children }) {
 
     //-----===| CARDS (+ modal) |===-----//
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -42,11 +42,11 @@ function AccountProvider({ children }) {
     const [isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible] = useState(false);
 
     return (
-        <AccountContext.Provider value={{
+        <AuthenticationContext.Provider value={{
             //-----===| MODAL |===-----//
             isModalVisible, setIsModalVisible,
 
-            //-----===| ACCOUNT CARDS |===-----//
+            //-----===| AUTHENTICATION CARDS |===-----//
             isSignInVisible, setIsSignInVisible,
             isSignUpVisible, setIsSignUpVisible,
             isShowSignInCloseBtn, setIsShowSignInCloseBtn,
@@ -78,8 +78,8 @@ function AccountProvider({ children }) {
             isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible
         }}>
             {children}
-        </AccountContext.Provider>
+        </AuthenticationContext.Provider>
     );
 }
 
-export default AccountProvider;
+export default AuthenticationProvider;

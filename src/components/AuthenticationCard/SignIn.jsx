@@ -1,6 +1,6 @@
-import "../../style/Account/AccountCard/AccountCard.css";
+import "../../style/Authentication/AuthenticationCard/AuthenticationCard.css";
 import { IoIosClose } from "react-icons/io";
-import useAccountContext from "../../hook/Account/useAccountContext.jsx";
+import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
@@ -11,14 +11,16 @@ function SignIn() {
     const [password, setPassword] = useState("");
 
     const {
-        setIsUserLogged, setIsSignInVisible,
-        setIsSignUpVisible, isShowSignInCloseBtn,
+        isUserLogged, setIsUserLogged,
+        setIsSignInVisible,
+        setIsSignUpVisible,
+        isShowSignInCloseBtn,
         setIsModalVisible,
         registeredUsersList, setRegisteredUsersList,
         setHasInteractedOnce,
         isSignInErrorAlertVisible, setIsSignInErrorAlertVisible,
         isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible
-    } = useAccountContext();
+    } = useAuthenticationContext();
 
     const handleCloseBtn = () => {
         setIsSignInVisible(false);
@@ -61,8 +63,8 @@ function SignIn() {
         // Resetando validações
         setIsSignInErrorAlertVisible(false);
 
-        if (location.pathname !== "/account") {
-            navigate("/account");
+        if (location.pathname !== "/authentication") {
+            navigate("/authentication");
         }
     }
 
@@ -85,16 +87,20 @@ function SignIn() {
         }
     }, [isSignInSuccessfulAlertVisible]);
 
+    useEffect(() => {
+        (isUserLogged && navigate("/account"))
+    }, [isUserLogged]);
+
     return (
         <>
-            <div className={`account-card`} id="signIn">
-                <div className="account-card-header">
+            <div className={`authentication-card`} id="signIn">
+                <div className="authentication-card-header">
                     <h1>Log In</h1>
                     {isShowSignInCloseBtn && <IoIosClose className="close-card-btn" onClick={handleCloseBtn} />}
                 </div>
 
-                <div className="account-card-form-container">
-                    <form className="account-card-form" onSubmit={handleSignInSubmit}>
+                <div className="authentication-card-form-container">
+                    <form className="authentication-card-form" onSubmit={handleSignInSubmit}>
                         <fieldset className="fs-email">
                             <label htmlFor="email">Email</label>
                             <input
@@ -119,7 +125,7 @@ function SignIn() {
                 </div>
 
 
-                <div className="account-card-switch">
+                <div className="authentication-card-switch">
                     <p>
                         Não tem conta? <span className="switch-link" onClick={handleCriarContaBtn}>Sign Up</span>
                     </p>

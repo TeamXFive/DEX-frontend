@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
-import Account from "./pages/Account/Account.jsx";
-import SignIn from "./components/AccountCard/SignIn.jsx";
-import useAccountContext from "./hook/Account/useAccountContext.jsx";
+import Authentication from "./pages/Authentication/Authentication.jsx";
+import SignIn from "./components/AuthenticationCard/SignIn.jsx";
+import useAuthenticationContext from "./hook/Authentication/useAuthenticationContext.jsx";
 import Header from "./layouts/Header/Header.jsx";
-import AccountAlerts from "./components/alertMessages/AccountAlerts/AccountAlerts.jsx";
+import AuthenticationAlerts from "./components/alertMessages/AuthenticationAlerts/AuthenticationAlerts.jsx";
+import Account from "./pages/Account/Account.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
@@ -19,7 +20,7 @@ export function App() {
         setIsSignInVisible,
         isUserLogged,
         setIsShowSignInCloseBtn,
-    } = useAccountContext();
+    } = useAuthenticationContext();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -36,17 +37,21 @@ export function App() {
             setIsModalVisible(false);
         }
 
-        if (location.pathname === "/chat" || location.pathname === "/account") {
+        if (location.pathname === "/chat" || location.pathname === "/authentication") {
             setIsShowSignInCloseBtn(false);
         } else {
             setIsShowSignInCloseBtn(true);
+        }
+
+        if (location.pathname === "/account" && !isUserLogged) {
+            navigate("/authentication");
         }
 
     }, [isUserLogged, location.pathname, navigate]);
 
     return (
         <div className="page">
-            <AccountAlerts />
+            <AuthenticationAlerts />
 
             <section className={`login-modal-container ${!isModalVisible && "hidden-modal"} ${scrollDirection === "down" && "cover-hidden-header"}`}>
                 <SignIn />
@@ -62,6 +67,7 @@ export function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/sobre" element={<div>Sobre o projeto</div>} />
                         <Route path="/chat" element={<Chat />} />
+                        <Route path="/authentication" element={<Authentication />} />
                         <Route path="/account" element={<Account />} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>

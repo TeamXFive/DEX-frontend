@@ -1,9 +1,10 @@
-import "../../style/Account/AccountCard/AccountCard.css";
-import useAccountContext from "../../hook/Account/useAccountContext.jsx";
+import "../../style/Authentication/AuthenticationCard/AuthenticationCard.css";
+import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function SignUp() {
-
+    const navigate = useNavigate();
     // INPUT FIELDS //
     const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -13,7 +14,7 @@ function SignUp() {
         isSignUpVisible, setIsSignUpVisible,
 
         // USER //
-        setIsUserLogged,
+        isUserLogged, setIsUserLogged,
         setRegisteredUsersList,
 
         // INPUT FIELDS //
@@ -34,7 +35,7 @@ function SignUp() {
         isEmailAlertVisible, setIsEmailAlertVisible,
         isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible
 
-    } = useAccountContext();
+    } = useAuthenticationContext();
 
     const handleUserValidation = () => {
         setIsUserValid(user.trim().length > 0);
@@ -128,15 +129,19 @@ function SignUp() {
         setIsPasswordMatchAlertVisible(false);
     }, [isSignUpVisible]);
 
+    useEffect(() => {
+        (isUserLogged && navigate("/account"))
+    }, [isUserLogged]);
+
     return (
         <>
-            <div className={`account-card`} id="signUp">
-                <div className="account-card-header">
+            <div className={`authentication-card`} id="signUp">
+                <div className="authentication-card-header">
                     <h1>Sign Up</h1>
                 </div>
 
-                <div className="account-card-form-container">
-                    <form className="account-card-form" onSubmit={handleSignUpSubmit}>
+                <div className="authentication-card-form-container">
+                    <form className="authentication-card-form" onSubmit={handleSignUpSubmit}>
                         <fieldset className="fs-user">
                             <label htmlFor="user">Usuário</label>
                             <input
@@ -183,7 +188,7 @@ function SignUp() {
                 </div>
 
 
-                <div className="account-card-switch">
+                <div className="authentication-card-switch">
                     <p>
                         Já tem conta? <span  className={`switch-link`} onClick={handleFazerLoginBtn}>Log In</span>
                     </p>
