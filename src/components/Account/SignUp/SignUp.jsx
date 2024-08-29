@@ -9,8 +9,8 @@ function SignUp() {
 
     const {
         // CARDS //
-        isSignInVisible, setIsSignInVisible,
-        setIsSignUpVisible,
+        setIsSignInVisible,
+        isSignUpVisible, setIsSignUpVisible,
 
         // USER //
         setIsUserLogged,
@@ -111,29 +111,18 @@ function SignUp() {
         if (isEmailAlertVisible) {
             setIsUserAlertVisible(false);
         }
-
-        if (!hasInteractedOnce) {
-            return;
-        }
-
-        if (!isUserValid && !isUserAlertVisible) {
-            setIsUserAlertVisible(true);
-        }
-
-        if (!isEmailValid && !isEmailAlertVisible) {
-            setIsEmailAlertVisible(true);
-        }
     }, [isUserAlertVisible, isEmailAlertVisible, isPasswordMatchAlertVisible]);
 
+    // tirando alertas ao mudar de card (Sign Up -> Sign In)
     useEffect(() => {
-        if(!isSignInVisible) {
+        if(isSignUpVisible) {
             return;
         }
-        // tirando alertas ao mudar de card (Sign Up -> Sign In)
+
         setIsUserAlertVisible(false);
         setIsEmailAlertVisible(false);
         setIsPasswordMatchAlertVisible(false);
-    }, [isSignInVisible]);
+    }, [isSignUpVisible]);
 
     return (
         <>

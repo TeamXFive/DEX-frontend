@@ -1,5 +1,6 @@
 import "./AccountAlerts.css";
 import useAccountContext from "../../../hook/useAccountContext.jsx";
+import {useEffect} from "react";
 
 function AccountAlerts() {
 
@@ -7,10 +8,18 @@ function AccountAlerts() {
         isSignInErrorAlertVisible,
         isSignInSuccessfulAlertVisible,
 
-        isUserAlertVisible,
-        isEmailAlertVisible,
-        isPasswordMatchAlertVisible,
+        isUserAlertVisible, setIsUserAlertVisible,
+        isEmailAlertVisible, setIsEmailAlertVisible,
+        isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible
     } = useAccountContext();
+
+    useEffect(() => {
+        if (location.pathname === "/account") {
+            return;
+        }
+        
+        setIsUserAlertVisible && setIsEmailAlertVisible && setIsPasswordMatchAlertVisible(false);
+    }, [location.pathname]);
 
     return (
         <section className="account-card-alerts">
