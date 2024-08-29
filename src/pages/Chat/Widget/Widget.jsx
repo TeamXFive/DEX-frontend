@@ -3,7 +3,7 @@ import "../../../style/Chat/Widget/Widget.css";
 import {useEffect, useRef, useState} from "react";
 import ChatIcon from "../../../assets/icons/chat.svg?react";
 import CloseIcon from "../../../assets/icons/close.svg?react";
-import useAccountContext from "../../../hook/Account/useAccountContext.jsx";
+import useAuthenticationContext from "../../../hook/Authentication/useAuthenticationContext.jsx";
 
 export function Widget(props) {
     const {messages, onNewMessage, isIaTyping} = props;
@@ -16,7 +16,7 @@ export function Widget(props) {
         isUserLogged,
         setIsModalVisible,
         setIsSignInVisible,
-    } = useAccountContext();
+    } = useAuthenticationContext();
 
     useEffect(() => {
         if (chatBodyRef.current) {
@@ -27,16 +27,16 @@ export function Widget(props) {
         }
     }, [messages]);
 
-    const isAccountPage = location.pathname === "/account";
+    const isAuthenticationPage = location.pathname === "/authentication";
 
     useEffect(() => {
         setIsOpen(false);
-    }, [isAccountPage]);
+    }, [isAuthenticationPage]);
 
     return (
         <>
             <button
-                className={`widget-button ${isOpen ? "open" : ""} ${isAccountPage ? "hidden-widget" : ""}`}
+                className={`widget-button ${isOpen ? "open" : ""} ${isAuthenticationPage ? "hidden-widget" : ""}`}
                 onClick={() => setIsOpen((prev) => !prev)}
             >
                 <ChatIcon/>

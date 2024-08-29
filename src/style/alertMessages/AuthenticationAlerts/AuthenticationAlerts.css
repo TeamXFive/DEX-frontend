@@ -1,4 +1,4 @@
-.account-card-alerts {
+.authentication-card-alerts {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,15 +11,15 @@
 }
 
 /*-----===| ALERTS |===-----*/
-.account-card-error-alert {
+.authentication-card-error-alert {
     border: solid 1px var(--medium-red);
     background-color: rgba(var(--medium-red-rgb), 0.1);
 }
-.account-card-success-alert {
+.authentication-card-success-alert {
     border: solid 1px var(--medium-green);
     background-color: rgba(var(--medium-green-rgb), 0.1);
 }
-.account-card-error-alert , .account-card-success-alert {
+.authentication-card-error-alert , .authentication-card-success-alert {
     border-radius: 5px;
     padding: 3px 6px;
     opacity: 0;
