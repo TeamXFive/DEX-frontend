@@ -1,25 +1,28 @@
 import "../../style/Authentication/AuthenticationCard/AuthenticationCard.css";
 import { IoIosClose } from "react-icons/io";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function SignIn() {
-
     const navigate = useNavigate(); // Navega para rota especificada
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const {
-        isUserLogged, setIsUserLogged,
+        authedUser,
+        setAuthedUser,
         setIsSignInVisible,
         setIsSignUpVisible,
         isShowSignInCloseBtn,
         setIsModalVisible,
-        registeredUsersList, setRegisteredUsersList,
+        registeredUsersList,
+        setRegisteredUsersList,
         setHasInteractedOnce,
-        isSignInErrorAlertVisible, setIsSignInErrorAlertVisible,
-        isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible
+        isSignInErrorAlertVisible,
+        setIsSignInErrorAlertVisible,
+        isSignInSuccessfulAlertVisible,
+        setIsSignInSuccessfulAlertVisible,
     } = useAuthenticationContext();
 
     const handleCloseBtn = () => {
@@ -28,29 +31,24 @@ function SignIn() {
     };
 
     const findUser = (email) => {
-        return registeredUsersList.find(user => user.email === email);
-    }
+        return registeredUsersList.find(
+            (user) => user.email === email || user.username === email
+        );
+    };
 
     const handleSignInSubmit = (event) => {
-
         event.preventDefault();
 
         const user = findUser(email);
-
-        if (!user || user.password !== password) {
-            setIsSignInErrorAlertVisible(true);
-            setIsUserLogged(false);
-
-        } else {
-            setRegisteredUsersList(registeredUsersList.map((user) => {
-                return [{user, email, password}];
-            }));
-            
+        if (user && user.password === password) {
             setIsSignInSuccessfulAlertVisible(true);
-
-            setIsUserLogged(true);
+            setAuthedUser({ ...user, password: undefined });
             setIsSignInVisible(false);
             setIsModalVisible(false);
+            navigate("/account");
+        } else {
+            setIsSignInErrorAlertVisible(true);
+            setAuthedUser(undefined);
         }
     };
 
@@ -66,7 +64,7 @@ function SignIn() {
         if (location.pathname !== "/authentication") {
             navigate("/authentication");
         }
-    }
+    };
 
     useEffect(() => {
         if (isSignInErrorAlertVisible) {
@@ -87,47 +85,66 @@ function SignIn() {
         }
     }, [isSignInSuccessfulAlertVisible]);
 
-    useEffect(() => {
-        (isUserLogged && navigate("/account"))
-    }, [isUserLogged]);
-
     return (
         <>
             <div className={`authentication-card`} id="signIn">
                 <div className="authentication-card-header">
                     <h1>Log In</h1>
-                    {isShowSignInCloseBtn && <IoIosClose className="close-card-btn" onClick={handleCloseBtn} />}
+                    {isShowSignInCloseBtn && (
+                        <IoIosClose
+                            className="close-card-btn"
+                            onClick={handleCloseBtn}
+                        />
+                    )}
                 </div>
 
                 <div className="authentication-card-form-container">
-                    <form className="authentication-card-form" onSubmit={handleSignInSubmit}>
+                    <form
+                        className="authentication-card-form"
+                        onSubmit={handleSignInSubmit}
+                    >
                         <fieldset className="fs-email">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">Email ou Usuário</label>
                             <input
-                                type="text" name="email" id="email" placeholder="Email"
+                                type="text"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
                                 value={email}
                                 autoFocus={true}
-                                onChange={(event) => setEmail(event.target.value)}
+                                onChange={(event) =>
+                                    setEmail(event.target.value)
+                                }
                             />
                         </fieldset>
 
                         <fieldset className="fs-password">
                             <label htmlFor="password">Senha</label>
                             <input
-                                type="password" name="password" id="password" placeholder="Senha"
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Senha"
                                 value={password}
-                                onChange={(event) => setPassword(event.target.value)}
+                                onChange={(event) =>
+                                    setPassword(event.target.value)
+                                }
                             />
                         </fieldset>
 
-                        <input type="submit" value="LOGIN"/>
+                        <input type="submit" value="LOGIN" />
                     </form>
                 </div>
 
-
                 <div className="authentication-card-switch">
                     <p>
-                        Não tem conta? <span className="switch-link" onClick={handleCriarContaBtn}>Sign Up</span>
+                        Não tem conta?{" "}
+                        <span
+                            className="switch-link"
+                            onClick={handleCriarContaBtn}
+                        >
+                            Sign Up
+                        </span>
                     </p>
                 </div>
             </div>

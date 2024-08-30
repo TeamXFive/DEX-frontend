@@ -1,6 +1,12 @@
 import "./style/App.css";
 import React, { useEffect, useState } from "react";
-import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+    Navigate,
+    Route,
+    Routes,
+    useLocation,
+    useNavigate,
+} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
 import Authentication from "./pages/Authentication/Authentication.jsx";
@@ -17,9 +23,10 @@ export function App() {
     const navigate = useNavigate();
 
     const {
-        isModalVisible, setIsModalVisible,
+        isModalVisible,
+        setIsModalVisible,
         setIsSignInVisible,
-        isUserLogged,
+        authedUser,
         setIsShowSignInCloseBtn,
     } = useAuthenticationContext();
 
@@ -28,7 +35,7 @@ export function App() {
     }, [location.key]);
 
     useEffect(() => {
-        if (location.pathname === "/chat" && !isUserLogged) {
+        if (location.pathname === "/chat" && !authedUser) {
             setIsSignInVisible(true);
             setIsModalVisible(true);
         }
@@ -38,29 +45,36 @@ export function App() {
             setIsModalVisible(false);
         }
 
-        if (location.pathname === "/chat" || location.pathname === "/authentication") {
+        if (
+            location.pathname === "/chat" ||
+            location.pathname === "/authentication"
+        ) {
             setIsShowSignInCloseBtn(false);
         } else {
             setIsShowSignInCloseBtn(true);
         }
 
-        if (location.pathname === "/account" && !isUserLogged) {
+        if (location.pathname === "/account" && !authedUser) {
             navigate("/authentication");
         }
-
-    }, [isUserLogged, location.pathname, navigate]);
+    }, [authedUser, location.pathname, navigate]);
 
     return (
         <div className="page">
             <AuthenticationAlerts />
 
-            <section className={`login-modal-container ${!isModalVisible && "hidden-modal"} ${scrollDirection === "down" && "cover-hidden-header"}`}>
+            <section
+                className={`login-modal-container ${
+                    !isModalVisible && "hidden-modal"
+                } ${scrollDirection === "down" && "cover-hidden-header"}`}
+            >
                 <SignIn />
             </section>
 
             <React.Fragment>
                 <Header
-                    scrollDirection={scrollDirection} setScrollDirection={setScrollDirection}
+                    scrollDirection={scrollDirection}
+                    setScrollDirection={setScrollDirection}
                 />
 
                 <div className="page-content">
@@ -68,7 +82,10 @@ export function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/sobre" element={<About />} />
                         <Route path="/chat" element={<Chat />} />
-                        <Route path="/authentication" element={<Authentication />} />
+                        <Route
+                            path="/authentication"
+                            element={<Authentication />}
+                        />
                         <Route path="/account" element={<Account />} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>

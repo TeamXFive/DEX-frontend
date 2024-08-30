@@ -1,22 +1,19 @@
 /* eslint-disable react/prop-types */
 import "../../../style/Chat/Widget/Widget.css";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatIcon from "../../../assets/icons/chat.svg?react";
 import CloseIcon from "../../../assets/icons/close.svg?react";
 import useAuthenticationContext from "../../../hook/Authentication/useAuthenticationContext.jsx";
 
 export function Widget(props) {
-    const {messages, onNewMessage, isIaTyping} = props;
+    const { messages, onNewMessage, isIaTyping } = props;
 
     const chatBodyRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [messageInput, setMessageInput] = useState("");
 
-    const {
-        isUserLogged,
-        setIsModalVisible,
-        setIsSignInVisible,
-    } = useAuthenticationContext();
+    const { isUserLogged, setIsModalVisible, setIsSignInVisible } =
+        useAuthenticationContext();
 
     useEffect(() => {
         if (chatBodyRef.current) {
@@ -36,23 +33,37 @@ export function Widget(props) {
     return (
         <>
             <button
-                className={`widget-button ${isOpen ? "open" : ""} ${isAuthenticationPage ? "hidden-widget" : ""}`}
+                className={`widget-button ${isOpen ? "open" : ""} ${
+                    isAuthenticationPage ? "hidden-widget" : ""
+                }`}
                 onClick={() => setIsOpen((prev) => !prev)}
             >
-                <ChatIcon/>
+                <ChatIcon />
             </button>
-            <div className={`container chat-wrapper widget ${isOpen ? "open" : ""}`}>
-                <button className="close-button" onClick={() => setIsOpen(false)}>
-                    <CloseIcon/>
+            <div
+                className={`container chat-wrapper widget ${
+                    isOpen ? "open" : ""
+                }`}
+            >
+                <button
+                    className="close-button"
+                    onClick={() => setIsOpen(false)}
+                >
+                    <CloseIcon />
                 </button>
                 <div ref={chatBodyRef} className="chat-body">
                     {messages.map((message) => (
                         <div
                             key={message.timestamp.getTime()}
-                            className={["message-wrapper", message.author].join(" ")}
+                            className={["message-wrapper", message.author].join(
+                                " "
+                            )}
                         >
-                            <div key={message.timestamp.getTime()} className="message-body">
-                                <p>{message.content}</p>
+                            <div
+                                key={message.timestamp.getTime()}
+                                className="message-body"
+                            >
+                                <span>{message.content}</span>
                             </div>
                             <small className="secondary-data">
                                 {message.timestamp.toLocaleDateString("pt-BR", {
@@ -65,7 +76,7 @@ export function Widget(props) {
                     {isIaTyping && (
                         <div className="message-wrapper ia">
                             <div className="message-body">
-                                <p>...</p>
+                                <span>...</span>
                             </div>
                         </div>
                     )}
@@ -86,7 +97,11 @@ export function Widget(props) {
 
                         onNewMessage((prev) => [
                             ...prev,
-                            {author: "user", content: messageInput, timestamp: new Date()},
+                            {
+                                author: "user",
+                                content: messageInput,
+                                timestamp: new Date(),
+                            },
                         ]);
                         setMessageInput("");
                     }}
@@ -95,7 +110,9 @@ export function Widget(props) {
                         <input
                             type="text"
                             name="message"
-                            className={`form-control me-2  ${isIaTyping && "disabled"}`}
+                            className={`form-control me-2  ${
+                                isIaTyping && "disabled"
+                            }`}
                             placeholder="Escreva aqui sua dúvida"
                             value={messageInput}
                             onChange={(e) => setMessageInput(e.target.value)}
@@ -103,7 +120,9 @@ export function Widget(props) {
                         <button
                             disabled={isIaTyping}
                             type="submit"
-                            className={`btn btn-primary ${isIaTyping && "disabled"}`}
+                            className={`btn btn-primary ${
+                                isIaTyping && "disabled"
+                            }`}
                         >
                             Enviar
                         </button>

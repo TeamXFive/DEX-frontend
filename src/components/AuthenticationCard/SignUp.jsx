@@ -1,7 +1,7 @@
 import "../../style/Authentication/AuthenticationCard/AuthenticationCard.css";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
     const navigate = useNavigate();
@@ -11,30 +11,45 @@ function SignUp() {
     const {
         // CARDS //
         setIsSignInVisible,
-        isSignUpVisible, setIsSignUpVisible,
+        isSignUpVisible,
+        setIsSignUpVisible,
 
         // USER //
-        isUserLogged, setIsUserLogged,
+        authedUser,
+        setAuthedUser,
+        registeredUsersList,
         setRegisteredUsersList,
 
         // INPUT FIELDS //
-        user, setUser,
-        email, setEmail,
-        password, setPassword,
+        user,
+        setUser,
+        email,
+        setEmail,
+        password,
+        setPassword,
 
         // VALIDATIONS //
-        isUserValid, setIsUserValid,
-        isEmailValid, setIsEmailValid,
-        isPasswordMatch, setIsPasswordMatch,
-        isUserInputInvalid, setIsUserInputInvalid,
-        isEmailInputInvalid, setIsEmailInputInvalid,
-        isPasswordInputInvalid, setIsPasswordInputInvalid,
-        hasInteractedOnce, setHasInteractedOnce,
+        isUserValid,
+        setIsUserValid,
+        isEmailValid,
+        setIsEmailValid,
+        isPasswordMatch,
+        setIsPasswordMatch,
+        isUserInputInvalid,
+        setIsUserInputInvalid,
+        isEmailInputInvalid,
+        setIsEmailInputInvalid,
+        isPasswordInputInvalid,
+        setIsPasswordInputInvalid,
+        hasInteractedOnce,
+        setHasInteractedOnce,
 
-        isUserAlertVisible, setIsUserAlertVisible,
-        isEmailAlertVisible, setIsEmailAlertVisible,
-        isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible
-
+        isUserAlertVisible,
+        setIsUserAlertVisible,
+        isEmailAlertVisible,
+        setIsEmailAlertVisible,
+        isPasswordMatchAlertVisible,
+        setIsPasswordMatchAlertVisible,
     } = useAuthenticationContext();
 
     const handleUserValidation = () => {
@@ -43,7 +58,7 @@ function SignUp() {
         setIsUserInputInvalid(false);
 
         setIsUserAlertVisible(!isUserValid);
-    }
+    };
 
     const handleEmailValidation = () => {
         const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
@@ -52,15 +67,17 @@ function SignUp() {
         setIsEmailInputInvalid(false);
 
         setIsEmailAlertVisible(!isEmailValid);
-    }
+    };
 
     const handleConfirmPassword = () => {
-        setIsPasswordMatch((password === confirmPassword) && (password.trim().length > 0));
+        setIsPasswordMatch(
+            password === confirmPassword && password.trim().length > 0
+        );
 
         setIsPasswordInputInvalid(false);
 
         setIsPasswordMatchAlertVisible(!isPasswordMatch);
-    }
+    };
 
     const handleSignUpSubmit = (event) => {
         event.preventDefault();
@@ -74,11 +91,15 @@ function SignUp() {
         setIsPasswordInputInvalid(!isPasswordMatch);
 
         if (isUserValid && isEmailValid && isPasswordMatch) {
-            setRegisteredUsersList([{ username: user, email: email, password: password }]);
-            setIsUserLogged(true);
+            setRegisteredUsersList([
+                ...registeredUsersList,
+                { username: user, email: email, password: password },
+            ]);
+            setAuthedUser({ username: user, email: email });
             setHasInteractedOnce(false);
+            navigate("/account");
         }
-    }
+    };
 
     const handleHasInteractedOnce = () => {
         if (hasInteractedOnce) {
@@ -86,7 +107,7 @@ function SignUp() {
         }
 
         setHasInteractedOnce(true);
-    }
+    };
 
     const handleFazerLoginBtn = () => {
         // Sumindo Sign Up e aparecendo Sign In
@@ -120,7 +141,7 @@ function SignUp() {
 
     // tirando alertas ao mudar de card (Sign Up -> Sign In)
     useEffect(() => {
-        if(isSignUpVisible) {
+        if (isSignUpVisible) {
             return;
         }
 
@@ -128,10 +149,6 @@ function SignUp() {
         setIsEmailAlertVisible(false);
         setIsPasswordMatchAlertVisible(false);
     }, [isSignUpVisible]);
-
-    useEffect(() => {
-        (isUserLogged && navigate("/account"))
-    }, [isUserLogged]);
 
     return (
         <>
@@ -141,14 +158,25 @@ function SignUp() {
                 </div>
 
                 <div className="authentication-card-form-container">
-                    <form className="authentication-card-form" onSubmit={handleSignUpSubmit}>
+                    <form
+                        className="authentication-card-form"
+                        onSubmit={handleSignUpSubmit}
+                    >
                         <fieldset className="fs-user">
                             <label htmlFor="user">Usuário</label>
                             <input
-                                type="text" name="user" id="user" placeholder="Usuário" className={`${isUserInputInvalid && "invalid-input"}`}
+                                type="text"
+                                name="user"
+                                id="user"
+                                placeholder="Usuário"
+                                className={`${
+                                    isUserInputInvalid && "invalid-input"
+                                }`}
                                 value={user}
                                 autoFocus={true}
-                                onChange={(event) => setUser(event.target.value)}
+                                onChange={(event) =>
+                                    setUser(event.target.value)
+                                }
                                 onKeyUp={handleUserValidation}
                             />
                         </fieldset>
@@ -156,9 +184,17 @@ function SignUp() {
                         <fieldset className="fs-email">
                             <label htmlFor="email">Email</label>
                             <input
-                                type="text" name="email" id="email" placeholder="Email" className={`${isEmailInputInvalid && "invalid-input"}`}
+                                type="text"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
+                                className={`${
+                                    isEmailInputInvalid && "invalid-input"
+                                }`}
                                 value={email}
-                                onChange={(event) => setEmail(event.target.value)}
+                                onChange={(event) =>
+                                    setEmail(event.target.value)
+                                }
                                 onKeyUp={handleEmailValidation}
                             />
                         </fieldset>
@@ -166,31 +202,58 @@ function SignUp() {
                         <fieldset className="fs-password">
                             <label htmlFor="password">Senha</label>
                             <input
-                                type="password" name="password" id="password" placeholder="Senha" className={`${isPasswordInputInvalid && "invalid-input"}`}
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Senha"
+                                className={`${
+                                    isPasswordInputInvalid && "invalid-input"
+                                }`}
                                 value={password}
-                                onChange={(event) => setPassword(event.target.value)}
+                                onChange={(event) =>
+                                    setPassword(event.target.value)
+                                }
                                 onKeyUp={handleConfirmPassword}
                             />
                         </fieldset>
 
                         <fieldset className="fs-confirm-password">
-                            <label htmlFor="confirm-password">Confirmar senha</label>
+                            <label htmlFor="confirm-password">
+                                Confirmar senha
+                            </label>
                             <input
-                                type="password" name="confirm-password" id="confirm-password" placeholder="Confirmar senha" className={`${isPasswordInputInvalid && "invalid-input"}`}
+                                type="password"
+                                name="confirm-password"
+                                id="confirm-password"
+                                placeholder="Confirmar senha"
+                                className={`${
+                                    isPasswordInputInvalid && "invalid-input"
+                                }`}
                                 value={confirmPassword}
-                                onChange={(event) => setConfirmPassword(event.target.value)}
+                                onChange={(event) =>
+                                    setConfirmPassword(event.target.value)
+                                }
                                 onKeyUp={handleConfirmPassword}
                             />
                         </fieldset>
 
-                        <input type="submit" value="SIGN UP" onClick={handleHasInteractedOnce}/>
+                        <input
+                            type="submit"
+                            value="SIGN UP"
+                            onClick={handleHasInteractedOnce}
+                        />
                     </form>
                 </div>
 
-
                 <div className="authentication-card-switch">
                     <p>
-                        Já tem conta? <span  className={`switch-link`} onClick={handleFazerLoginBtn}>Log In</span>
+                        Já tem conta?{" "}
+                        <span
+                            className={`switch-link`}
+                            onClick={handleFazerLoginBtn}
+                        >
+                            Log In
+                        </span>
                     </p>
                 </div>
             </div>
