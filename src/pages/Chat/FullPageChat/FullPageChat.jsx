@@ -31,7 +31,28 @@ export function FullPageChat(props) {
                             key={message.timestamp.getTime()}
                             className="message-body"
                         >
-                            <span>{message.content}</span>
+                            {message.type === "pdf" ? (
+                                <object
+                                    data="http://localhost:5173/documents/mercury-presentation.pdf"
+                                    type="application/pdf"
+                                    width="100%"
+                                    height="100%"
+                                >
+                                    <p>
+                                        Alternative text - include a link{" "}
+                                        <a href="http://localhost:5173/documents/mercury-presentation.pdf">
+                                            to the PDF!
+                                        </a>
+                                    </p>
+                                </object>
+                            ) : (
+                                // <iframe
+                                //     src={`http://docs.google.com/gview?a=v&pid=explorer&chrome=false&api=true&embedded=true&srcid=${message.content}&hl=en&embedded=true`}
+                                //     // style="width:600px; height:500px;"
+                                //     frameBorder="0"
+                                // />
+                                <span>{message.content}</span>
+                            )}
                         </div>
                         <small className="secondary-data">
                             {message.timestamp.toLocaleDateString("pt-BR", {

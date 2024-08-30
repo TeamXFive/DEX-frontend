@@ -1,6 +1,6 @@
 import "../../style/Header/Header.css";
-import {Link, useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import PropTypes from "prop-types";
 
@@ -9,8 +9,7 @@ Header.propTypes = {
     setScrollDirection: PropTypes.func.isRequired,
 };
 
-function Header({scrollDirection, setScrollDirection}) {
-    const navigate = useNavigate();
+function Header({ scrollDirection, setScrollDirection }) {
     const [lastScrollY, setLastScrollY] = useState(0);
 
     const {
@@ -18,11 +17,6 @@ function Header({scrollDirection, setScrollDirection}) {
         setIsSignInVisible,
         authedUser, setAuthedUser
     } = useAuthenticationContext();
-
-    const handleLogout = () => {
-        setAuthedUser(undefined);
-        navigate("/");
-    };
 
     const handleLogin = (event) => {
         if (authedUser) {
@@ -58,14 +52,20 @@ function Header({scrollDirection, setScrollDirection}) {
     }, [lastScrollY]);
 
     return (
-        <header className={`glass-effect ${scrollDirection === "down" && "hide-header"}`}>
-            
-            <div className={`page-header ${scrollDirection === "down" && "hide-header"}`}>
-                
+        <header
+            className={`glass-effect ${
+                scrollDirection === "down" && "hide-header"
+            }`}
+        >
+            <div
+                className={`page-header ${
+                    scrollDirection === "down" && "hide-header"
+                }`}
+            >
                 <div className="header-title-container">
                     <h1 className={`header-title`}>DEX</h1>
                 </div>
-    
+
                 <nav className="header-nav">
                     <div className="header-nav-links">
                         <Link to="/">HOME</Link>
@@ -73,19 +73,15 @@ function Header({scrollDirection, setScrollDirection}) {
                         <Link to="/chat">CHAT</Link>
                     </div>
                 </nav>
-    
-                <div className="auth-menu">)
-                    <Link to={authedUser ? "/account" : "/authentication"} onClick={handleLogin}>
+
+                <div className="auth-menu">
+                    <Link
+                        to={authedUser ? "/account" : "/authentication"}
+                        onClick={handleLogin}
+                    >
                         {authedUser ? `Olá ${authedUser.username}` : "LOGIN"}
                     </Link>
-                    
-                    {authedUser && (
-                        <Link to={"/logout"} onClick={handleLogout}>
-                            SAIR
-                        </Link>
-                    )}
                 </div>
-                
             </div>
         </header>
     );

@@ -3,13 +3,40 @@ import { useEffect, useRef, useState } from "react";
 import { FullPageChat } from "./FullPageChat/FullPageChat";
 import { Widget } from "./Widget/Widget";
 import { useLocation } from "react-router-dom";
+import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext";
+import Chamados from "../../assets/base-chamados.json";
 
 function Chat({ type }) {
+    const { authedUser } = useAuthenticationContext();
+
     const location = useLocation();
     const [messages, setMessages] = useState([]);
     const [isIaTyping, setIsIaTyping] = useState(false);
 
     const chatBodyRef = useRef();
+
+    const welcomeMessages = [
+        {
+            content: `
+    Seja bem vindo ${authedUser?.name || authedUser?.username}, eu sou Dex!
+    Agente de suporte técnico de IA generativa projetado para auxiliar os times da Sofftek.
+    Por ainda ser prototipo, nossa interação vai ser mais restrita.`.trim(),
+        },
+        {
+            content:
+                `Você pode descobrir um pouco mais sobre mim no documento abaixo, ou até mesmo assistir a nosso vídeo pitch na home ou aqui mesmo.`.trim(),
+        },
+        {
+            content: "/documents/mercury-presentation.pdf",
+            type: "pdf",
+        },
+    ];
+
+    const handleSendMessage = (message) => {
+        setMessages((prev) => [...prev, { ...message, timestamp: new Date() }]);
+    };
+
+    const handleSentIaMessages = (messages) => {};
 
     useEffect(() => {
         const iaPossibleMessages = [
@@ -23,13 +50,14 @@ function Chat({ type }) {
         const lastMessage = messages.at(-1);
 
         if (messages.length === 0) {
-            setMessages([
-                {
-                    content: "Olá, eu sou a IA, como posso te ajudar?",
+            setMessages(
+                welcomeMessages.map((msg) => ({
+                    content: msg.content,
+                    type: msg.type,
                     author: "ia",
                     timestamp: new Date(),
-                },
-            ]);
+                }))
+            );
         }
 
         if (lastMessage && lastMessage.author !== "ia" && !isIaTyping) {
