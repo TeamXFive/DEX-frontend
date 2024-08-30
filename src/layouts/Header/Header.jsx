@@ -23,10 +23,6 @@ function Header({ scrollDirection, setScrollDirection }) {
             return;
         }
 
-        if (isUserLogged) {
-
-        }
-
         if (location.pathname === "/authentication") {
             setIsModalVisible(false);
         } else {

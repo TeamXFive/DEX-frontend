@@ -9,11 +9,7 @@ import useAuthenticationContext from "./hook/Authentication/useAuthenticationCon
 import Header from "./layouts/Header/Header.jsx";
 import AuthenticationAlerts from "./components/alertMessages/AuthenticationAlerts/AuthenticationAlerts.jsx";
 import Account from "./pages/Account/Account.jsx";
-import SignIn from "./components/Account/SignIn/SignIn.jsx";
-import useAccountContext from "./hook/useAccountContext.jsx";
-import Header from "./components/header/header";
-import AccountAlerts from "./components/Alerts/AccountAlerts/AccountAlerts.jsx";
-import { About } from "./pages/About/About.jsx";
+import About from "./pages/About/About.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
