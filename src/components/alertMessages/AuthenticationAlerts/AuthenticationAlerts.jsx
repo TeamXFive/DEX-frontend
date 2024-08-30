@@ -32,7 +32,7 @@ function AuthenticationAlerts() {
             </span>
 
             <span className={`authentication-card-success-alert glass-effect ${isSignInSuccessfulAlertVisible && "show-card-alert"}`}>
-                Bem-vindo {authedUser.username}!
+                Bem-vindo {authedUser ? ` ${authedUser.username}` : ""}!
             </span>
 
             <span className={`authentication-card-error-alert glass-effect ${isUserAlertVisible && "show-card-alert"}`}>

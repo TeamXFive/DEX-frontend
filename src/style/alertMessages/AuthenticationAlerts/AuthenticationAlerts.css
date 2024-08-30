@@ -67,5 +67,5 @@
 }
 .tester-show-card-alert {
     opacity: 1;
-    transform: translateY(calc((100vh - 62px) - 150%));
+    transform: translateY(calc(100vh - 150%));
 }
