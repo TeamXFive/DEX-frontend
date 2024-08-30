@@ -71,13 +71,11 @@ function Header({scrollDirection, setScrollDirection}) {
                     </div>
                 </nav>
     
-                <div className="auth-menu">
-                    <Link
-                        to={authedUser ? "/account" : "/authentication"}
-                        onClick={handleLogin}
-                    >
+                <div className="auth-menu">)
+                    <Link to={authedUser ? "/account" : "/authentication"} onClick={handleLogin}>
                         {authedUser ? `Olá ${authedUser.username}` : "LOGIN"}
                     </Link>
+                    
                     {authedUser && (
                         <Link to={"/logout"} onClick={handleLogout}>
                             SAIR

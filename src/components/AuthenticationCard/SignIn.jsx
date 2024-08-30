@@ -10,19 +10,19 @@ function SignIn() {
     const [password, setPassword] = useState("");
 
     const {
-        authedUser,
         setAuthedUser,
+        
         setIsSignInVisible,
         setIsSignUpVisible,
         isShowSignInCloseBtn,
+        
         setIsModalVisible,
+        
         registeredUsersList,
-        setRegisteredUsersList,
+        
         setHasInteractedOnce,
-        isSignInErrorAlertVisible,
-        setIsSignInErrorAlertVisible,
-        isSignInSuccessfulAlertVisible,
-        setIsSignInSuccessfulAlertVisible,
+        isSignInErrorAlertVisible, setIsSignInErrorAlertVisible,
+        isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible,
     } = useAuthenticationContext();
 
     const handleCloseBtn = () => {
@@ -40,6 +40,7 @@ function SignIn() {
         event.preventDefault();
 
         const user = findUser(email);
+        
         if (user && user.password === password) {
             setIsSignInSuccessfulAlertVisible(true);
             setAuthedUser({ ...user, password: undefined });

@@ -11,45 +11,29 @@ function SignUp() {
     const {
         // CARDS //
         setIsSignInVisible,
-        isSignUpVisible,
-        setIsSignUpVisible,
+        isSignUpVisible, setIsSignUpVisible,
 
         // USER //
-        authedUser,
         setAuthedUser,
-        registeredUsersList,
-        setRegisteredUsersList,
+        registeredUsersList, setRegisteredUsersList,
 
         // INPUT FIELDS //
-        user,
-        setUser,
-        email,
-        setEmail,
-        password,
-        setPassword,
+        user, setUser,
+        email, setEmail,
+        password, setPassword,
 
         // VALIDATIONS //
-        isUserValid,
-        setIsUserValid,
-        isEmailValid,
-        setIsEmailValid,
-        isPasswordMatch,
-        setIsPasswordMatch,
-        isUserInputInvalid,
-        setIsUserInputInvalid,
-        isEmailInputInvalid,
-        setIsEmailInputInvalid,
-        isPasswordInputInvalid,
-        setIsPasswordInputInvalid,
-        hasInteractedOnce,
-        setHasInteractedOnce,
+        isUserValid, setIsUserValid,
+        isEmailValid, setIsEmailValid,
+        isPasswordMatch, setIsPasswordMatch,
+        isUserInputInvalid, setIsUserInputInvalid,
+        isEmailInputInvalid, setIsEmailInputInvalid,
+        isPasswordInputInvalid, setIsPasswordInputInvalid,
+        hasInteractedOnce, setHasInteractedOnce,
 
-        isUserAlertVisible,
-        setIsUserAlertVisible,
-        isEmailAlertVisible,
-        setIsEmailAlertVisible,
-        isPasswordMatchAlertVisible,
-        setIsPasswordMatchAlertVisible,
+        isUserAlertVisible, setIsUserAlertVisible,
+        isEmailAlertVisible, setIsEmailAlertVisible,
+        isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible,
     } = useAuthenticationContext();
 
     const handleUserValidation = () => {
@@ -126,6 +110,10 @@ function SignUp() {
         setIsUserInputInvalid(false);
         setIsEmailInputInvalid(false);
         setIsPasswordInputInvalid(false);
+
+        setIsUserAlertVisible(false);
+        setIsEmailAlertVisible(false);
+        setIsPasswordMatchAlertVisible(false);
     }, [location.key]);
 
     useEffect(() => {

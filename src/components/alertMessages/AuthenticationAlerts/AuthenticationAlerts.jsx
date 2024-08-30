@@ -6,8 +6,7 @@ function AuthenticationAlerts() {
     const {
         isSignInErrorAlertVisible,
         isSignInSuccessfulAlertVisible,
-
-        hasInteractedOnce,
+        
         isUserAlertVisible,
         setIsUserAlertVisible,
         isEmailAlertVisible,
@@ -21,54 +20,30 @@ function AuthenticationAlerts() {
             return;
         }
 
-        setIsUserAlertVisible &&
-            setIsEmailAlertVisible &&
-            setIsPasswordMatchAlertVisible(false);
+        setIsUserAlertVisible(false);
+        setIsEmailAlertVisible(false);
+        setIsPasswordMatchAlertVisible(false);
     }, [location.pathname]);
-
-    if (!hasInteractedOnce) {
-        return <></>;
-    }
 
     return (
         <section className="authentication-card-alerts">
-            <span
-                className={`authentication-card-error-alert glass-effect ${
-                    isSignInErrorAlertVisible && "show-card-alert"
-                }`}
-            >
+            <span className={`authentication-card-error-alert glass-effect ${isSignInErrorAlertVisible && "show-card-alert"}`}>
                 Email/Usuário ou Senha incorretos!
             </span>
 
-            <span
-                className={`authentication-card-success-alert glass-effect ${
-                    isSignInSuccessfulAlertVisible && "show-card-alert"
-                }`}
-            >
+            <span className={`authentication-card-success-alert glass-effect ${isSignInSuccessfulAlertVisible && "show-card-alert"}`}>
                 Bem-vindo!
             </span>
 
-            <span
-                className={`authentication-card-error-alert glass-effect ${
-                    isUserAlertVisible && "show-card-alert"
-                }`}
-            >
+            <span className={`authentication-card-error-alert glass-effect ${isUserAlertVisible && "show-card-alert"}`}>
                 Preencha com um usuário válido!
             </span>
 
-            <span
-                className={`authentication-card-error-alert glass-effect ${
-                    isEmailAlertVisible && "show-card-alert"
-                }`}
-            >
+            <span className={`authentication-card-error-alert glass-effect ${isEmailAlertVisible && "show-card-alert"}`}>
                 Preencha com um email válido!
             </span>
 
-            <span
-                className={`authentication-card-error-alert glass-effect ${
-                    isPasswordMatchAlertVisible && "show-card-alert"
-                }`}
-            >
+            <span className={`authentication-card-error-alert glass-effect ${isPasswordMatchAlertVisible && "show-card-alert"}`}>
                 As senhas não coincidem!
             </span>
         </section>
