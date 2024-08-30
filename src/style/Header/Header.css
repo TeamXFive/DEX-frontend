@@ -22,8 +22,7 @@ header {
 
 .header-title-container {
     width: 10%;
-    min-width: 100px;
-    filter: invert(0.75);
+    min-width: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,6 +33,10 @@ header {
     font-size: 3vh;
     padding: 0;
     margin: 0;
+    
+    & a {
+        color: var(--medium-gray);
+    }
 }
 
 .header-nav {
@@ -42,14 +45,15 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 300px;
+    min-width: 200px;
+    width: 80%;
 }
 
 .header-nav-links {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .header-nav a,
 .auth-menu a {
@@ -78,4 +82,16 @@ header {
 .hide-header {
     transform: translateY(-62px);
     transition: var(--all-200ms-ease-in-out);
+}
+
+@media screen and (max-width: 768px) {
+    .header-title-container {
+        display: none;
+    }
+    .header-nav {
+        width: 60%;
+    }
+    .auth-menu {
+        width: 20%;
+    }
 }

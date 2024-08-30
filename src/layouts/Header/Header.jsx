@@ -1,5 +1,5 @@
 import "../../style/Header/Header.css";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import PropTypes from "prop-types";
@@ -9,13 +9,13 @@ Header.propTypes = {
     setScrollDirection: PropTypes.func.isRequired,
 };
 
-function Header({ scrollDirection, setScrollDirection }) {
+function Header({ scrollDirection, setScrollDirection }) {    
     const [lastScrollY, setLastScrollY] = useState(0);
 
     const {
         setIsModalVisible,
         setIsSignInVisible,
-        authedUser, setAuthedUser
+        authedUser
     } = useAuthenticationContext();
 
     const handleLogin = (event) => {
@@ -63,7 +63,9 @@ function Header({ scrollDirection, setScrollDirection }) {
                 }`}
             >
                 <div className="header-title-container">
-                    <h1 className={`header-title`}>DEX</h1>
+                    <h1 className={`header-title`}>
+                        <Link to={`/`}>DEX</Link>
+                    </h1>
                 </div>
 
                 <nav className="header-nav">
@@ -79,7 +81,7 @@ function Header({ scrollDirection, setScrollDirection }) {
                         to={authedUser ? "/account" : "/authentication"}
                         onClick={handleLogin}
                     >
-                        {authedUser ? `Olá ${authedUser.username}` : "LOGIN"}
+                        {authedUser ? `${authedUser.username}` : "LOGIN"}
                     </Link>
                 </div>
             </div>

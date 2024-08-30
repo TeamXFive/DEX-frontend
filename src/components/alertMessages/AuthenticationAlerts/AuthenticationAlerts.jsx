@@ -11,6 +11,8 @@ function AuthenticationAlerts() {
         isEmailAlertVisible, setIsEmailAlertVisible,
         isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible,
         isTesterAlertVisible,
+        
+        authedUser,
     } = useAuthenticationContext();
 
     useEffect(() => {
@@ -30,7 +32,7 @@ function AuthenticationAlerts() {
             </span>
 
             <span className={`authentication-card-success-alert glass-effect ${isSignInSuccessfulAlertVisible && "show-card-alert"}`}>
-                Bem-vindo!
+                Bem-vindo {authedUser.username}!
             </span>
 
             <span className={`authentication-card-error-alert glass-effect ${isUserAlertVisible && "show-card-alert"}`}>
