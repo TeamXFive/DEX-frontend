@@ -1,5 +1,5 @@
 import "../../style/Header/Header.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import PropTypes from "prop-types";
@@ -10,16 +10,10 @@ Header.propTypes = {
 };
 
 function Header({ scrollDirection, setScrollDirection }) {
-    const navigate = useNavigate();
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const { setIsModalVisible, setIsSignInVisible, authedUser, setAuthedUser } =
+    const { setIsModalVisible, setIsSignInVisible, authedUser } =
         useAuthenticationContext();
-
-    const handleLogout = () => {
-        setAuthedUser(undefined);
-        navigate("/");
-    };
 
     const handleLogin = (event) => {
         if (authedUser) {
@@ -77,13 +71,10 @@ function Header({ scrollDirection, setScrollDirection }) {
                     to={authedUser ? "/account" : "/authentication"}
                     onClick={handleLogin}
                 >
-                    {authedUser ? `Olá ${authedUser.username}` : "LOGIN"}
+                    {authedUser
+                        ? `Olá ${authedUser.name || authedUser.username}`
+                        : "LOGIN"}
                 </Link>
-                {authedUser && (
-                    <Link to={"/logout"} onClick={handleLogout}>
-                        SAIR
-                    </Link>
-                )}
             </div>
         </header>
     );

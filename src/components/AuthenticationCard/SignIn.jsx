@@ -10,14 +10,12 @@ function SignIn() {
     const [password, setPassword] = useState("");
 
     const {
-        authedUser,
         setAuthedUser,
         setIsSignInVisible,
         setIsSignUpVisible,
         isShowSignInCloseBtn,
         setIsModalVisible,
         registeredUsersList,
-        setRegisteredUsersList,
         setHasInteractedOnce,
         isSignInErrorAlertVisible,
         setIsSignInErrorAlertVisible,
