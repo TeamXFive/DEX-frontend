@@ -37,6 +37,7 @@
         width: auto;
         margin-bottom: 0.75rem;
         align-self: flex-end;
+        max-width: 75%;
 
         & .message-body {
             padding: 0.75rem;
@@ -46,6 +47,10 @@
             background-color: #1d1d1d;
             color: #fff;
             box-shadow: 0px 8px 5px 0.1rem rgba(0, 0, 0, 0.15);
+
+            & span {
+                white-space: pre-line;
+            }
         }
 
         &.ia {
