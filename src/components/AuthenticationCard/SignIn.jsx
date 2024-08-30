@@ -12,8 +12,8 @@ function SignIn() {
     const {
         setAuthedUser,
         
-        setIsSignInVisible,
-        setIsSignUpVisible,
+        isSignInVisible, setIsSignInVisible,
+        isSignUpVisible, setIsSignUpVisible,
         isShowSignInCloseBtn,
         
         setIsModalVisible,
@@ -23,6 +23,7 @@ function SignIn() {
         setHasInteractedOnce,
         isSignInErrorAlertVisible, setIsSignInErrorAlertVisible,
         isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible,
+        setIsTesterAlertVisible
     } = useAuthenticationContext();
 
     const handleCloseBtn = () => {
@@ -76,6 +77,7 @@ function SignIn() {
             return () => clearTimeout(timer);
         }
     }, [isSignInErrorAlertVisible]);
+    
     useEffect(() => {
         if (isSignInSuccessfulAlertVisible) {
             const timer = setTimeout(() => {
@@ -85,6 +87,10 @@ function SignIn() {
             return () => clearTimeout(timer);
         }
     }, [isSignInSuccessfulAlertVisible]);
+
+    useEffect(() => {
+        setIsTesterAlertVisible(isSignInVisible);
+    }, [isSignInVisible]);
 
     return (
         <>

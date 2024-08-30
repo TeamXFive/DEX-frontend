@@ -13,8 +13,11 @@ function Header({scrollDirection, setScrollDirection}) {
     const navigate = useNavigate();
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const {setIsModalVisible, setIsSignInVisible, authedUser, setAuthedUser} =
-        useAuthenticationContext();
+    const {
+        setIsModalVisible,
+        setIsSignInVisible,
+        authedUser, setAuthedUser
+    } = useAuthenticationContext();
 
     const handleLogout = () => {
         setAuthedUser(undefined);

@@ -15,11 +15,14 @@
     border: solid 1px var(--medium-red);
     background-color: rgba(var(--medium-red-rgb), 0.1);
 }
+
 .authentication-card-success-alert {
     border: solid 1px var(--medium-green);
     background-color: rgba(var(--medium-green-rgb), 0.1);
 }
-.authentication-card-error-alert , .authentication-card-success-alert {
+
+.authentication-card-error-alert ,
+.authentication-card-success-alert {
     border-radius: 5px;
     padding: 3px 6px;
     opacity: 0;
@@ -32,4 +35,37 @@
 .show-card-alert {
     opacity: 1;
     transform: translateY(calc(8vh + 30px + 100%)); /* Header + ele 1 dele mesmo*/
+}
+
+
+/*-----===| Tester Alert Card |===-----*/
+.tester-authentication-card-error-alert {
+    border-radius: 5px;
+    max-width: 300px;
+    width: 25%;
+    min-width: 200px;
+    padding: 3px 6px;
+    opacity: 0;
+    transform: translateY(calc(100vh + 100%));
+    align-self: flex-start;
+    transition: var(--all-500ms-custom);
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    
+    & :first-child {
+        align-self: center;
+        padding: 5px 0;
+    }
+}
+.tester-authentication-card-error-alert {
+    border: solid 1px var(--medium-red);
+    background-color: rgba(var(--medium-red-rgb), 0.1);
+}
+.tester-show-card-alert {
+    opacity: 1;
+    transform: translateY(calc((100vh - 62px) - 150%));
 }

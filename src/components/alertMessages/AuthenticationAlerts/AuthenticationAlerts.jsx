@@ -7,12 +7,10 @@ function AuthenticationAlerts() {
         isSignInErrorAlertVisible,
         isSignInSuccessfulAlertVisible,
         
-        isUserAlertVisible,
-        setIsUserAlertVisible,
-        isEmailAlertVisible,
-        setIsEmailAlertVisible,
-        isPasswordMatchAlertVisible,
-        setIsPasswordMatchAlertVisible,
+        isUserAlertVisible, setIsUserAlertVisible,
+        isEmailAlertVisible, setIsEmailAlertVisible,
+        isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible,
+        isTesterAlertVisible,
     } = useAuthenticationContext();
 
     useEffect(() => {
@@ -46,6 +44,12 @@ function AuthenticationAlerts() {
             <span className={`authentication-card-error-alert glass-effect ${isPasswordMatchAlertVisible && "show-card-alert"}`}>
                 As senhas não coincidem!
             </span>
+            
+            <div className={`tester-authentication-card-error-alert glass-effect ${isTesterAlertVisible && "tester-show-card-alert"}`}>
+                <span className={`tester-card-title`}><b>AVISO PARA TESTER</b></span>
+                <span className={`tester-card-email`}><b>Email</b>: tester</span>
+                <span className={`tester-card-password`}><b>Senha</b>: tester</span>
+            </div>
         </section>
     );
 }
