@@ -1,20 +1,25 @@
+
 .account-page-container {
     height: calc(92vh - 30px);
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 2.5% 5%;
     max-width: 1080px;
-
-    border: solid 1px red;
+}
+.profile-icon img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 .sidebar-container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 100%;
+    width: 25%;
 }
 .sidebar {
     height: 100%;
@@ -23,10 +28,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: var(--dark-gray);
+    background-color: #2c2c2c;
     margin: 0;
     padding: 0;
     overflow-y: auto;
+    border-radius: 7.5px;
 }
 .sidebar-item {
     color: white;
@@ -34,21 +40,37 @@
     height: auto;
     width: 100%;
     padding: 10px 0 10px 20px;
-    font-size: 16px;
+    font-size: 12px;
 }
 .active-sidebar-item {
-    background-color: var(--medium-gray);
+    background-color: var(--dark-gray);
 }
 
 .window-account {
     height: 100%;
-    width: 100%;
-    background-color: black;
+    width: 73%;
+    background-color: var(--dark-gray);
+    border-radius: 7.5px;
+    padding: 20px 20px 0 20px;
+}
+.form-info-pessoais {
+    color: white;
+    
+    input {
+        background-color: var(--dark-gray);
+        border: solid 0.01px var(--medium-gray);
+    }
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+    }
 }
 
-
-
-
-
-/*
-asdfasdfas
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+}

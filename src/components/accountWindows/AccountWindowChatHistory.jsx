@@ -1,10 +1,9 @@
 import "../../style/Account/Account.css";
 
-function Permissions() {
+function ChatHistory() {
     return(
         <>
         </>
     )
 }
-
-export default Permissions;
+export default ChatHistory;
