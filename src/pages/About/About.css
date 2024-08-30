@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
+
+.inicialContainer{
+display: grid;
+height: calc(100vh - 90px);
+width: calc(100vw - 17px);
+background: url(../../assets/img/background-about.png) no-repeat center;
+justify-content: start;
+align-items: center;
+padding-left: 120px;
+}
+
+.inicialContainerContent{
+    display: grid;
+    gap: 30px;
+}
+
+.InicialTitle{  
+ padding-left: 40px;
+ font-family: 'Syncopate';
+ color: white;
+ font-weight: 700;
+ font-size: 36px;
+}
+
+.InicialText{
+
+    color: #000;
+    font-size: 22px;
+    max-width: 700px;
+}
+.infoScroll{
+    display: grid;
+    background: linear-gradient(to right, #3A3A3B, #9E9EA1);
+    height: 90px;
+    width: 100%;
+    align-items: end;
+}
+
+
+.infoScrollContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.infoScrollContent a{
+    font-family: 'Saira', sans-serif;
+    color: white;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.infoScrollContent span{
+    height: 40px;
+    width: 3px;
+    border-radius: 2px;
+    background-color: white;
+}
+
+.infoScroll .divider{
+    display: grid;
+    justify-self: center;
+    margin-bottom: 10px ;
+    height: 2px;
+    background-color: white;
+    width: 94%;
+    border-radius: 2px;
+}
+
+.MeetOurTeam{
+    display: grid;
+    height: 885px;
+    background: linear-gradient(to right, #3A3A3B, #9E9EA1);
+}
+
+.topContentMOT{
+    display: grid;
+    height: min-content;
+    place-items: center;
+    margin-top: 80px;
+    gap: 5px;
+}
+
+.topContentMOT h2{
+    font-family: 'Saira';
+    color: white;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.topContentMOT p{
+    color: #dbdbdb;
+    font-size: 24px;
+}
+
+.containerPictures {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden; 
+    gap: 50px;
+    position: relative;
+    height: 400px;
+}
+
+.membersPicture {
+    display: grid;
+    align-content: end;
+    justify-content: center;
+    min-width: 400px;
+    height: 400px;
+    transition: transform 0.5s ease;
+    padding-bottom: 30px;
+}
+
+.insideBoxPicture{
+    display: grid;
+    background-color: white;
+    width: 350px;
+    height: 100px;
+    place-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.insideBoxPicture .namePicture{
+    font-family: 'Saira';
+    font-weight: 500;
+    font-size: 18px;
+    color: #000;
+}
+
+.bottomContentMOT{
+    display: grid;
+    place-items: center;
+}
+
+.bottomContentMOT p{
+    color: #dbdbdb;
+    font-size: 24px;
+}
