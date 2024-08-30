@@ -1,5 +1,5 @@
-import {Link } from "react-router-dom";
-import '../../style/Header/Header.css';
+import "../../style/Header/Header.css";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import PropTypes from "prop-types";
@@ -7,19 +7,22 @@ import PropTypes from "prop-types";
 Header.propTypes = {
     scrollDirection: PropTypes.string.isRequired,
     setScrollDirection: PropTypes.func.isRequired,
-}
+};
 
 function Header({ scrollDirection, setScrollDirection }) {
+    const navigate = useNavigate();
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const {
-        setIsModalVisible,
-        setIsSignInVisible,
-        isUserLogged,
-    } = useAuthenticationContext();
+    const { setIsModalVisible, setIsSignInVisible, authedUser, setAuthedUser } =
+        useAuthenticationContext();
+
+    const handleLogout = () => {
+        setAuthedUser(undefined);
+        navigate("/");
+    };
 
     const handleLogin = (event) => {
-        if (isUserLogged) {
+        if (authedUser) {
             return;
         }
 
@@ -37,7 +40,9 @@ function Header({ scrollDirection, setScrollDirection }) {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            (currentScrollY > lastScrollY) ? setScrollDirection("down") : setScrollDirection("up");
+            currentScrollY > lastScrollY
+                ? setScrollDirection("down")
+                : setScrollDirection("up");
 
             setLastScrollY(currentScrollY);
         };
@@ -49,12 +54,12 @@ function Header({ scrollDirection, setScrollDirection }) {
         };
     }, [lastScrollY]);
 
-    useEffect(() => {
-
-    }, []);
-
     return (
-        <header className={`page-header glass-effect ${scrollDirection === "down" && "hide-header"}`}>
+        <header
+            className={`page-header glass-effect ${
+                scrollDirection === "down" && "hide-header"
+            }`}
+        >
             <div className="header-title-container">
                 <h1 className={`header-title`}>DEX</h1>
             </div>
@@ -64,12 +69,24 @@ function Header({ scrollDirection, setScrollDirection }) {
                     <Link to="/">HOME</Link>
                     <Link to="/sobre">SOBRE</Link>
                     <Link to="/chat">CHAT</Link>
-                    <Link to={isUserLogged ? "/account" : "/authentication"} onClick={handleLogin}>LOGIN</Link>
                 </div>
             </nav>
+
+            <div className="auth-menu">
+                <Link
+                    to={authedUser ? "/account" : "/authentication"}
+                    onClick={handleLogin}
+                >
+                    {authedUser ? `Olá ${authedUser.username}` : "LOGIN"}
+                </Link>
+                {authedUser && (
+                    <Link to={"/logout"} onClick={handleLogout}>
+                        SAIR
+                    </Link>
+                )}
+            </div>
         </header>
-    )
-    ;
+    );
 }
 
 export default Header;
