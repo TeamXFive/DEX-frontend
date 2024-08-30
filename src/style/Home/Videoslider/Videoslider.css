@@ -1,0 +1,103 @@
+.container-swiper {
+    display: flex;
+    position: relative;
+    height: 55vh; /*altura máxima(65vh) - textinho (10vh)*/
+    max-width: 1080px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/*container do swiper (da lib do swiper)*/
+.swiper_container {
+    height: 100%;
+    width: 100%;
+}
+
+.youtubeVideo {
+    flex: 1;
+    z-index: 1;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 80%; /* Limita o máximo de largura a 80% do container pai */
+    position: relative; /* Permite o posicionamento absoluto do iframe */
+}
+.youtubeVideo iframe {
+    border-radius: 15px;
+    max-width: 100%;
+    width: calc(16/9 * (40vh * 0.8)); /* Limita a largura do iframe a 80% da altura */
+    position: absolute;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    margin: 2.5% 0;
+}
+
+@media screen and (min-width: 768px) {
+    .youtubeVideo iframe {
+        max-width: 100%;
+        width: calc(16/9 * (55vh * 0.8)); /* Limita a largura do iframe a 80% da altura */
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .youtubeVideo iframe {
+        max-width: 100%;
+        width: calc(16/9 * (65vh * 0.8)); /* Limita a largura do iframe a 80% da altura */
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ffffff !important;
+    height: 15px;
+    width: 15px;
+    
+}
+
+.swiper-pagination-bullet {
+    background-color: #888888; 
+    opacity: 0.7;
+    height: 15px;
+    width: 15px;
+}
+
+
+.slider-controler {
+    width: 10%;
+    height: 100px;
+    margin: auto;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    z-index: 2; /* Ensure they are above other elements */
+}
+
+.swiper-button-next {
+    right: 10px; /* Adjust as needed */
+}
+
+.swiper-button-prev {
+    left: 10px; /* Adjust as needed */
+}
+
+/* .slider-controler {
+    width: 10%;
+    height: 100px;
+    margin: auto;
+}
+
+.swiper-button-next {
+    color: #ffffff;
+}
+
+.swiper-button-prev {
+    color: #ffffff;
+} */

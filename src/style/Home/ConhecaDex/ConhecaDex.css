@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+
+.conhecaDexDiv {
+    display: flex;
+    height: 10vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.conhecaDex {
+    z-index: 1;
+    font-weight: bold;
+    color: white;
+    font-family: 'Saira';
+    color:  #C3C3C3;
+    font-size: 40px;
+    margin: 0;
+}

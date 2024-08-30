@@ -1,0 +1,15 @@
+.background {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    /* Background-size: cover; */
+    z-index: 0;
+    object-fit: cover;
+    background:
+    linear-gradient(90deg, var(--black-gray) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--black-gray) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    var(--medium-gray);
+}

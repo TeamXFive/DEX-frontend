@@ -1,0 +1,44 @@
+/*-----===| App.jsx |===-----*/
+.page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.login-modal-container {
+    position: fixed;
+    top: calc(8vh + 30px);
+    left: 0;
+    height: calc(100% - 8vh - 30px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--medium-gray-rgb), 0.5);
+    z-index: 800;
+    transform: translateY(0);
+    transition: var(--all-500ms-custom);
+}
+
+.hidden-modal {
+    opacity: 1;
+    visibility: hidden;
+    transform: translateY(-100vh);
+    pointer-events: none;
+}
+
+.cover-hidden-header {
+    transform: translateY(calc(-3vh - 30px));
+    height: calc(100% - 5vh);
+}
+
+.page-content {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
