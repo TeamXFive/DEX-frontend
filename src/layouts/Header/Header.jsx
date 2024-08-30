@@ -50,31 +50,35 @@ function Header({ scrollDirection, setScrollDirection }) {
 
     return (
         <header
-            className={`page-header glass-effect ${
+            className={`glass-effect ${
                 scrollDirection === "down" && "hide-header"
             }`}
         >
-            <div className="header-title-container">
-                <h1 className={`header-title`}>DEX</h1>
-            </div>
-
-            <nav className="header-nav">
-                <div className="header-nav-links">
-                    <Link to="/">HOME</Link>
-                    <Link to="/sobre">SOBRE</Link>
-                    <Link to="/chat">CHAT</Link>
+            <div
+                className={`page-header ${
+                    scrollDirection === "down" && "hide-header"
+                }`}
+            >
+                <div className="header-title-container">
+                    <h1 className={`header-title`}>DEX</h1>
                 </div>
-            </nav>
 
-            <div className="auth-menu">
-                <Link
-                    to={authedUser ? "/account" : "/authentication"}
-                    onClick={handleLogin}
-                >
-                    {authedUser
-                        ? `Olá ${authedUser.name || authedUser.username}`
-                        : "LOGIN"}
-                </Link>
+                <nav className="header-nav">
+                    <div className="header-nav-links">
+                        <Link to="/">HOME</Link>
+                        <Link to="/sobre">SOBRE</Link>
+                        <Link to="/chat">CHAT</Link>
+                    </div>
+                </nav>
+
+                <div className="auth-menu">
+                    <Link
+                        to={authedUser ? "/account" : "/authentication"}
+                        onClick={handleLogin}
+                    >
+                        {authedUser ? `Olá ${authedUser.username}` : "LOGIN"}
+                    </Link>
+                </div>
             </div>
         </header>
     );
