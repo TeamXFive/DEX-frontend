@@ -11,6 +11,7 @@ function AuthenticationAlerts() {
         isEmailAlertVisible, setIsEmailAlertVisible,
         isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible,
         isTesterAlertVisible,
+        isAccountEditedAlertVisible, setAccountEditedAlertVisible,
         
         authedUser,
     } = useAuthenticationContext();
@@ -24,6 +25,16 @@ function AuthenticationAlerts() {
         setIsEmailAlertVisible(false);
         setIsPasswordMatchAlertVisible(false);
     }, [location.pathname]);
+
+    useEffect(() => {
+        if (isAccountEditedAlertVisible) {
+            const timer = setTimeout(() => {
+                setAccountEditedAlertVisible(false);
+            }, 2500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [isAccountEditedAlertVisible]);
 
     return (
         <section className="authentication-card-alerts">
@@ -45,6 +56,10 @@ function AuthenticationAlerts() {
 
             <span className={`authentication-card-error-alert glass-effect ${isPasswordMatchAlertVisible && "show-card-alert"}`}>
                 As senhas não coincidem!
+            </span>
+            
+            <span className={`account-card-success-alert glass-effect ${isAccountEditedAlertVisible && "show-card-alert"}`}>
+                Editado com sucesso!
             </span>
             
             <div className={`tester-authentication-card-error-alert glass-effect ${isTesterAlertVisible && "tester-show-card-alert"}`}>
