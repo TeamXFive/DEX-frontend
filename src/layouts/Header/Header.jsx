@@ -12,8 +12,11 @@ Header.propTypes = {
 function Header({ scrollDirection, setScrollDirection }) {
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const { setIsModalVisible, setIsSignInVisible, authedUser } =
-        useAuthenticationContext();
+    const {
+        setIsModalVisible,
+        setIsSignInVisible,
+        authedUser, setAuthedUser
+    } = useAuthenticationContext();
 
     const handleLogin = (event) => {
         if (authedUser) {
