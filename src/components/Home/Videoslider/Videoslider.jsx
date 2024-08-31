@@ -30,19 +30,19 @@ function Videoslider() {
                 <SwiperSlide>
                     <div className="youtubeVideo">
                         <iframe
-                            src="https://www.youtube.com/embed/qgjfKKskmzg?si=nh6CdXqOlwx4W2c8"
-                            title="YouTube Video"
+                            src="https://www.youtube.com/embed/4Wk-6efLA1M"
+                            title="Youtube Video"
                         />
-                        <p className="video-title">Video pitch 1 - Softtek</p>
+                        <p className="video-title">Video pitch 2 - Softtek</p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="youtubeVideo">
                         <iframe
-                            src="https://www.youtube.com/embed/ipnBPEQviUM?si=YMXQpdkRiJbksHtB"
-                            title="Youtube Video"
+                            src="https://www.youtube.com/embed/qgjfKKskmzg?si=nh6CdXqOlwx4W2c8"
+                            title="YouTube Video"
                         />
-                        <p className="video-title">Video pitch 2 - Softtek</p>
+                        <p className="video-title">Video pitch 1 - Softtek</p>
                     </div>
                 </SwiperSlide>
             </Swiper>

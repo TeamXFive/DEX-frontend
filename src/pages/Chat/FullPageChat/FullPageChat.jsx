@@ -35,7 +35,7 @@ export function FullPageChat(props) {
                         >
                             {message.type === "pdf" ? (
                                 <object
-                                    data="/documents/mercury-presentation2.pdf"
+                                    data="/documents/mercury-presentation.pdf"
                                     type="application/pdf"
                                     width="100%"
                                     height="100%"
