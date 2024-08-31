@@ -1,145 +1,269 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap");
 
+.about-page-container {
+    & .inicialContainer {
+        position: relative;
+        display: grid;
+        height: calc(100vh - 90px);
+        background: url(/images/background-about.png) no-repeat center;
+        justify-content: start;
+        align-items: center;
+        padding-left: 120px;
 
-.inicialContainer{
-display: grid;
-height: calc(100vh - 90px);
-width: calc(100vw - 17px);
-background: url(../../assets/img/background-about.png) no-repeat center;
-justify-content: start;
-align-items: center;
-padding-left: 120px;
+        & .background {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background: url(/images/background-about.png);
+            background-size: cover;
+            z-index: 1;
+        }
+
+        & .background-overlay {
+            background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.8) 25%,
+                rgba(0, 0, 0, 0)
+            );
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+    }
+
+    & .inicialContainerContent {
+        display: grid;
+        gap: 30px;
+        z-index: 5;
+    }
+
+    & .InicialTitle {
+        font-family: "Saira";
+        color: white;
+        font-weight: 700;
+        font-size: 38px;
+    }
+
+    & .InicialText {
+        color: #fff;
+        font-size: 1.25rem;
+        max-width: 700px;
+    }
+    & .infoScroll {
+        display: grid;
+        height: 90px;
+        width: 100%;
+        align-items: end;
+    }
+
+    & .infoScrollContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+
+    & .infoScrollContent a {
+        font-family: "Saira", sans-serif;
+        color: white;
+        font-weight: 500;
+        font-size: 22px;
+    }
+
+    & .infoScrollContent span {
+        height: 40px;
+        width: 3px;
+        border-radius: 2px;
+        background-color: white;
+    }
+
+    &  .divider {
+        display: grid;
+        justify-self: center;
+        margin-bottom: 10px;
+        height: 2px;
+        background-color: white;
+        width: 94%;
+        border-radius: 2px;
+    }
+
+    & .MeetOurTeam {
+        display: grid;
+        height: 885px;
+    }
+
+    & .container-swiper {
+        width: 98vw;
+        max-width: initial;
+    }
+
+    & .topContentMOT {
+        display: grid;
+        height: min-content;
+        place-items: center;
+        margin-top: 80px;
+        gap: 5px;
+    }
+
+    & .topContentMOT h2 {
+        font-family: "Saira";
+        color: white;
+        font-weight: 700;
+        font-size: 32px;
+    }
+
+    & .topContentMOT p {
+        color: #dbdbdb;
+        font-size: 24px;
+    }
+
+    & .containerPictures {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: start;
+        overflow: hidden;
+        gap: 50px;
+        position: relative;
+        height: 400px;
+    }
+
+    & .membersPicture {
+        align-content: end;
+        justify-content: center;
+        width: 100%;
+        margin: 10px 0;
+        height: 400px;
+        transition: transform 0.5s ease;
+        padding-bottom: 30px;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+
+    & .insideBoxPicture {
+        display: grid;
+       justify-content: center;
+       justify-items: center;
+        background-color: white;
+        width: 100%;
+        height: 100px;
+        border-radius: 5px;
+    }
+    & .insideBoxPicture p{
+        height: min-content ;
+        margin-bottom: 0px;
+    }
+
+    & .insideBoxPicture .namePicture {
+        font-family: "Saira";
+        font-weight: 500;
+        font-size: 18px;
+        color: #000;
+    }
+    & .insideBoxPicture .workPicture {
+        display: flex;
+        flex-direction: column;
+        height: 20px;
+        height: min-content ;   
+        font-family: "Saira";
+        font-size: 16px;
+        color: #000;
+        align-items: center;
+    }
+
+    & .bottomContentMOT {
+        display: grid;
+        place-items: center;
+    }
+
+    & .bottomContentMOT p {
+        color: #dbdbdb;
+        font-size: 24px;
+    }
+
+    & .technologies{
+        display: grid;
+        height: auto;
+        width: 100%;
+    }
+
+    & .divider-technologies{
+        display: grid;
+        margin-top: 70px;
+        height: 2px;
+        background-color: white;
+        width: 98%;
+        border-radius: 2px;
+        margin-left: 14px;
+    }
+
+    & .technologies-introduction{
+        display: grid;
+        height: min-content;
+        place-items: center;
+    }
+
+    & .technologies-introduction h2{
+        font-family: "Saira";
+        color: white;
+        font-weight: 700;
+        font-size: 32px;
+        margin-top: 50px;
+    }
+
+    & .pre-info-technologies{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        gap: 30px;
+    }
+
+    &  .pre-info-technologies p{
+        width: 500px;
+        color: #dbdbdb;
+        font-size: 22px;
+    }
+
+    &  .info-technologies{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        gap: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    
+    &  .info-technologies .box-technologies{
+        display: grid;
+        height: 600px;
+        width: 480px;
+        background-color: #232323;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px;
+        box-shadow: 0 4px 4px 0 rgba(255, 255, 255, .2);
+        padding: 0px 40px;
+        place-items: center;
+    }
+
+    & .box-technologies h3{
+        font-family: "Saira";
+        color: white;
+        font-weight: 700;
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+    & .box-technologies p{
+        color: white;
+        font-size: 16px;
+        text-align: center;
+    }
 }
 
-.inicialContainerContent{
-    display: grid;
-    gap: 30px;
-}
-
-.InicialTitle{  
- padding-left: 40px;
- font-family: 'Syncopate';
- color: white;
- font-weight: 700;
- font-size: 36px;
-}
-
-.InicialText{
-
-    color: #000;
-    font-size: 22px;
-    max-width: 700px;
-}
-.infoScroll{
-    display: grid;
-    background: linear-gradient(to right, #3A3A3B, #9E9EA1);
-    height: 90px;
-    width: 100%;
-    align-items: end;
-}
-
-
-.infoScrollContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
-
-.infoScrollContent a{
-    font-family: 'Saira', sans-serif;
-    color: white;
-    font-weight: 500;
-    font-size: 22px;
-}
-
-.infoScrollContent span{
-    height: 40px;
-    width: 3px;
-    border-radius: 2px;
-    background-color: white;
-}
-
-.infoScroll .divider{
-    display: grid;
-    justify-self: center;
-    margin-bottom: 10px ;
-    height: 2px;
-    background-color: white;
-    width: 94%;
-    border-radius: 2px;
-}
-
-.MeetOurTeam{
-    display: grid;
-    height: 885px;
-    background: linear-gradient(to right, #3A3A3B, #9E9EA1);
-}
-
-.topContentMOT{
-    display: grid;
-    height: min-content;
-    place-items: center;
-    margin-top: 80px;
-    gap: 5px;
-}
-
-.topContentMOT h2{
-    font-family: 'Saira';
-    color: white;
-    font-weight: 700;
-    font-size: 32px;
-}
-
-.topContentMOT p{
-    color: #dbdbdb;
-    font-size: 24px;
-}
-
-.containerPictures {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: start;
-    overflow: hidden; 
-    gap: 50px;
-    position: relative;
-    height: 400px;
-}
-
-.membersPicture {
-    display: grid;
-    align-content: end;
-    justify-content: center;
-    min-width: 400px;
-    height: 400px;
-    transition: transform 0.5s ease;
-    padding-bottom: 30px;
-}
-
-.insideBoxPicture{
-    display: grid;
-    background-color: white;
-    width: 350px;
-    height: 100px;
-    place-items: center;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.insideBoxPicture .namePicture{
-    font-family: 'Saira';
-    font-weight: 500;
-    font-size: 18px;
-    color: #000;
-}
-
-.bottomContentMOT{
-    display: grid;
-    place-items: center;
-}
-
-.bottomContentMOT p{
-    color: #dbdbdb;
-    font-size: 24px;
-}
