@@ -24,18 +24,18 @@ function Account() {
                         <li className="sidebar-item active-sidebar-item">
                             INFORMAÇÕES PESSOAIS
                         </li>
-                        <li className="sidebar-item">PREFERÊNCIAS</li>
-                        <li className="sidebar-item">HISTÓRICO DE CHAT</li>
-                        <li className="sidebar-item">PERMISSÕES</li>
                         <li className="sidebar-item" onClick={handleLogout}>
                             SAIR
                         </li>
                     </ul>
                 </section>
-                <PersonalInfo />
-                <Preferences />
-                <ChatHistory />
-                <Permissions />
+                
+                <section className={`window-account`}>
+                    <PersonalInfo />
+                    <Preferences />
+                    <ChatHistory />
+                    <Permissions />
+                </section>
             </article>
         </>
 

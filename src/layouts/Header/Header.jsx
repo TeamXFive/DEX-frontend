@@ -9,11 +9,14 @@ Header.propTypes = {
     setScrollDirection: PropTypes.func.isRequired,
 };
 
-function Header({ scrollDirection, setScrollDirection }) {
+function Header({ scrollDirection, setScrollDirection }) {    
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const { setIsModalVisible, setIsSignInVisible, authedUser } =
-        useAuthenticationContext();
+    const {
+        setIsModalVisible,
+        setIsSignInVisible,
+        authedUser
+    } = useAuthenticationContext();
 
     const handleLogin = (event) => {
         if (authedUser) {
@@ -60,13 +63,15 @@ function Header({ scrollDirection, setScrollDirection }) {
                 }`}
             >
                 <div className="header-title-container">
-                    <h1 className={`header-title`}>DEX</h1>
+                    <h1 className={`header-title`}>
+                        <Link to={`/`}>DEX</Link>
+                    </h1>
                 </div>
 
                 <nav className="header-nav">
                     <div className="header-nav-links">
                         <Link to="/">HOME</Link>
-                        <Link to="/sobre">SOBRE</Link>
+                        <Link to="/sobre">SOBRE O PROJETO</Link>
                         <Link to="/chat">CHAT</Link>
                     </div>
                 </nav>
@@ -76,7 +81,7 @@ function Header({ scrollDirection, setScrollDirection }) {
                         to={authedUser ? "/account" : "/authentication"}
                         onClick={handleLogin}
                     >
-                        {authedUser ? `Olá ${authedUser.username}` : "LOGIN"}
+                        {authedUser ? `${authedUser.username}` : "LOGIN"}
                     </Link>
                 </div>
             </div>
