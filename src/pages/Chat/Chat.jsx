@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FullPageChat } from "./FullPageChat/FullPageChat";
 import { Widget } from "./Widget/Widget";
 import { useLocation } from "react-router-dom";
@@ -12,31 +12,244 @@ function Chat({ type }) {
     const location = useLocation();
     const [messages, setMessages] = useState([]);
     const [isIaTyping, setIsIaTyping] = useState(false);
-
     const chatBodyRef = useRef();
 
-    const welcomeMessages = [
-        {
-            content: `
-    Seja bem vindo ${authedUser?.name || authedUser?.username}, eu sou Dex!
-    Agente de suporte técnico de IA generativa projetado para auxiliar os times da Sofftek.
-    Por ainda ser prototipo, nossa interação vai ser mais restrita.`.trim(),
-        },
-        {
-            content:
-                `Você pode descobrir um pouco mais sobre mim no documento abaixo, ou até mesmo assistir a nosso vídeo pitch na home ou aqui mesmo.`.trim(),
-        },
-        {
-            content: "/documents/mercury-presentation.pdf",
-            type: "pdf",
-        },
-    ];
+    const isWelcomeSent = useRef(false);
 
-    const handleSendMessage = (message) => {
-        setMessages((prev) => [...prev, { ...message, timestamp: new Date() }]);
+    const processQuestion = (question) => {
+        const questionTokens = question.trim().split(" ");
+
+        if (questionTokens.length === 0 || questionTokens.length === 1) {
+            const giveMoreDetailsSamples = [
+                "Você poderia elaborar melhor sua pergunta?",
+                "Estou com dificuldades de encontrar algo, poderia me dar mais detalhes?",
+                "Você poderia ser mais específico?",
+                "Poderia me explicar melhor?",
+                "Você pode me dar mais detalhes sobre seu problema?",
+            ];
+
+            handleSendIaMessages([
+                {
+                    content:
+                        giveMoreDetailsSamples[
+                            Math.floor(
+                                Math.random() * giveMoreDetailsSamples.length
+                            )
+                        ],
+                    author: "ia",
+                    timestamp: new Date(),
+                },
+            ]);
+            setIsIaTyping(false);
+            return true;
+        }
+
+        const chamadoPorNumero = Chamados.find((chamado) =>
+            questionTokens.some(
+                (token) =>
+                    chamado["Número"].toLowerCase() ===
+                    token.replace("#", "").toLowerCase()
+            )
+        );
+
+        const rankedChamados = chamadoPorNumero
+            ? [chamadoPorNumero]
+            : Chamados.reduce((acc, chamado) => {
+                  const searchFields = [
+                      "Categoria Relatório",
+                      "Subcategoria Relatório",
+                      "Sintoma",
+                      "Grupo de atribuição",
+                      "Local",
+                      "Descrição",
+                      "Comentários Visiveis 1",
+                      "Comentários Visiveis 2",
+                  ];
+
+                  let points = 0;
+                  searchFields.forEach((field) => {
+                      const hasMatches = questionTokens.some((token) =>
+                          chamado[field]
+                              .toLowerCase()
+                              .includes(token.replace("#", "").toLowerCase())
+                      );
+
+                      if (hasMatches) {
+                          points++;
+                      }
+                  });
+
+                  if (points > 0) {
+                      acc.push({
+                          chamado,
+                          points,
+                      });
+                  }
+
+                  return acc;
+              }, []);
+
+        const sortedChamados = rankedChamados.sort(
+            (chamadoA, chamadoB) => chamadoB.points - chamadoA.points
+        );
+
+        if (chamadoPorNumero) {
+            const chamado = chamadoPorNumero;
+            handleSendIaMessages([
+                {
+                    content: `Aqui está o chamado que você procura:
+                    #${chamado["Número"]}
+
+                    Categoria Relatório: ${chamado["Categoria Relatório"]}
+                    Subcategoria Relatório: ${chamado["Subcategoria Relatório"]}
+                    Sintoma: ${chamado["Sintoma"]}
+                    Grupo de atribuição: ${chamado["Grupo de atribuição"]}
+                    Local: ${chamado["Local"]}
+                    Descrição: ${chamado["Descrição"]}
+                    Comentários Visiveis 1: ${chamado["Comentários Visiveis 1"]}
+                    Comentários Visiveis 2: ${chamado["Comentários Visiveis 2"]}`,
+                },
+                {
+                    content: `Este chamado foi resolvido da seguinte maneira:
+                    "${chamado["Resolução"]}"`,
+                },
+                {
+                    content: "Posso te ajudar com mais alguma coisa?",
+                },
+            ]);
+            return true;
+        }
+
+        if (sortedChamados.length > 0) {
+            let listOfChamados = sortedChamados
+                .slice(0, 5)
+                .reduce(
+                    (acc, { chamado }) =>
+                        `${acc}\nChamado #${chamado["Número"]} - ${chamado["Descrição"]}`.trim(),
+                    ""
+                );
+
+            if (sortedChamados.length > 5) {
+                listOfChamados += `\nE mais ${sortedChamados.length - 5}...`;
+            }
+
+            handleSendIaMessages([
+                {
+                    content: `Encontrei ${sortedChamados.length} chamados que podem te ajudar:`,
+                },
+                {
+                    content: listOfChamados,
+                },
+                {
+                    content: `Escolha um dos chamados acima para mais detalhes ou diga "todos" para listar os ${sortedChamados.length}.`,
+                },
+            ]);
+            return true;
+        }
+
+        setIsIaTyping(false);
+        return true;
     };
 
-    const handleSentIaMessages = (messages) => {};
+    const welcomeMessages = useMemo(
+        () => [
+            {
+                content: `
+            Seja bem vindo ${
+                authedUser?.name || authedUser?.username
+            }, eu sou Dex!
+            Agente de suporte técnico de IA generativa projetado para auxiliar os times da Sofftek.
+            Por ainda ser prototipo, nossa interação vai ser mais restrita.`.trim(),
+            },
+            {
+                content:
+                    `Você pode descobrir um pouco mais sobre mim no documento abaixo, ou até mesmo assistir a nosso vídeo pitch na home ou aqui mesmo.`.trim(),
+            },
+            {
+                content: "/documents/mercury-presentation.pdf",
+                type: "pdf",
+            },
+            {
+                content: "Em que posso lhe ajudar?",
+            },
+        ],
+        [authedUser]
+    );
+
+    const handleSendIaMessages = async (messages) => {
+        setIsIaTyping(true);
+
+        let index = 0;
+        for await (const msg of messages) {
+            const isLastMessage = index === messages.length - 1;
+            const words = msg.content.split(" ");
+
+            let wordIndex = 0;
+
+            setMessages((prev) => {
+                return [
+                    ...prev,
+                    {
+                        ...msg,
+                        content: "...",
+                        timestamp: new Date(),
+                        author: "ia",
+                    },
+                ];
+            });
+
+            for await (const word of words) {
+                const isLastWord = wordIndex === words.length - 1;
+
+                await new Promise((resolve) => {
+                    const randomWaitTime = Math.floor(Math.random() * 100);
+
+                    setTimeout(
+                        () => {
+                            setMessages((prev) => {
+                                const lastMessage = prev[prev.length - 1];
+                                const lastMessageContent =
+                                    lastMessage?.content || "";
+                                const newContent =
+                                    lastMessageContent === "..."
+                                        ? word
+                                        : `${lastMessageContent} ${word}`;
+
+                                return [
+                                    ...prev.slice(0, -1),
+                                    {
+                                        ...lastMessage,
+                                        content: newContent,
+                                        timestamp: new Date(),
+                                    },
+                                ];
+                            });
+
+                            resolve();
+                        },
+                        index === 0 && wordIndex === 0 ? 0 : randomWaitTime
+                    );
+                });
+
+                if (isLastWord && isLastMessage) {
+                    setTimeout(() => {
+                        setIsIaTyping(false);
+                    }, 500);
+                }
+
+                wordIndex++;
+            }
+            index++;
+        }
+    };
+
+    useEffect(() => {
+        if (isWelcomeSent.current) {
+            return;
+        }
+        isWelcomeSent.current = true;
+        handleSendIaMessages(welcomeMessages);
+    }, [welcomeMessages]);
 
     useEffect(() => {
         const iaPossibleMessages = [
@@ -49,24 +262,13 @@ function Chat({ type }) {
 
         const lastMessage = messages.at(-1);
 
-        if (messages.length === 0) {
-            setMessages(
-                welcomeMessages.map((msg) => ({
-                    content: msg.content,
-                    type: msg.type,
-                    author: "ia",
-                    timestamp: new Date(),
-                }))
-            );
-        }
-
         if (lastMessage && lastMessage.author !== "ia" && !isIaTyping) {
-            console.log("IA is typing...");
-            const waitTime = Math.floor(Math.random() * 2000) + 500;
             setIsIaTyping(true);
-            setTimeout(() => {
-                setMessages((prev) => [
-                    ...prev,
+
+            const result = processQuestion(lastMessage.content);
+
+            if (!result) {
+                handleSendIaMessages([
                     {
                         content:
                             iaPossibleMessages[
@@ -78,8 +280,7 @@ function Chat({ type }) {
                         timestamp: new Date(),
                     },
                 ]);
-                setIsIaTyping(false);
-            }, waitTime);
+            }
         }
 
         if (chatBodyRef.current) {
@@ -88,7 +289,7 @@ function Chat({ type }) {
                 behavior: "smooth",
             });
         }
-    }, [isIaTyping, messages]);
+    }, [isIaTyping, messages, isWelcomeSent, welcomeMessages]);
 
     if (type === "widget" && location.pathname === "/chat") {
         return null;

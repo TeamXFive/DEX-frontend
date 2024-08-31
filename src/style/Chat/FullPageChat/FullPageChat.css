@@ -39,6 +39,14 @@
         align-self: flex-end;
         max-width: 75%;
 
+        &.pdf {
+            min-width: 100%;
+
+            & .message-body {
+                min-height: 400px;
+            }
+        }
+
         & .message-body {
             padding: 0.75rem;
             margin-bottom: 0.25rem;
