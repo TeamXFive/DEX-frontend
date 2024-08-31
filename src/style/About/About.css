@@ -5,7 +5,6 @@
         position: relative;
         display: grid;
         height: calc(100vh - 90px);
-        /* width: calc(100vw - 17px); */
         background: url(/images/background-about.png) no-repeat center;
         justify-content: start;
         align-items: center;
@@ -44,11 +43,10 @@
     }
 
     & .InicialTitle {
-        /* padding-left: 40px; */
-        font-family: "Syncopate";
+        font-family: "Saira";
         color: white;
         font-weight: 700;
-        font-size: 36px;
+        font-size: 38px;
     }
 
     & .InicialText {
@@ -84,7 +82,7 @@
         background-color: white;
     }
 
-    & .infoScroll .divider {
+    &  .divider {
         display: grid;
         justify-self: center;
         margin-bottom: 10px;
@@ -148,13 +146,17 @@
     }
 
     & .insideBoxPicture {
+        display: grid;
+       justify-content: center;
+       justify-items: center;
         background-color: white;
         width: 100%;
         height: 100px;
-        place-items: center;
-        padding: 10px;
         border-radius: 5px;
-        text-align: center;
+    }
+    & .insideBoxPicture p{
+        height: min-content ;
+        margin-bottom: 0px;
     }
 
     & .insideBoxPicture .namePicture {
@@ -162,6 +164,16 @@
         font-weight: 500;
         font-size: 18px;
         color: #000;
+    }
+    & .insideBoxPicture .workPicture {
+        display: flex;
+        flex-direction: column;
+        height: 20px;
+        height: min-content ;   
+        font-family: "Saira";
+        font-size: 16px;
+        color: #000;
+        align-items: center;
     }
 
     & .bottomContentMOT {
@@ -173,4 +185,85 @@
         color: #dbdbdb;
         font-size: 24px;
     }
+
+    & .technologies{
+        display: grid;
+        height: auto;
+        width: 100%;
+    }
+
+    & .divider-technologies{
+        display: grid;
+        margin-top: 70px;
+        height: 2px;
+        background-color: white;
+        width: 98%;
+        border-radius: 2px;
+        margin-left: 14px;
+    }
+
+    & .technologies-introduction{
+        display: grid;
+        height: min-content;
+        place-items: center;
+    }
+
+    & .technologies-introduction h2{
+        font-family: "Saira";
+        color: white;
+        font-weight: 700;
+        font-size: 32px;
+        margin-top: 50px;
+    }
+
+    & .pre-info-technologies{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        gap: 30px;
+    }
+
+    &  .pre-info-technologies p{
+        width: 500px;
+        color: #dbdbdb;
+        font-size: 22px;
+    }
+
+    &  .info-technologies{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        gap: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    
+    &  .info-technologies .box-technologies{
+        display: grid;
+        height: 600px;
+        width: 480px;
+        background-color: #232323;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px;
+        box-shadow: 0 4px 4px 0 rgba(255, 255, 255, .2);
+        padding: 0px 40px;
+        place-items: center;
+    }
+
+    & .box-technologies h3{
+        font-family: "Saira";
+        color: white;
+        font-weight: 700;
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+    & .box-technologies p{
+        color: white;
+        font-size: 16px;
+        text-align: center;
+    }
 }
+

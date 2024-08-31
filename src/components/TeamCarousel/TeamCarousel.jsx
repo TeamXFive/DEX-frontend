@@ -16,27 +16,32 @@ const picsMeetOurTeam = [
     {
         url: "/images/foto-carol.png",
         name: "Caroline Nunes Levino Brandão",
-        work: "Full stack developer",
+        dev: "Página Home",
+        work: 'Roteiro vídeo pitch, Concepção do MVP'
     },
     {
         url: "/images/foto-ivan.png",
         name: "Ivan Ramos Biagioni",
-        work: "Full stack developer",
+        dev: "Página Configuração de Conta",
+        work: 'Edição vídeo pitch, Concepção do MVP'
     },
     {
         url: "/images/foto-sani.png",
         name: "Luiz Henrique Sani",
-        work: "Full stack developer",
+        dev: "Página sobre o projeto",
+        work: 'Concepção e design do MVP'
     },
     {
         url: "/images/foto-lorenzo.png",
         name: "Lorenzo Oliveira Zimbres",
-        work: "Full stack developer",
+        dev: "Página e lógica de Autenticação",
+        work: 'Concepção e design do MVP'
     },
     {
         url: "/images/foto-othon.png",
         name: "José Othon Ribeiro Moreira Neto",
-        work: "Full stack developer",
+        dev: "Página Chat, Widget Chat",
+        work: 'Gravação vídeo pitch, Concepção e design do MVP'
     },
 ];
 
@@ -87,7 +92,10 @@ function TeamCarousel() {
                             >
                                 <div className="insideBoxPicture">
                                     <p className="namePicture">{item.name}</p>
-                                    <p className="workPicture">{item.work}</p>
+                                    <div className="workPicture">
+                                        <p>Dev: {item.dev}.</p>
+                                        <p>{item.work}</p>
+                                    </div>
                                 </div>
                             </div>
                         </SwiperSlide>
