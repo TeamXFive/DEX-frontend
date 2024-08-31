@@ -1,29 +1,30 @@
 import "../../style/Authentication/AuthenticationCard/AuthenticationCard.css";
 import { IoIosClose } from "react-icons/io";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function SignIn() {
     const navigate = useNavigate(); // Navega para rota especificada
+    const location = useLocation();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const {
         setAuthedUser,
-        
-        isSignInVisible, setIsSignInVisible,
-        isSignUpVisible, setIsSignUpVisible,
+        isSignInVisible,
+        setIsSignInVisible,
+        setIsSignUpVisible,
         isShowSignInCloseBtn,
-        
         setIsModalVisible,
-        
         registeredUsersList,
-      
         setHasInteractedOnce,
-        isSignInErrorAlertVisible, setIsSignInErrorAlertVisible,
-        isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible,
-        setIsTesterAlertVisible
+        isSignInErrorAlertVisible,
+        setIsSignInErrorAlertVisible,
+        isSignInSuccessfulAlertVisible,
+        setIsSignInSuccessfulAlertVisible,
+        setIsTesterAlertVisible,
     } = useAuthenticationContext();
 
     const handleCloseBtn = () => {
@@ -41,13 +42,15 @@ function SignIn() {
         event.preventDefault();
 
         const user = findUser(email);
-        
+
         if (user && user.password === password) {
             setIsSignInSuccessfulAlertVisible(true);
             setAuthedUser({ ...user, password: undefined });
             setIsSignInVisible(false);
             setIsModalVisible(false);
-            navigate("/account");
+            if (location.pathname !== "/chat") {
+                navigate("/account");
+            }
         } else {
             setIsSignInErrorAlertVisible(true);
             setAuthedUser(undefined);
@@ -77,7 +80,7 @@ function SignIn() {
             return () => clearTimeout(timer);
         }
     }, [isSignInErrorAlertVisible]);
-    
+
     useEffect(() => {
         if (isSignInSuccessfulAlertVisible) {
             const timer = setTimeout(() => {
