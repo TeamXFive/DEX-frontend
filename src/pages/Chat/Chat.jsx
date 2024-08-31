@@ -19,6 +19,31 @@ function Chat({ type }) {
     const processQuestion = (question) => {
         const questionTokens = question.trim().split(" ");
 
+        if (question.toLowerCase().includes("obrigado")) {
+            const gratitudeResponses = [
+                "De nada, estou aqui para ajudar!",
+                "Disponha, precisando é só chamar!",
+                "Estou aqui para o que precisar!",
+                "Estou sempre à disposição!",
+                "Estou aqui para ajudar, não hesite em me chamar!",
+            ];
+
+            handleSendIaMessages([
+                {
+                    content:
+                        gratitudeResponses[
+                            Math.floor(
+                                Math.random() * gratitudeResponses.length
+                            )
+                        ],
+                    author: "ia",
+                    timestamp: new Date(),
+                },
+            ]);
+            setIsIaTyping(false);
+            return true;
+        }
+
         if (questionTokens.length === 0 || questionTokens.length === 1) {
             const giveMoreDetailsSamples = [
                 "Você poderia elaborar melhor sua pergunta?",
@@ -244,12 +269,12 @@ function Chat({ type }) {
     };
 
     useEffect(() => {
-        if (isWelcomeSent.current) {
+        if (isWelcomeSent.current || !authedUser) {
             return;
         }
         isWelcomeSent.current = true;
         handleSendIaMessages(welcomeMessages);
-    }, [welcomeMessages]);
+    }, [welcomeMessages, authedUser]);
 
     useEffect(() => {
         const iaPossibleMessages = [
