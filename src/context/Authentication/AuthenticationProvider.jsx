@@ -53,6 +53,7 @@ function AuthenticationProvider({ children }) {
     const [isEmailAlertVisible, setIsEmailAlertVisible] = useState(false);
     const [isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible] = useState(false);
     const [isTesterAlertVisible, setIsTesterAlertVisible] = useState(false);
+    const [isAccountEditedAlertVisible, setAccountEditedAlertVisible] = useState(false);
 
     useEffect(() => {
         localStorage.setItem(
@@ -99,7 +100,8 @@ function AuthenticationProvider({ children }) {
                 isUserAlertVisible, setIsUserAlertVisible,
                 isEmailAlertVisible, setIsEmailAlertVisible,
                 isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible,
-                isTesterAlertVisible, setIsTesterAlertVisible
+                isTesterAlertVisible, setIsTesterAlertVisible,
+                isAccountEditedAlertVisible, setAccountEditedAlertVisible,
             }}
         >
             {children}

@@ -9,6 +9,7 @@ function PersonalInfo() {
         setAuthedUser,
         registeredUsersList,
         setRegisteredUsersList,
+        setAccountEditedAlertVisible,
     } = useAuthenticationContext();
 
     const [hasChanged, setHasChanged] = useState(false);
@@ -42,10 +43,11 @@ function PersonalInfo() {
                 return user;
             })
         );
+        setAccountEditedAlertVisible(true);
     };
 
     return (
-        <section className="window-account">
+        <>
             <figure className="profile-icon">
                 <img src="../../../public/images/profile_icon.png"></img>
             </figure>
@@ -78,7 +80,6 @@ function PersonalInfo() {
                         type="text"
                         name="username"
                         id="username"
-                        pattern="[a-zA-Z0-9]+"
                         className="form-control text-white bg-transparent"
                         value={temporaryUser.username || ""}
                         onChange={handleAccountDataChange}
@@ -95,13 +96,13 @@ function PersonalInfo() {
                         onChange={handleAccountDataChange}
                     />
                 </fieldset>
-                {hasChanged && (
-                    <div className="submit-button">
-                        <button type="submit">Salvar alterações</button>
-                    </div>
-                )}
+                
+                <div className="submit-button">
+                    <button type={`submit`} className={`${hasChanged ? "active" : ""}`}>Salvar alterações</button>
+                </div>
+                
             </form>
-        </section>
+        </>
     );
 }
 export default PersonalInfo;

@@ -32,10 +32,13 @@ function Account() {
                         </li>
                     </ul>
                 </section>
-                <PersonalInfo />
-                <Preferences />
-                <ChatHistory />
-                <Permissions />
+                
+                <section className={`window-account`}>
+                    <PersonalInfo />
+                    <Preferences />
+                    <ChatHistory />
+                    <Permissions />
+                </section>
             </article>
         </>
 
