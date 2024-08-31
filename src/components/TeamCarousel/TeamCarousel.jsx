@@ -32,7 +32,7 @@ const picsMeetOurTeam = [
         work: 'Concepção e design do MVP'
     },
     {
-        url: "/images/foto-lorenzo.png",
+        url: "https://avatars.githubusercontent.com/u/97912499?v=4",
         name: "Lorenzo Oliveira Zimbres",
         dev: "Página e lógica de Autenticação",
         work: 'Concepção e design do MVP'
