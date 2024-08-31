@@ -35,24 +35,21 @@ export function FullPageChat(props) {
                         >
                             {message.type === "pdf" ? (
                                 <object
-                                    data="http://localhost:5173/documents/mercury-presentation.pdf"
+                                    data="/documents/mercury-presentation2.pdf"
                                     type="application/pdf"
                                     width="100%"
                                     height="100%"
                                 >
                                     <p>
-                                        Alternative text - include a link{" "}
-                                        <a href="http://localhost:5173/documents/mercury-presentation.pdf">
-                                            to the PDF!
+                                        Casso o PDF não carregue, utilize o link
+                                        abaixo: <br />
+                                        <a href="/documents/mercury-presentation.pdf">
+                                            {location.origin +
+                                                "/documents/mercury-presentation.pdf"}
                                         </a>
                                     </p>
                                 </object>
                             ) : (
-                                // <iframe
-                                //     src={`http://docs.google.com/gview?a=v&pid=explorer&chrome=false&api=true&embedded=true&srcid=${message.content}&hl=en&embedded=true`}
-                                //     // style="width:600px; height:500px;"
-                                //     frameBorder="0"
-                                // />
                                 <span>{message.content}</span>
                             )}
                         </div>
