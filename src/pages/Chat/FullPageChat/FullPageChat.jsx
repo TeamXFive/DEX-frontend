@@ -23,13 +23,15 @@ export function FullPageChat(props) {
                 {messages.map((message) => (
                     <div
                         key={message.timestamp.getTime()}
-                        className={["message-wrapper", message.author].join(
-                            " "
-                        )}
+                        className={[
+                            "message-wrapper",
+                            message.author,
+                            message.type,
+                        ].join(" ")}
                     >
                         <div
                             key={message.timestamp.getTime()}
-                            className="message-body"
+                            className={`message-body`}
                         >
                             {message.type === "pdf" ? (
                                 <object

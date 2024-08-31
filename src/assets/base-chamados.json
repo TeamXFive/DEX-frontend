@@ -17,7 +17,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Lentidão sistema",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -38,7 +39,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Lentidão sistema",
-        "Comentários Visiveis ": "Somente na minha maquina",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Somente na minha maquina",
         "Resolução": "Solução aplicada Reinciado sistema operacional local "
     },
     {
@@ -59,7 +61,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Lentidão sistema",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -80,7 +83,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Lentidão sistema",
-        "Comentários Visiveis ": "Somente na minha maquina",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Somente na minha maquina",
         "Resolução": "Solução aplicada Reinciado sistema operacional local "
     },
     {
@@ -101,7 +105,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Impressora Não Imprime",
-        "Comentários Visiveis ": "Sim, somente em minha maquina não imprime ",
+        "Comentários Visiveis 1": "Impressora esta ligada?",
+        "Comentários Visiveis 2": "Sim, somente em minha maquina não imprime ",
         "Resolução": "Realizado instalção driver impressora."
     },
     {
@@ -122,7 +127,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Sistema não abre ",
-        "Comentários Visiveis ": "Somente na minha maquina",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Somente na minha maquina",
         "Resolução": "Solução aplicada Reinciado sistema operacional local "
     },
     {
@@ -143,7 +149,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Incluir perfil espelho",
-        "Comentários Visiveis ": "Usar perfil espelho XXXXXXX",
+        "Comentários Visiveis 1": "Informar perfil espelho",
+        "Comentários Visiveis 2": "Usar perfil espelho XXXXXXX",
         "Resolução": "Realizado conforme solicitado o espelhamento do perfil "
     },
     {
@@ -164,7 +171,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Troca de pefil",
-        "Comentários Visiveis ": "Usar perfil espelho XXXXXXX",
+        "Comentários Visiveis 1": "Informar perfil espelho",
+        "Comentários Visiveis 2": "Usar perfil espelho XXXXXXX",
         "Resolução": "Realizado conforme solicitado o espelhamento do perfil "
     },
     {
@@ -185,7 +193,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Criar usuário de rede ",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Anexar aval e planilha de acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Usuário de rede criado e enviado os dados ao gestor imediato"
     },
     {
@@ -206,7 +215,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Impressora Não Imprime",
-        "Comentários Visiveis ": "Não, estamos sem energia no local",
+        "Comentários Visiveis 1": "Impressora esta ligada?",
+        "Comentários Visiveis 2": "Não, estamos sem energia no local",
         "Resolução": "Realizado acionamento time de facilites local."
     },
     {
@@ -227,7 +237,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Incluir perfil espelho",
-        "Comentários Visiveis ": "Usar perfil espelho XXXXXXX",
+        "Comentários Visiveis 1": "Informar perfil espelho",
+        "Comentários Visiveis 2": "Usar perfil espelho XXXXXXX",
         "Resolução": "Realizado conforme solicitado o espelhamento do perfil "
     },
     {
@@ -248,7 +259,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Solicitação de Equipamento",
-        "Comentários Visiveis ": "Equipamentos liberados para entrega",
+        "Comentários Visiveis 1": "Informar data e local entrega",
+        "Comentários Visiveis 2": "Equipamentos liberados para entrega",
         "Resolução": "Equipamentos entregue e termos assinados"
     },
     {
@@ -269,7 +281,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Atualização de Acesso",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Anexar aval e planilha de acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Usuário de rede criado e enviado os dados ao gestor imediato"
     },
     {
@@ -290,7 +303,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Suporte Funcional",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -311,7 +325,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Sistema lento ",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -332,7 +347,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Troca de Equipamento",
-        "Comentários Visiveis ": "Equipamentos liberados para entrega",
+        "Comentários Visiveis 1": "Informar data e local entrega",
+        "Comentários Visiveis 2": "Equipamentos liberados para entrega",
         "Resolução": "Equipamentos entregue e termos assinados"
     },
     {
@@ -353,7 +369,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Criar Perfil SAP",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Enviar aval gestor imediato para seguirmos com criação do acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Ralizado a criação do acesso, enviado ao gestor imediato as informações."
     },
     {
@@ -374,7 +391,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Configuração de Equipamento",
-        "Comentários Visiveis ": "informar melhor horário para atendimento ",
+        "Comentários Visiveis 1": "Configurar Smartphone XXXX",
+        "Comentários Visiveis 2": "informar melhor horário para atendimento ",
         "Resolução": "Realizado a configuração do smartphone conforme solicitado"
     },
     {
@@ -395,7 +413,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Devolução de Equipamento",
-        "Comentários Visiveis ": "Realizado entrega dos equipamentos",
+        "Comentários Visiveis 1": "Realizar entrega dos equipamentos ao time de gestão de ativos",
+        "Comentários Visiveis 2": "Realizado entrega dos equipamentos",
         "Resolução": "Equipamentos devolvidos ao estoque local "
     },
     {
@@ -416,7 +435,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Solicito novo ponto de rede",
-        "Comentários Visiveis ": "Aguardando passagem do cabeamento",
+        "Comentários Visiveis 1": "Informar local e aval para criação ponto de rede",
+        "Comentários Visiveis 2": "Aguardando passagem do cabeamento",
         "Resolução": "Pontos criados e ativados"
     },
     {
@@ -437,7 +457,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Criar usuário de rede ",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Anexar aval e planilha de acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Usuário de rede criado e enviado os dados ao gestor imediato"
     },
     {
@@ -458,7 +479,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Prorrogação de Acessos",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Anexar aval e planilha de acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Realizado a prorrogação dos acessos conforme solicitado"
     },
     {
@@ -479,7 +501,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Empréstimo de Equipamento",
-        "Comentários Visiveis ": "Retirar equipamento junto ao time de Field Service",
+        "Comentários Visiveis 1": "Solicito notebook para utilizar ",
+        "Comentários Visiveis 2": "Retirar equipamento junto ao time de Field Service",
         "Resolução": "Equipamento entregue conforme termo assinado e anexado"
     },
     {
@@ -500,7 +523,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Alteração de Perfil",
-        "Comentários Visiveis ": "Usar perfil espelho XXXXXXX",
+        "Comentários Visiveis 1": "Informar perfil espelho",
+        "Comentários Visiveis 2": "Usar perfil espelho XXXXXXX",
         "Resolução": "Realizado conforme solicitado o espelhamento do perfil "
     },
     {
@@ -521,7 +545,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Suporte Acessos",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Anexar aval e planilha de acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Usuário de rede criado e enviado os dados ao gestor imediato"
     },
     {
@@ -542,7 +567,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Configuração de Equipamento",
-        "Comentários Visiveis ": "informar melhor horário para atendimento ",
+        "Comentários Visiveis 1": "Configurar Smartphone XXXX",
+        "Comentários Visiveis 2": "informar melhor horário para atendimento ",
         "Resolução": "Realizado a configuração do smartphone conforme solicitado"
     },
     {
@@ -563,7 +589,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Manutenção de Equipamento Locado",
-        "Comentários Visiveis ": "Trocar carcaça ",
+        "Comentários Visiveis 1": "Equipamento danificado",
+        "Comentários Visiveis 2": "Trocar carcaça ",
         "Resolução": "Realizado a troca da carcaça "
     },
     {
@@ -584,7 +611,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Reset/Desbloqueio de Senha",
-        "Comentários Visiveis ": "Informar os dados abaixo",
+        "Comentários Visiveis 1": "Não consigo logar em minha maquina",
+        "Comentários Visiveis 2": "Informar os dados abaixo",
         "Resolução": "Realizado desbloqueio da senha de rede"
     },
     {
@@ -605,7 +633,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Troca de Acessos",
-        "Comentários Visiveis ": "Usar perfil espelho XXXXXXX",
+        "Comentários Visiveis 1": "Informar perfil espelho",
+        "Comentários Visiveis 2": "Usar perfil espelho XXXXXXX",
         "Resolução": "Realizado conforme solicitado o espelhamento do perfil "
     },
     {
@@ -626,7 +655,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -647,7 +677,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Atualização de Acesso",
-        "Comentários Visiveis ": "Por favor liberar acesso a pasta XXXXXX",
+        "Comentários Visiveis 1": "Informar acesso a ser liberado ",
+        "Comentários Visiveis 2": "Por favor liberar acesso a pasta XXXXXX",
         "Resolução": "Acesso liberado de leitura na pasta XXXXXXX"
     },
     {
@@ -668,7 +699,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -689,7 +721,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Item de Configuração",
-        "Comentários Visiveis ": "Planilha enviada com informações solicitadas",
+        "Comentários Visiveis 1": "Preencher planilha em anexo para criação das Ics ",
+        "Comentários Visiveis 2": "Planilha enviada com informações solicitadas",
         "Resolução": "Raealizado a criação das Ics solicitadas."
     },
     {
@@ -710,7 +743,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Revogação de Acesso",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Anexar aval e planilha de acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Realizado a revogação dos acessos conforme solicitado"
     },
     {
@@ -731,7 +765,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Liberação de Acesso",
-        "Comentários Visiveis ": "Realizado envio das informações solicitadas",
+        "Comentários Visiveis 1": "Anexar aval e planilha de acesso ",
+        "Comentários Visiveis 2": "Realizado envio das informações solicitadas",
         "Resolução": "Usuário de rede criado e enviado os dados ao gestor imediato"
     },
     {
@@ -752,7 +787,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Solicitação de Equipamento",
-        "Comentários Visiveis ": "Equipamentos liberados para entrega",
+        "Comentários Visiveis 1": "Informar data e local entrega",
+        "Comentários Visiveis 2": "Equipamentos liberados para entrega",
         "Resolução": "Equipamentos entregue e termos assinados"
     },
     {
@@ -773,7 +809,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Solicito novo ponto de rede",
-        "Comentários Visiveis ": "Aguardando passagem do cabeamento",
+        "Comentários Visiveis 1": "Informar local e aval para criação ponto de rede",
+        "Comentários Visiveis 2": "Aguardando passagem do cabeamento",
         "Resolução": "Pontos criados e ativados"
     },
     {
@@ -794,7 +831,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Solicito novo ponto de rede",
-        "Comentários Visiveis ": "Aguardando passagem do cabeamento",
+        "Comentários Visiveis 1": "Informar local e aval para criação ponto de rede",
+        "Comentários Visiveis 2": "Aguardando passagem do cabeamento",
         "Resolução": "Pontos criados e ativados"
     },
     {
@@ -815,7 +853,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Controle de Acesso e Relógio de Ponto",
-        "Comentários Visiveis ": "Por favor informar local ",
+        "Comentários Visiveis 1": "Porta lenta ao abrir",
+        "Comentários Visiveis 2": "Por favor informar local ",
         "Resolução": "Realizado restart do serviço local "
     },
     {
@@ -836,7 +875,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Controle de Acesso e Relógio de Ponto",
-        "Comentários Visiveis ": "Por favor informar local ",
+        "Comentários Visiveis 1": "Porta lenta ao abrir",
+        "Comentários Visiveis 2": "Por favor informar local ",
         "Resolução": "Realizado restart do serviço local "
     },
     {
@@ -857,7 +897,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Fábrica 1",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Somente na minha maquina",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Somente na minha maquina",
         "Resolução": "Solução aplicada Reinciado sistema operacional local "
     },
     {
@@ -878,7 +919,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Somente na minha maquina",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Somente na minha maquina",
         "Resolução": "Solução aplicada Reinciado sistema operacional local "
     },
     {
@@ -899,7 +941,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Somente na minha maquina",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Somente na minha maquina",
         "Resolução": "Solução aplicada Reinciado sistema operacional local "
     },
     {
@@ -920,7 +963,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Escritório central",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -941,7 +985,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -962,7 +1007,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Sistema lento",
-        "Comentários Visiveis ": "Em todo departamento",
+        "Comentários Visiveis 1": "Somente em sua maquina ?",
+        "Comentários Visiveis 2": "Em todo departamento",
         "Resolução": "Solução aplicada Reinciado serviço database"
     },
     {
@@ -983,7 +1029,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Suporte Impressoras",
-        "Comentários Visiveis ": "informar local da impressora?",
+        "Comentários Visiveis 1": "Papel atolado",
+        "Comentários Visiveis 2": "informar local da impressora?",
         "Resolução": "Realizado a retirada dos papeis atolados"
     },
     {
@@ -1004,7 +1051,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Configuração de Equipamento",
-        "Comentários Visiveis ": "informar melhor horário para atendimento ",
+        "Comentários Visiveis 1": "Configurar Smartphone XXXX",
+        "Comentários Visiveis 2": "informar melhor horário para atendimento ",
         "Resolução": "Realizado a configuração do smartphone conforme solicitado"
     },
     {
@@ -1025,7 +1073,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Transferência de Equipamento",
-        "Comentários Visiveis ": "Informação anxeada conforme solicitado",
+        "Comentários Visiveis 1": "Informar numero da nota de entrada",
+        "Comentários Visiveis 2": "Informação anxeada conforme solicitado",
         "Resolução": "Nota de saida anexada e enviada para seguir com transferencia"
     },
     {
@@ -1046,7 +1095,8 @@
         "Solicitante Tarefa": "ADM Sistemas",
         "Local": "Centro de Distribuição",
         "Descrição": "Roaming Internacional",
-        "Comentários Visiveis ": "Data informadas conforme solicitado",
+        "Comentários Visiveis 1": "Informar data para ativação ",
+        "Comentários Visiveis 2": "Data informadas conforme solicitado",
         "Resolução": "Ativação do Roaming Internacional concluida conforme solicitado"
     }
 ]

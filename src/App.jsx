@@ -89,8 +89,6 @@ export function App() {
                         <Route path="/account" element={<Account />} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
-
-                    <Chat type="widget" />
                 </div>
             </React.Fragment>
         </div>
