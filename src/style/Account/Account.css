@@ -121,3 +121,29 @@
     color: white;
     background-color: rgba(var(--medium-green-rgb), 0.5);
 }
+
+@media screen and (max-width: 768px) {
+    .account-page-container {
+        flex-direction: column;
+    }
+    .sidebar-container{
+        height: auto;
+        width: 100%;
+    }
+    .sidebar {
+        height: auto;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    .sidebar-item {
+        width: auto;
+        padding: 10px 20px;
+    }
+    .window-account {
+        width: 100%;
+    }
+}
