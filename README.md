@@ -4,7 +4,7 @@ Challenge Softtek
 
 ### Acesse aqui o live demo
 
-[https://mercury-mocha-chi.vercel.app/](https://mercury-mocha-chi.vercel.app/)
+[https://dex.rweb.site](https://dex.rweb.site)
 
 Documentação:
 
