@@ -1,85 +1,129 @@
-.chat-wrapper:not(.widget) {
+.container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     height: calc(90vh - 2rem);
     margin: auto;
 
-    & .chat-body {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        flex: 1;
+    .chat-history {
+        background-color: #2c2c2c;
+        color: white;
         padding: 1rem;
-        margin-bottom: 1rem;
+        max-width: 20%;
         border-radius: 0.5rem;
-        overflow-y: auto;
-        background-color: #2c2c2c;
-    }
+        text-align: center;
 
-    & input.form-control {
-        background-color: #2c2c2c;
-        color: #fff;
-
-        &::placeholder {
-            color: rgba(255, 255, 255, 0.75);
+        .btn {
+            margin: 1rem 0;
         }
 
-        &::-ms-input-placeholder {
-            color: rgba(255, 255, 255, 0.75);
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            height: 100%;
+            text-align: left;
+
+            li {
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
+                border-radius: 0.5rem;
+                background-color: #1d1d1d;
+                cursor: pointer;
+                max-height: 4rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-wrap: wrap;
+
+                &:hover {
+                    background-color: #131313;
+                }
+            }
         }
     }
 
-    & .message-wrapper {
+    .chat-wrapper:not(.widget) {
         display: flex;
         flex-direction: column;
-        width: auto;
-        margin-bottom: 0.75rem;
-        align-self: flex-end;
-        max-width: 75%;
+        width: 100%;
 
-        &.pdf {
-            min-width: 100%;
-
-            & .message-body {
-                min-height: 400px;
-            }
+        & .chat-body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow-y: auto;
+            background-color: #2c2c2c;
         }
 
-        & .message-body {
-            padding: 0.75rem;
-            margin-bottom: 0.25rem;
-            border-radius: 0.25rem;
-
-            background-color: #1d1d1d;
+        & input.form-control {
+            background-color: #2c2c2c;
             color: #fff;
-            box-shadow: 0px 8px 5px 0.1rem rgba(0, 0, 0, 0.15);
 
-            & span {
-                white-space: pre-line;
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.75);
+            }
+
+            &::-ms-input-placeholder {
+                color: rgba(255, 255, 255, 0.75);
             }
         }
 
-        &.ia {
-            align-self: flex-start;
+        & .message-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: auto;
+            margin-bottom: 0.75rem;
+            align-self: flex-end;
+            max-width: 75%;
+
+            &.pdf {
+                min-width: 100%;
+
+                & .message-body {
+                    min-height: 400px;
+                }
+            }
 
             & .message-body {
-                color: #fff;
-                background-color: rgba(113, 59, 136, 1);
-                background: linear-gradient(
-                    90deg,
-                    rgba(113, 59, 136, 1) 0%,
-                    rgba(167, 46, 87, 1) 50%,
-                    rgba(213, 25, 47, 1) 100%
-                );
-            }
-        }
+                padding: 0.75rem;
+                margin-bottom: 0.25rem;
+                border-radius: 0.5rem;
 
-        & .secondary-data {
-            align-self: flex-end;
-            font-size: 70%;
-            color: #efefef;
+                background-color: #1d1d1d;
+                color: #fff;
+                box-shadow: 0px 8px 5px 0.1rem rgba(0, 0, 0, 0.15);
+
+                & span {
+                    white-space: pre-line;
+                }
+            }
+
+            &.ia {
+                align-self: flex-start;
+
+                & .message-body {
+                    color: #fff;
+                    background-color: rgba(113, 59, 136, 1);
+                    background: linear-gradient(
+                        90deg,
+                        rgba(113, 59, 136, 1) 0%,
+                        rgba(167, 46, 87, 1) 50%,
+                        rgba(213, 25, 47, 1) 100%
+                    );
+                }
+            }
+
+            & .secondary-data {
+                align-self: flex-end;
+                font-size: 70%;
+                color: #efefef;
+            }
         }
     }
 }
