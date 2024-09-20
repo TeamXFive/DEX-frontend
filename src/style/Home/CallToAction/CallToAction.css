@@ -1,0 +1,41 @@
+.call-to-action {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fig-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    
+}
+
+#dex-fig {
+    width: 50%;
+}
+
+.section-home-text {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 30px;
+    text-align: justify;
+
+        @media (max-width: 720px) {
+        font-size: 15px;
+    }
+}
+
+.home-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 50%;
+    color: white;
+}
