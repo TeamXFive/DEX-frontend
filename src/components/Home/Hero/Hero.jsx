@@ -5,7 +5,7 @@ import ConhecaDex from '../ConhecaDex/ConhecaDex.jsx';
 
 function Hero() {
     return (
-        <div className= "hero ">
+        <div className="hero">
             <Background/>
             <ConhecaDex/>
             <Videoslider/>
