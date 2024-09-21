@@ -124,12 +124,10 @@ function About() {
                         />
                     </div>
                 </section>
-                <section>
                 <span className="divider-technologies"></span>
-                <div className="hero">
+                <div className="">
                     <Videoslider/>
                 </div>
-                </section>
                 <section id='technologies' className="technologies">
                     <span className="divider-technologies"></span>
                     <div className="technologies-introduction">

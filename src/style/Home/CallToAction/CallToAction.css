@@ -1,0 +1,48 @@
+.call-to-action {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fig-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    
+}
+
+#dex-fig {
+    width: 50%;
+    border-radius: 20%;
+}
+
+.section-home-text {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    align-items: flex-center;
+    justify-content: center;
+    font-size: 30px;
+    text-align: justify;
+
+    @media (max-width: 720px) {
+        font-size: 15px;
+    }
+}
+
+.home-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 50%;
+    color: white;
+}
+
+.call-button {
+    margin: 10px;
+}
