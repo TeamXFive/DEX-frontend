@@ -5,9 +5,7 @@ import CallToAction from '../CallToAction/CallToAction.jsx';
 function Hero() {
     return (
         <div className= "hero ">
-
             <CallToAction/>
-            
         </div>
     )
 

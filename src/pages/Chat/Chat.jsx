@@ -7,7 +7,7 @@ import useAuthenticationContext from "../../hook/Authentication/useAuthenticatio
 import Chamados from "../../assets/base-chamados.json";
 import { handleOpenAiRequest } from "./openai";
 
-const useRealApi = false;
+const useRealApi = true;
 
 export function getRandomChatId() {
     const firstSlice = Math.floor(Math.random() * 1000000)
