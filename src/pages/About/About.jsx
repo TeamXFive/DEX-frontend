@@ -14,7 +14,7 @@ import Vite from '../../assets/icons/vite.svg?react'
 import VsCode from '../../assets/icons/vscode.svg?react'
 import Node from '../../assets/icons/Node.svg?react'
 import OpenIA from '../../assets/icons/openai.svg?react'
-import Hero from "../../components/Home/Hero/Hero";
+import Videoslider from "../../components/Home/Videoslider/Videoslider";
 
 
 
@@ -127,7 +127,7 @@ function About() {
                 <section>
                 <span className="divider-technologies"></span>
                 <div className="hero">
-                    <Hero />
+                    <Videoslider/>
                 </div>
                 </section>
                 <section id='technologies' className="technologies">
