@@ -1,5 +1,6 @@
 import "../../../../public/images/dex-androide.png"
 import "../../../style/Home/CallToAction/CallToAction.css"
+import CallToActionButton from '../CallToActionButton/CallToActionButton.jsx';
 
 function CallToAction() {
     return(
@@ -10,7 +11,10 @@ function CallToAction() {
 
             <section className="section-home-text">
                 <div className="home-text">
-                    DEX é um agente de suporte baseado em IA generativa e especializado em auxiliar os times de suporte a encontrarem soluções precisas de forma rapida e eficiente
+                    DEX é um agente de IA generativa especializado em auxiliar os times de suporte a encontrarem soluções precisas de forma rapida e eficiente.
+                    <div className="call-button">
+                        <CallToActionButton/>
+                    </div>
                 </div>
             </section>
         </article>
