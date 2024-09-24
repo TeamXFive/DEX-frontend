@@ -1,24 +1,20 @@
 import TeamCarousel from "../../components/TeamCarousel/TeamCarousel";
 import "../../style/About/About.css";
 
-import Draw from  '../../assets/icons/svg-technologies.svg?react'
-import Html from '../../assets/icons/html.svg?react'
-import Css from '../../assets/icons/css.svg?react'
-import ReactJs from '../../assets/icons/react.svg?react'
-import Js from '../../assets/icons/js.svg?react'
-import Git from '../../assets/icons/git.svg?react'
-import GitHub from '../../assets/icons/github.svg?react'
-import Npm from '../../assets/icons/npm.svg?react'
-import Swiper from '../../assets/icons/swiper.svg?react'
-import Vite from '../../assets/icons/vite.svg?react'
-import VsCode from '../../assets/icons/vscode.svg?react'
-import Node from '../../assets/icons/Node.svg?react'
-import OpenIA from '../../assets/icons/openai.svg?react'
+import { ReactComponent as Draw } from '../../assets/icons/svg-technologies.svg';
+import { ReactComponent as Html } from '../../assets/icons/html.svg';
+import { ReactComponent as Css } from '../../assets/icons/css.svg';
+import { ReactComponent as ReactJs } from '../../assets/icons/react.svg';
+import { ReactComponent as Js } from '../../assets/icons/js.svg';
+import { ReactComponent as Git } from '../../assets/icons/git.svg';
+import { ReactComponent as GitHub } from '../../assets/icons/github.svg';
+import { ReactComponent as Npm } from '../../assets/icons/npm.svg';
+import { ReactComponent as Swiper } from '../../assets/icons/swiper.svg';
+import { ReactComponent as Vite } from '../../assets/icons/vite.svg';
+import { ReactComponent as VsCode } from '../../assets/icons/vscode.svg';
+import { ReactComponent as Node } from '../../assets/icons/Node.svg';
+import { ReactComponent as OpenIA } from '../../assets/icons/openai.svg';
 import Videoslider from "../../components/Home/Videoslider/Videoslider";
-
-
-
-
 
 const technologies =[{
     icon: <Html/>,
