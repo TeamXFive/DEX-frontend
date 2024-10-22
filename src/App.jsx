@@ -16,6 +16,7 @@ import Header from "./layouts/Header/Header.jsx";
 import AuthenticationAlerts from "./components/alertMessages/AuthenticationAlerts/AuthenticationAlerts.jsx";
 import Account from "./pages/Account/Account.jsx";
 import About from "./pages/About/About.jsx";
+import Knowledge from "./pages/Knowledge/Knowledge.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
@@ -79,15 +80,16 @@ export function App() {
 
                 <div className="page-content">
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/sobre" element={<About />} />
-                        <Route path="/chat" element={<Chat />} />
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/sobre" element={<About/>}/>
+                        <Route path="/chat" element={<Chat/>}/>
+                        <Route path="/knowledge" element={<Knowledge />}/>
                         <Route
                             path="/authentication"
-                            element={<Authentication />}
+                            element={<Authentication/>}
                         />
-                        <Route path="/account" element={<Account />} />
-                        <Route path="*" element={<Navigate to="/" />} />
+                        <Route path="/account" element={<Account/>}/>
+                        <Route path="*" element={<Navigate to="/"/>}/>
                     </Routes>
                 </div>
             </React.Fragment>
