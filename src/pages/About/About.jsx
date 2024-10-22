@@ -13,7 +13,7 @@ import Swiper from '../../assets/icons/swiper.svg?react'
 import Vite from '../../assets/icons/vite.svg?react'
 import VsCode from '../../assets/icons/vscode.svg?react'
 import Node from '../../assets/icons/Node.svg?react'
-import OpenIA from '../../assets/icons/openai.svg?react'
+import OpenIA from '../../assets/icons/OpenAI.svg?react'
 import Videoslider from "../../components/Home/Videoslider/Videoslider";
 
 

@@ -1,0 +1,32 @@
+.knowledge-container {
+    min-height: calc(92vh - 30px);
+    height: 100%;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.knowledge-header {
+    min-height: 20vh;
+    height: 27.5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    border: solid 1px var(--dark-gray);
+    border-radius: 1em;
+    background-color: var(--black-gray);
+}
+.knowledge-documents {
+    min-height: calc(70vh - 30px - 7.5vh);
+    height: 70%;
+    width: 100%;
+    border: solid 1px var(--dark-gray);
+    border-radius: 1em;
+    background-color: var(--black-gray);
+}
