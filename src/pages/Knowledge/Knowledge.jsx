@@ -1,8 +1,17 @@
 import '../../style/Knowledge/Knowledge.css';
 import {useRef, useState} from "react";
+import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
 
 function Knowledge() {
 
+    const {
+        fileName, setFileName,
+        isFileUploadErrorAlertVisible, setIsFileUploadErrorAlertVisible,
+        fileErrorUploadMessage, setFileUploadErrorMessage,
+        isFileUploadSuccessAlertVisible, setIsFileUploadSuccessAlertVisible,
+        fileUploadSuccessMessage, setFileUploadSuccessMessage
+    } = useKnowledgeContext();
+    
     const [files, setFiles] = useState([]); // State to hold selected valid files
     const [errors, setErrors] = useState([]); // State to hold validation error messages
     const [isDragging, setIsDragging] = useState(false); // State for drag status
@@ -56,16 +65,23 @@ function Knowledge() {
         incomingFiles.forEach((file) => {
             // Validate file type
             if (!allowedFileTypes.includes(file.type)) {
-                errorMessages.push(`${file.name} is not a supported file type.`);
+                setFileName(file.name);
+                setIsFileUploadErrorAlertVisible(true);
+                setFileUploadErrorMessage(`${file.name} is not a supported file type.`);
             }
 
             // Validate file size
             if (file.size > maxFileSize) {
-                errorMessages.push(`${file.name} exceeds the 5MB size limit.`);
+                setFileName(file.name);
+                setIsFileUploadErrorAlertVisible(true);
+                setFileUploadErrorMessage(`${file.name} exceeds the 5MB size limit.`);
             }
 
             // Add to valid files if it passes validation
             if (allowedFileTypes.includes(file.type) && file.size <= maxFileSize) {
+                setFileName(file.name);
+                setIsFileUploadSuccessAlertVisible(true);
+                setFileUploadSuccessMessage(`${file.name} is ready for upload.`);
                 validFiles.push(file);
             }
         });
