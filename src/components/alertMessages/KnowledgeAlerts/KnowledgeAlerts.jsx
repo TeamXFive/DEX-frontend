@@ -48,12 +48,6 @@ function KnowledgeAlerts() {
             <span className={`knowledge-card-success-alert glass-effect ${isFileUploadSuccessAlertVisible && "show-card-alert"}`}>
                 {fileUploadSuccessMessage}
             </span>
-
-            {/*<div className={`tester-knowledge-card-error-alert glass-effect ${isTesterAlertVisible && "tester-show-card-alert"}`}>*/}
-            {/*    <span className={`tester-card-title`}><b>AVISO PARA TESTER</b></span>*/}
-            {/*    <span className={`tester-card-email`}><b>Email</b>: tester</span>*/}
-            {/*    <span className={`tester-card-password`}><b>Senha</b>: tester</span>*/}
-            {/*</div>*/}
         </section>
     );
 }
