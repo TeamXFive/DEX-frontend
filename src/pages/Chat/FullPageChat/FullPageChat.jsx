@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useLocation, useNavigate } from "react-router-dom";
 import "../../../style/Chat/FullPageChat/FullPageChat.css";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { getRandomChatId } from "../Chat";
+import { getRandomChatId } from "../../../utils";
 
 export function FullPageChat(props) {
-    const { messages, onNewMessage, isIaTyping, chatHistory } = props;
+    const { messages, onNewMessage, isIaTyping, chatHistory, chatId } = props;
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -43,7 +43,7 @@ export function FullPageChat(props) {
                                 navigate(`/chat?chatId=${chatId}`);
                             }}
                         >
-                            {history[0]?.content || "-"}
+                            {history?.messages[0]?.content || "-"}
                         </li>
                     ))}
                 </ul>
@@ -52,17 +52,14 @@ export function FullPageChat(props) {
                 <div ref={chatBodyRef} className="chat-body">
                     {messages.map((message) => (
                         <div
-                            key={message.timestamp.getTime()}
+                            key={message.timestamp}
                             className={[
                                 "message-wrapper",
                                 message.author,
                                 message.type,
                             ].join(" ")}
                         >
-                            <div
-                                key={message.timestamp.getTime()}
-                                className={`message-body`}
-                            >
+                            <div className={`message-body`}>
                                 {message.type === "pdf" ? (
                                     <object
                                         data="/documents/mercury-presentation.pdf"
@@ -84,10 +81,13 @@ export function FullPageChat(props) {
                                 )}
                             </div>
                             <small className="secondary-data">
-                                {message.timestamp.toLocaleDateString("pt-BR", {
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                })}
+                                {new Date(message.timestamp).toLocaleDateString(
+                                    "pt-BR",
+                                    {
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    }
+                                )}
                             </small>
                         </div>
                     ))}
@@ -99,46 +99,65 @@ export function FullPageChat(props) {
                         </div>
                     )}
                 </div>
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        if (!e.target.message.value?.trim() || isIaTyping) {
-                            return;
-                        }
+                {chatHistory[chatId]?.status !== "closed" ? (
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            if (!e.target.message.value?.trim() || isIaTyping) {
+                                return;
+                            }
 
-                        onNewMessage((prev) => [
-                            ...prev,
-                            {
-                                author: "user",
-                                content: messageInput,
-                                timestamp: new Date(),
-                            },
-                        ]);
-                        setMessageInput("");
-                    }}
-                >
-                    <div className="mb-3 d-flex">
-                        <input
-                            type="text"
-                            name="message"
-                            className={`form-control me-2  ${
-                                isIaTyping && "disabled"
-                            }`}
-                            placeholder="Escreva aqui sua dúvida"
-                            value={messageInput}
-                            onChange={(e) => setMessageInput(e.target.value)}
-                        />
-                        <button
-                            disabled={isIaTyping}
-                            type="submit"
-                            className={`btn btn-primary ${
-                                isIaTyping && "disabled"
-                            }`}
-                        >
-                            Enviar
-                        </button>
-                    </div>
-                </form>
+                            onNewMessage((prev) => [
+                                ...prev,
+                                {
+                                    author: "user",
+                                    content: messageInput,
+                                    timestamp: new Date(),
+                                },
+                            ]);
+                            setMessageInput("");
+                        }}
+                    >
+                        <div className="mb-3 d-flex">
+                            {messages.at(-1)?.type !== "question" ? (
+                                <input
+                                    type="text"
+                                    name="message"
+                                    className={`form-control me-2  ${
+                                        isIaTyping && "disabled"
+                                    }`}
+                                    placeholder="Escreva aqui sua dúvida"
+                                    value={messageInput}
+                                    onChange={(e) =>
+                                        setMessageInput(e.target.value)
+                                    }
+                                />
+                            ) : (
+                                <div className="question-options">
+                                    {messages.at(-1).options?.map((option) => (
+                                        <button
+                                            key={option.label}
+                                            onClick={option.action}
+                                        >
+                                            {option.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                            <button
+                                disabled={isIaTyping}
+                                type="submit"
+                                className={`btn btn-primary ${
+                                    isIaTyping && "disabled"
+                                }`}
+                            >
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                ) : (
+                    <></>
+                )}
             </div>
         </div>
     );

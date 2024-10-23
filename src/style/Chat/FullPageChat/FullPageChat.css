@@ -74,6 +74,30 @@
             }
         }
 
+        & .question-options {
+            display: flex;
+            width: 100%;
+            margin-right: 0.75rem;
+
+            & button {
+                flex: 1;
+                border: 1px solid #656565;
+                max-width: 200px;
+
+                &:hover {
+                    background-color: #131313;
+                }
+
+                &:first-child {
+                    margin-left: auto;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 0.75rem;
+                }
+            }
+        }
+
         & .message-wrapper {
             display: flex;
             flex-direction: column;
