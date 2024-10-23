@@ -1,5 +1,5 @@
 import '../../style/Knowledge/Knowledge.css';
-import {useEffect, useRef, useState} from "react";
+import { useRef, useState } from "react";
 import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
 
 function Knowledge() {
@@ -13,35 +13,38 @@ function Knowledge() {
         files, setFiles
     } = useKnowledgeContext();
     
-    const [isDragging, setIsDragging] = useState(false); // State for drag status
-    const fileInputRef = useRef(null); // Ref to access file input element
+    const [isDragging, setIsDragging] = useState(false);
+    const fileInputRef = useRef(null);
 
     // Allowed file types and max size (5MB for this example)
-    const allowedFileTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
-    const maxFileSize = 5 * 1024 * 1024; // 5MB
+    const allowedFileTypes = [
+        "text/plain",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.wordprocessing",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+    const maxFileSize = 512 * 1024 * 1024; // 512MB
 
-    // Handle drag enter
     const handleDragEnter = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(true);
     };
 
-    // Handle drag leave
     const handleDragLeave = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(false);
     };
 
-    // Handle drag over
     const handleDragOver = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(true);
     };
 
-    // Handle drop event
     const handleDrop = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -49,14 +52,12 @@ function Knowledge() {
         const droppedFiles = Array.from(e.dataTransfer.files); // Convert FileList to array
         validateAndSetFiles(droppedFiles);
     };
-
-    // Handle file input change (for manual selection)
+    
     const handleFileSelect = (e) => {
         const selectedFiles = Array.from(e.target.files); // Convert FileList to array
         validateAndSetFiles(selectedFiles);
     };
-
-    // File validation function
+    
     const validateAndSetFiles = (incomingFiles) => {
         const validFiles = [];
 
@@ -84,7 +85,7 @@ function Knowledge() {
             }
         });
 
-        setFiles(validFiles); // Set only valid files
+        setFiles(validFiles);
     };
 
     // Handle button click to open file input dialog
@@ -125,6 +126,7 @@ function Knowledge() {
                                 ref={fileInputRef}
                                 onChange={handleFileSelect}
                                 style={{ display: 'none' }}
+                                accept=".txt, .doc, .docx, .xls, .xlsx"
                             />
                         </div>
                     </div>
