@@ -498,6 +498,13 @@ function Chat({ type }) {
     ]);
 
     useEffect(() => {
+        // Only ask for feedback if the user has interacted with the chat once
+        if (
+            messages.filter((message) => message.author === "user").length === 0
+        ) {
+            return;
+        }
+
         const inactivityTimeInMs = 1000 * 60 * 3;
 
         const inactivityTimer = setTimeout(() => {
