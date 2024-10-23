@@ -1,6 +1,8 @@
 import '../../style/Knowledge/Knowledge.css';
 import {useEffect, useRef, useState} from "react";
 import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
+import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
+import KnowledgeDocument from "../../components/KnowledgeDocument/KnowledgeDocument.jsx";
 
 function Knowledge() {
 
@@ -12,6 +14,10 @@ function Knowledge() {
         setFileUploadSuccessMessage,
         files, setFiles
     } = useKnowledgeContext();
+    
+    const {
+        authedUser
+    } = useAuthenticationContext();
     
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef(null);
@@ -118,8 +124,8 @@ function Knowledge() {
     }
 
     useEffect(() => {
-        if (location.pathname === "/knowledge") {
-            getFiles().then(r => console.log(r));
+        if (location.pathname === "/knowledge" && authedUser) {
+            getFiles().then(() => {});
         }
     }, [location.pathname]);
 
@@ -168,12 +174,15 @@ function Knowledge() {
                 </section>
                 
                 <section className={`knowledge-documents`}>
-                    <div className={`knowledge-documents-header`}>Stored Documents</div>
+                    <div className={`knowledge-documents-header`}>
+                        <h1>Stored Documents</h1>
+                        <span>These imports will appear as stored after they are uploaded</span>
+                    </div>
                     
                     <div className={`knowledge-documents-list-container`}>
                         <ul className={`knowledge-documents-list`}>
                             {files.map((file, index) => (
-                                <li className={`knowledge-documents-item`} key={index}>{file.filename}</li>
+                                <KnowledgeDocument file={file} key={index} />
                             ))}
                         </ul>
                     </div>

@@ -6,7 +6,7 @@
     margin: auto;
 
     .chat-history {
-        background-color: #2c2c2c;
+        background-color: var(--darker-gray);
         color: white;
         padding: 1rem;
         max-width: 20%;
@@ -58,11 +58,11 @@
             margin-bottom: 1rem;
             border-radius: 0.5rem;
             overflow-y: auto;
-            background-color: #2c2c2c;
+            background-color: var(--darker-gray);
         }
 
         & input.form-control {
-            background-color: #2c2c2c;
+            background-color: var(--darker-gray);
             color: #fff;
 
             &::placeholder {
