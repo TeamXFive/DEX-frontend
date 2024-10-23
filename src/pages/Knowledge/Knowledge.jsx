@@ -93,9 +93,7 @@ function Knowledge() {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
-                    const result = await response.text();
-                    console.log(result);
-                    getFiles();
+                    await getFiles();
                 } catch (error) {
                     console.error('Error uploading file:', error);
                 }
@@ -113,12 +111,17 @@ function Knowledge() {
             }
 
             const result = await response.json();
-            console.log(result);
             setFiles(result)
         } catch (error) {
             console.error('Error retrieving files:', error);
         }
     }
+
+    useEffect(() => {
+        if (location.pathname === "/knowledge") {
+            getFiles().then(r => console.log(r));
+        }
+    }, [location.pathname]);
 
     // Handle button click to open file input dialog
     const openFileDialog = () => {
