@@ -37,7 +37,7 @@ export function App() {
     }, [location.key]);
 
     useEffect(() => {
-        if (location.pathname === "/chat" && !authedUser) {
+        if ((location.pathname === "/chat" || location.pathname === "/knowledge") && !authedUser) {
             setIsSignInVisible(true);
             setIsModalVisible(true);
         }
@@ -49,7 +49,8 @@ export function App() {
 
         if (
             location.pathname === "/chat" ||
-            location.pathname === "/authentication"
+            location.pathname === "/authentication" ||
+            location.pathname === "/knowledge"
         ) {
             setIsShowSignInCloseBtn(false);
         } else {
