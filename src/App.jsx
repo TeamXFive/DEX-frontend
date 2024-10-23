@@ -17,6 +17,7 @@ import AuthenticationAlerts from "./components/alertMessages/AuthenticationAlert
 import Account from "./pages/Account/Account.jsx";
 import About from "./pages/About/About.jsx";
 import Knowledge from "./pages/Knowledge/Knowledge.jsx";
+import KnowledgeAlerts from "./components/alertMessages/KnowledgeAlerts/KnowledgeAlerts.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
@@ -63,6 +64,7 @@ export function App() {
     return (
         <div className="page">
             <AuthenticationAlerts />
+            <KnowledgeAlerts />
 
             <section
                 className={`login-modal-container ${
