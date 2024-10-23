@@ -1,6 +1,5 @@
 .knowledge-container {
-    min-height: calc(92vh - 30px);
-    height: 100%;
+    height: 92vh;
     max-width: 1200px;
     width: 100%;
     display: flex;
@@ -10,12 +9,12 @@
 }
 
 .knowledge-header {
-    min-height: 20vh;
-    height: 27.5%;
+    height: 42.5%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
     border: solid 1px var(--dark-gray);
@@ -23,10 +22,35 @@
     background-color: var(--black-gray);
 }
 .knowledge-documents {
-    min-height: calc(70vh - 30px - 7.5vh);
-    height: 70%;
+    height: 55%;
     width: 100%;
     border: solid 1px var(--dark-gray);
     border-radius: 1em;
     background-color: var(--black-gray);
+}
+
+.knowledge-header-description {
+    height: 25%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.knowledge-drag-drop-container {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.knowledge-dropzone {
+    height: 80%;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
