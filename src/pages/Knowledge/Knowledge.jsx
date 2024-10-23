@@ -1,19 +1,18 @@
 import '../../style/Knowledge/Knowledge.css';
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
 
 function Knowledge() {
 
     const {
-        fileName, setFileName,
-        isFileUploadErrorAlertVisible, setIsFileUploadErrorAlertVisible,
-        fileErrorUploadMessage, setFileUploadErrorMessage,
-        isFileUploadSuccessAlertVisible, setIsFileUploadSuccessAlertVisible,
-        fileUploadSuccessMessage, setFileUploadSuccessMessage
+        setFileAlertName,
+        setIsFileUploadErrorAlertVisible,
+        setFileUploadErrorMessage,
+        setIsFileUploadSuccessAlertVisible,
+        setFileUploadSuccessMessage,
+        files, setFiles
     } = useKnowledgeContext();
     
-    const [files, setFiles] = useState([]); // State to hold selected valid files
-    const [errors, setErrors] = useState([]); // State to hold validation error messages
     const [isDragging, setIsDragging] = useState(false); // State for drag status
     const fileInputRef = useRef(null); // Ref to access file input element
 
@@ -60,26 +59,25 @@ function Knowledge() {
     // File validation function
     const validateAndSetFiles = (incomingFiles) => {
         const validFiles = [];
-        const errorMessages = [];
 
         incomingFiles.forEach((file) => {
             // Validate file type
             if (!allowedFileTypes.includes(file.type)) {
-                setFileName(file.name);
+                setFileAlertName(file.name);
                 setIsFileUploadErrorAlertVisible(true);
                 setFileUploadErrorMessage(`${file.name} is not a supported file type.`);
             }
 
             // Validate file size
             if (file.size > maxFileSize) {
-                setFileName(file.name);
+                setFileAlertName(file.name);
                 setIsFileUploadErrorAlertVisible(true);
                 setFileUploadErrorMessage(`${file.name} exceeds the 5MB size limit.`);
             }
 
             // Add to valid files if it passes validation
             if (allowedFileTypes.includes(file.type) && file.size <= maxFileSize) {
-                setFileName(file.name);
+                setFileAlertName(file.name);
                 setIsFileUploadSuccessAlertVisible(true);
                 setFileUploadSuccessMessage(`${file.name} is ready for upload.`);
                 validFiles.push(file);
@@ -87,37 +85,12 @@ function Knowledge() {
         });
 
         setFiles(validFiles); // Set only valid files
-        setErrors(errorMessages); // Set error messages if any
     };
 
     // Handle button click to open file input dialog
     const openFileDialog = () => {
         fileInputRef.current.click();
     };
-
-    // {/* Error Display */}
-    // {errors.length > 0 && (
-    //     <div style={{ color: 'red', marginTop: '10px' }}>
-    //         <h4>Error(s):</h4>
-    //         <ul>
-    //             {errors.map((error, index) => (
-    //                 <li key={index}>{error}</li>
-    //             ))}
-    //         </ul>
-    //     </div>
-    // )}
-    //
-    // {/* File List Display */}
-    // {files.length > 0 && (
-    //     <div>
-    //         <h4>Files ready for upload:</h4>
-    //         <ul>
-    //             {files.map((file, index) => (
-    //                 <li key={index}>{file.name}</li>
-    //             ))}
-    //         </ul>
-    //     </div>
-    // )}
     
     return (
         <>
@@ -160,9 +133,9 @@ function Knowledge() {
                 <section className={`knowledge-documents`}>
                     <div>Stored Documents</div>
                     <ul>
-                        <li>Document 1</li>
-                        <li>Document 2</li>
-                        <li>Document 3</li>
+                        {files.map((file, index) => (
+                            <li key={index}>{file.name}</li>
+                        ))}
                     </ul>
                 </section>
             </article>

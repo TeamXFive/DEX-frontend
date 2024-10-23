@@ -7,19 +7,21 @@ KnowledgeProvider.propTypes = {
 };
 
 function KnowledgeProvider({ children }) {
-    const [fileName, setFileName] = useState("");
+    const [fileAlertName, setFileAlertName] = useState("");
     const [isFileUploadErrorAlertVisible, setIsFileUploadErrorAlertVisible] = useState(false);
     const [fileUploadErrorMessage, setFileUploadErrorMessage] = useState("");
     const [isFileUploadSuccessAlertVisible, setIsFileUploadSuccessAlertVisible] = useState(false);
     const [fileUploadSuccessMessage, setFileUploadSuccessMessage] = useState("");
+    const [files, setFiles] = useState([]);
     
     return (
         <KnowledgeContext.Provider value={{
-            fileName, setFileName,
+            fileAlertName, setFileAlertName,
             isFileUploadErrorAlertVisible, setIsFileUploadErrorAlertVisible,
             fileUploadErrorMessage, setFileUploadErrorMessage,
             isFileUploadSuccessAlertVisible, setIsFileUploadSuccessAlertVisible,
-            fileUploadSuccessMessage, setFileUploadSuccessMessage
+            fileUploadSuccessMessage, setFileUploadSuccessMessage,
+            files, setFiles
         }}>
             {children}
         </KnowledgeContext.Provider>
