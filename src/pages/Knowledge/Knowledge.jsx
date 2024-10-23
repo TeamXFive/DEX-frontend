@@ -1,5 +1,5 @@
 import '../../style/Knowledge/Knowledge.css';
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
 
 function Knowledge() {
@@ -59,8 +59,6 @@ function Knowledge() {
     };
     
     const validateAndSetFiles = (incomingFiles) => {
-        const validFiles = [];
-
         incomingFiles.forEach(async (file) => {
             // Validate file type
             if (!allowedFileTypes.includes(file.type)) {
@@ -84,18 +82,43 @@ function Knowledge() {
 
                 const formData = new FormData();
                 formData.append('file', file);
+                
+                try {
+                    const response = await fetch('http://localhost:3000/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
 
-                const response = await fetch('http://localhost:3000/upload', {
-                    method: 'POST',
-                    body: formData
-                });
-                validFiles.push(file);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
 
+                    const result = await response.text();
+                    console.log(result);
+                    getFiles();
+                } catch (error) {
+                    console.error('Error uploading file:', error);
+                }
             }
         });
-
-        setFiles(validFiles);
     };
+
+    const getFiles = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/file_retrieval', {
+                method: 'POST'
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log(result);
+            setFiles(result)
+        } catch (error) {
+            console.error('Error retrieving files:', error);
+        }
+    }
 
     // Handle button click to open file input dialog
     const openFileDialog = () => {
@@ -142,12 +165,15 @@ function Knowledge() {
                 </section>
                 
                 <section className={`knowledge-documents`}>
-                    <div>Stored Documents</div>
-                    <ul>
-                        {files.map((file, index) => (
-                            <li key={index}>{file.name}</li>
-                        ))}
-                    </ul>
+                    <div className={`knowledge-documents-header`}>Stored Documents</div>
+                    
+                    <div className={`knowledge-documents-list-container`}>
+                        <ul className={`knowledge-documents-list`}>
+                            {files.map((file, index) => (
+                                <li className={`knowledge-documents-item`} key={index}>{file.filename}</li>
+                            ))}
+                        </ul>
+                    </div>
                 </section>
             </article>
         </>
