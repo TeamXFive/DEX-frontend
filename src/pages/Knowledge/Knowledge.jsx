@@ -88,9 +88,6 @@ function Knowledge() {
                     method: 'POST',
                     body: formData
                 });
-                const result = await response.text();
-                console.log(result);
-
                 validFiles.push(file);
 
             }
