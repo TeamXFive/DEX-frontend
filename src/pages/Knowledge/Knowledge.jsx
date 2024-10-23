@@ -62,7 +62,7 @@ function Knowledge() {
         const validFiles = [];
         const errorMessages = [];
 
-        incomingFiles.forEach((file) => {
+        incomingFiles.forEach(async (file) => {
             // Validate file type
             if (!allowedFileTypes.includes(file.type)) {
                 setFileName(file.name);
@@ -82,7 +82,19 @@ function Knowledge() {
                 setFileName(file.name);
                 setIsFileUploadSuccessAlertVisible(true);
                 setFileUploadSuccessMessage(`${file.name} is ready for upload.`);
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                const response = await fetch('http://localhost:3000/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.text();
+                console.log(result);
+
                 validFiles.push(file);
+
             }
         });
 
