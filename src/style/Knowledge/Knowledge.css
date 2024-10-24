@@ -158,10 +158,10 @@
 
 @media screen and (max-width: 1300px) {
     .knowledge-container h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
     .knowledge-container span {
-        font-size: 12px;
+        font-size: 14px;
     }
     .knowledge-container {
         flex-direction: column;
@@ -190,9 +190,9 @@
     }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 900px) {
     .knowledge-container h1 {
-        font-size: 18px;
+        font-size: 20px;
     }
     .knowledge-container span {
         font-size: 12px;
