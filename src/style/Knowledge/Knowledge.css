@@ -44,7 +44,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 2.5%;
-    border-bottom: solid 1px var(--dex-red);
+    border-bottom: solid 1px var(--white-gray);
 }
 .knowledge-upload-description span {
     text-align: center;
@@ -86,7 +86,7 @@
     margin-top: 2.5%;
 }
 .knowledge-documents-uploading-header {
-    min-height: 30px;
+    min-height: 40px;
     height: 15%;
     width: 100%;
     display: flex;
@@ -100,7 +100,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-bottom: solid 1px var(--dark-gray);
+    border-bottom: solid 1px var(--medium-gray);
 }
 .knowledge-documents-uploading-list {
     height: 85%;
@@ -133,7 +133,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-bottom: solid 1px var(--dex-red);
+    border-bottom: solid 1px var(--white-gray);
 }
 
 .knowledge-documents-container-content {
@@ -154,4 +154,66 @@
 
 .knowledge-documents-retrieved-list {
     width: 95%;
+}
+
+@media screen and (max-width: 1300px) {
+    .knowledge-container h1 {
+        font-size: 20px;
+    }
+    .knowledge-container span {
+        font-size: 12px;
+    }
+    .knowledge-container {
+        flex-direction: column;
+        height: calc(100vh - 62px - 5vh);
+    }
+    .knowledge-left-side {
+        width: 100%;
+        height: 35%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .knowledge-upload-container {
+        height: 95%;
+    }
+    .knowledge-documents-uploading {
+        height: 95%;
+        margin-top: 0;
+    }
+    .knowledge-documents-container {
+        width: 100%;
+        height: 60%;
+    }
+    .knowledge-documents-container-content {
+        height: 82.5%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .knowledge-container h1 {
+        font-size: 18px;
+    }
+    .knowledge-container span {
+        font-size: 12px;
+    }
+    .knowledge-left-side {
+        width: 100%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .knowledge-upload-container {
+        height: 50%;
+    }
+    .knowledge-documents-uploading {
+        height: 47.5%;
+        margin-top: 2.5%
+    }
+    .knowledge-documents-container {
+        width: 100%;
+        height: 35%;
+    }
 }
