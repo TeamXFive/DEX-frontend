@@ -117,6 +117,8 @@ function Knowledge() {
                     setFileAlertName(file.name);
                     setIsFileUploadErrorAlertVisible(true);
                     setFileUploadErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
+
+                    setFilesUploading(prevFilesUploading => prevFilesUploading.map(f => f.file === file ? {...f, status: "error"} : f));
                     console.error('Error uploading file:', error);
                 }
 
