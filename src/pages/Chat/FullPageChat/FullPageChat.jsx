@@ -5,7 +5,14 @@ import { useEffect, useRef, useState } from "react";
 import { getRandomChatId } from "../../../utils";
 
 export function FullPageChat(props) {
-    const { messages, onNewMessage, isIaTyping, chatHistory, chatId } = props;
+    const {
+        messages,
+        onNewMessage,
+        isIaTyping,
+        chatHistory,
+        currentChatId,
+        onDeleteChat,
+    } = props;
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -39,11 +46,36 @@ export function FullPageChat(props) {
                     {Object.entries(chatHistory).map(([chatId, history]) => (
                         <li
                             key={chatId}
+                            className={`chat-history-item ${
+                                chatId === currentChatId ? "active" : ""
+                            }`}
                             onClick={() => {
                                 navigate(`/chat?chatId=${chatId}`);
                             }}
                         >
-                            {history?.messages[0]?.content || "-"}
+                            <span>
+                                {history?.messages?.find(
+                                    (msg) => msg.author === "user"
+                                )?.content ||
+                                    (history?.messages?.[0].timestamp &&
+                                        new Date(history.messages[0].timestamp)
+                                            .toLocaleDateString("pt-BR", {
+                                                hour: "2-digit",
+                                                minute: "2-digit",
+                                            })
+                                            .replace(", ", " - ")) ||
+                                    "-"}
+                            </span>
+                            <button
+                                className="delete-chat-button"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    onDeleteChat(chatId);
+                                }}
+                            >
+                                X
+                            </button>
                         </li>
                     ))}
                 </ul>
@@ -59,7 +91,12 @@ export function FullPageChat(props) {
                                 message.type,
                             ].join(" ")}
                         >
-                            <div className={`message-body`}>
+                            <div
+                                className={[
+                                    "message-body",
+                                    message.typing && "typing",
+                                ].join(" ")}
+                            >
                                 {message.type === "pdf" ? (
                                     <object
                                         data="/documents/mercury-presentation.pdf"
@@ -92,14 +129,12 @@ export function FullPageChat(props) {
                         </div>
                     ))}
                     {isIaTyping && (
-                        <div className="message-wrapper ia">
-                            <div className="message-body">
-                                <span>...</span>
-                            </div>
+                        <div className="typing-indicator">
+                            <span />
                         </div>
                     )}
                 </div>
-                {chatHistory[chatId]?.status !== "closed" ? (
+                {chatHistory[currentChatId]?.status !== "closed" ? (
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();

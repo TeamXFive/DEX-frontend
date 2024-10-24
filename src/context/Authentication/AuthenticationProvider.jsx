@@ -12,7 +12,8 @@ function AuthenticationProvider({ children }) {
     const storedInitialValues =
         localStorage.getItem(btoa(salt_key + "AuthenticationProvider")) || //btoa = Base 64 TO Alpha
         btoa(salt_value + "{}");
-    const decryptedInitialValues = atob(storedInitialValues).replace( //atob = Alpha TO Base 64
+    const decryptedInitialValues = atob(storedInitialValues).replace(
+        //atob = Alpha TO Base 64
         salt_value,
         ""
     );
@@ -47,61 +48,102 @@ function AuthenticationProvider({ children }) {
     const [isEmailInputInvalid, setIsEmailInputInvalid] = useState(false);
     const [isPasswordInputInvalid, setIsPasswordInputInvalid] = useState(false);
     const [hasInteractedOnce, setHasInteractedOnce] = useState(false);
-    const [isSignInErrorAlertVisible, setIsSignInErrorAlertVisible] = useState(false);
-    const [isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible] = useState(false);
+    const [isSignInErrorAlertVisible, setIsSignInErrorAlertVisible] =
+        useState(false);
+    const [isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible] =
+        useState(false);
     const [isUserAlertVisible, setIsUserAlertVisible] = useState(false);
     const [isEmailAlertVisible, setIsEmailAlertVisible] = useState(false);
-    const [isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible] = useState(false);
+    const [isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible] =
+        useState(false);
     const [isTesterAlertVisible, setIsTesterAlertVisible] = useState(false);
-    const [isAccountEditedAlertVisible, setAccountEditedAlertVisible] = useState(false);
+    const [isAccountEditedAlertVisible, setAccountEditedAlertVisible] =
+        useState(false);
+
+    //-----===| CHAT HISTORY |===-----//
+    const [chatHistory, setChatHistory] = useState(
+        initialValues.chatHistory || {}
+    );
 
     useEffect(() => {
         localStorage.setItem(
             btoa(salt_key + "AuthenticationProvider"),
             btoa(
-                salt_value + JSON.stringify({ registeredUsersList, authedUser })
+                salt_value +
+                    JSON.stringify({
+                        registeredUsersList,
+                        authedUser,
+                        chatHistory,
+                    })
             )
         );
-    }, [registeredUsersList, authedUser]);
+    }, [registeredUsersList, authedUser, chatHistory]);
 
     return (
         <AuthenticationContext.Provider
             value={{
                 //-----===| MODAL |===-----//
-                isModalVisible, setIsModalVisible,
+                isModalVisible,
+                setIsModalVisible,
 
                 //-----===| AUTHENTICATION CARDS |===-----//
-                isSignInVisible, setIsSignInVisible,
-                isSignUpVisible, setIsSignUpVisible,
-                isShowSignInCloseBtn, setIsShowSignInCloseBtn,
+                isSignInVisible,
+                setIsSignInVisible,
+                isSignUpVisible,
+                setIsSignUpVisible,
+                isShowSignInCloseBtn,
+                setIsShowSignInCloseBtn,
 
                 //-----===| USER STATE |===-----//
-                authedUser, setAuthedUser,
+                authedUser,
+                setAuthedUser,
 
                 //-----===| USER |===-----//
                 // Lista de usuários registrados
-                registeredUsersList, setRegisteredUsersList,
+                registeredUsersList,
+                setRegisteredUsersList,
 
                 //-----===| INPUT FIELDS |===-----//
-                user, setUser,
-                email, setEmail,
-                password, setPassword,
+                user,
+                setUser,
+                email,
+                setEmail,
+                password,
+                setPassword,
 
                 //-----===| VALIDATIONS |===-----//
-                isUserValid, setIsUserValid,
-                isEmailValid, setIsEmailValid,
-                isPasswordMatch, setIsPasswordMatch,
-                isUserInputInvalid, setIsUserInputInvalid,
-                isEmailInputInvalid, setIsEmailInputInvalid,
-                isPasswordInputInvalid, setIsPasswordInputInvalid,
-                hasInteractedOnce, setHasInteractedOnce,
-                isSignInErrorAlertVisible, setIsSignInErrorAlertVisible,
-                isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible,
-                isUserAlertVisible, setIsUserAlertVisible,
-                isEmailAlertVisible, setIsEmailAlertVisible,
-                isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible,
-                isTesterAlertVisible, setIsTesterAlertVisible,
-                isAccountEditedAlertVisible, setAccountEditedAlertVisible,
+                isUserValid,
+                setIsUserValid,
+                isEmailValid,
+                setIsEmailValid,
+                isPasswordMatch,
+                setIsPasswordMatch,
+                isUserInputInvalid,
+                setIsUserInputInvalid,
+                isEmailInputInvalid,
+                setIsEmailInputInvalid,
+                isPasswordInputInvalid,
+                setIsPasswordInputInvalid,
+                hasInteractedOnce,
+                setHasInteractedOnce,
+                isSignInErrorAlertVisible,
+                setIsSignInErrorAlertVisible,
+                isSignInSuccessfulAlertVisible,
+                setIsSignInSuccessfulAlertVisible,
+                isUserAlertVisible,
+                setIsUserAlertVisible,
+                isEmailAlertVisible,
+                setIsEmailAlertVisible,
+                isPasswordMatchAlertVisible,
+                setIsPasswordMatchAlertVisible,
+                isTesterAlertVisible,
+                setIsTesterAlertVisible,
+                isAccountEditedAlertVisible,
+                setAccountEditedAlertVisible,
+
+                //-----===| CHAT HISTORY |===-----//
+                chatHistory,
+                setChatHistory,
             }}
         >
             {children}
