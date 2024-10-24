@@ -93,6 +93,7 @@ function Knowledge() {
                 try {
                     const response = await fetch('https://dex-backend-deployment.vercel.app/upload', {
                         method: 'POST',
+                        mode: 'no-cors',
                         body: formData
                     });
 
@@ -132,7 +133,8 @@ function Knowledge() {
     const getFiles = async () => {
         try {
             const response = await fetch('https://dex-backend-deployment.vercel.app/file_retrieval', {
-                method: 'POST'
+                method: 'POST',
+                mode: 'no-cors',
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
