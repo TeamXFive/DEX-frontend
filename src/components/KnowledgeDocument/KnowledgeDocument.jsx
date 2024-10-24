@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import '../../style/KnowledgeDocument/KnowledgeDocument.css'
 
-function KnowledgeDocument({ file, index, originFile }) {
+function KnowledgeDocument({ file, index, originFile, status }) {
     return (
-        <li className={`knowledge-documents-item`} key={index}>
-            <span>{(originFile === "local") ? file.name : file.filename}</span>
+        <li className={`knowledge-documents-item knowledge-documents-item-${status}`} key={index}>
+            <span className={`document-name`}>{(originFile === "local") ? file.name : file.filename}</span>
 
             {(originFile === "local") ? (
-                <span>Uploading...</span>
+                <span className={`document-status`}>{status}</span>
             ) : (
                 <button>X</button>            
             )}

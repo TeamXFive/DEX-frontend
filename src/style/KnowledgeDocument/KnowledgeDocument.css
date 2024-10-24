@@ -7,4 +7,21 @@
     justify-content: space-between;
     border-bottom: solid 1px var(--dark-gray);
     list-style: none;
+    
+    & .document-name {
+        margin-left: 2.5%;
+    }
+    & .document-status {
+        margin-right: 2.5%;
+    }
+}
+
+.knowledge-documents-item-uploading {
+    background-color: rgba(var(--medium-orange-rgb), .05);
+}
+.knowledge-documents-item-error {
+    background-color: rgba(var(--medium-red-rgb), .05);
+}
+.knowledge-documents-item-success {
+    background-color: rgba(var(--medium-green-rgb), .05);
 }
