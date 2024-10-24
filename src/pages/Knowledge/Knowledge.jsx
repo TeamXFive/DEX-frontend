@@ -154,7 +154,7 @@ function Knowledge() {
                 <section className={`knowledge-left-side`}>
                     <div className={`knowledge-upload-container`}>
                         <div className={`knowledge-upload-description`}>
-                            <h1>CREATE DOCUMENTS</h1>
+                            <h1>UPLOAD DOCUMENTS</h1>
                             
                             <span>You can create a new document by uploading an existing document</span>
                         </div>
@@ -182,11 +182,24 @@ function Knowledge() {
                     </div>
 
                     <div className={`knowledge-documents-uploading`}>
-                        <span>These are the files that are currently being uploaded.</span>
+                        <div className={`knowledge-documents-uploading-header`}>
+                            <span>These are the files that are currently being uploaded.</span>
+                        </div>
 
                         <ul className={`knowledge-documents-uploading-list`}>
+                            {filesUploading.length === 0 && (
+                                <span
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        height: '100%',
+                                    }}
+                                >No files are being uploaded.</span>
+                            )}
+                            
                             {filesUploading.map((file, index) => (
-                                <KnowledgeDocument file={file} key={index}/>
+                                <KnowledgeDocument file={file} key={index} originFile={"local"}/>
                             ))}
                         </ul>
                     </div>
@@ -194,16 +207,27 @@ function Knowledge() {
 
                 <section className={`knowledge-documents-container`}>
                     <div className={`knowledge-documents-container-header`}>
-                        <h1>Stored Documents</h1>
+                        <h1>STORED DOCUMENTS</h1>
+
+                        <span>These are the files you have uploaded.</span>
                     </div>
 
                     <div className={`knowledge-documents-container-content`}>
-                        <div className={`knowledge-documents-retrieved`}>
-                            <span>These are the files you have uploaded.</span>
+                    <div className={`knowledge-documents-retrieved`}>
+                            {files.length === 0 && (
+                                <span
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        height: '100%',
+                                    }}
+                                >No files uploaded yet.</span>
+                            )}
                             
                             <ul className={`knowledge-documents-retrieved-list`}>
                                 {files.map((file, index) => (
-                                    <KnowledgeDocument file={file} key={index} />
+                                    <KnowledgeDocument file={file} key={index} originFile={"openai"} />
                                 ))}
                             </ul>
                         </div>
