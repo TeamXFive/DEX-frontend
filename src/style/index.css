@@ -53,6 +53,15 @@
   --dex-red-rgb: 255, 0, 59;
   --dex-purple-rgb: 111, 66, 193;
 
+  /*Gradient*/
+  --dex-linear-gradient: linear-gradient(
+    90deg,
+    rgba(113, 59, 136, 1) 0%,
+    rgba(167, 46, 87, 1) 50%,
+    rgba(213, 25, 47, 1) 100%
+  );
+    
+  /*Transition*/
   --all-500ms-custom: all .5s cubic-bezier(0.85, 0.15, 0.15, 0.85);
   --all-200ms-ease-in-out: all .2s cubic-bezier(0.85, 0.15, 0.15, 0.85);
 }

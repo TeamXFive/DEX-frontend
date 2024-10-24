@@ -71,8 +71,9 @@
     transition: all 0.3s;
 }
 .dragging {
-    border-color: var(--dex-red);
-    color: var(--dex-red);
+    border: 5px solid; /* Set the border width */
+    border-image: var(--dex-linear-gradient);
+    border-image-slice: 1;
     background-color: var(--black-gray);
 }
 
