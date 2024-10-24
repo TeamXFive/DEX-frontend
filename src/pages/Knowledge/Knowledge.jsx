@@ -19,6 +19,7 @@ function Knowledge() {
         authedUser
     } = useAuthenticationContext();
     
+    const [filesUploading, setFilesUploading] = useState([]);
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef(null);
 
@@ -79,12 +80,13 @@ function Knowledge() {
                 setIsFileUploadErrorAlertVisible(true);
                 setFileUploadErrorMessage(`${file.name} exceeds the 5MB size limit.`);
             }
-
-            // Add to valid files if it passes validation
+            
             if (allowedFileTypes.includes(file.type) && file.size <= maxFileSize) {
                 setFileAlertName(file.name);
                 setIsFileUploadSuccessAlertVisible(true);
-                setFileUploadSuccessMessage(`${file.name} is ready for upload.`);
+                setFileUploadSuccessMessage(`${file.name} is being uploaded.`);
+                
+                setFilesUploading([...filesUploading, file]);
 
                 const formData = new FormData();
                 formData.append('file', file);
@@ -96,11 +98,23 @@ function Knowledge() {
                     });
 
                     if (!response.ok) {
+                        setFileAlertName(file.name);
+                        setIsFileUploadErrorAlertVisible(true);
+                        setFileUploadErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
                         throw new Error(`HTTP error! status: ${response.status}`);
+                    } else {
+                        setFileAlertName(file.name);
+                        setIsFileUploadSuccessAlertVisible(true);
+                        setFileUploadSuccessMessage(`${file.name} foi enviado com sucesso.`);
                     }
+
+                    //setFilesUploading(filesUploading.filter((fileUploading) => fileUploading !== file));
 
                     await getFiles();
                 } catch (error) {
+                    setFileAlertName(file.name);
+                    setIsFileUploadErrorAlertVisible(true);
+                    setFileUploadErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
                     console.error('Error uploading file:', error);
                 }
             }
@@ -137,54 +151,62 @@ function Knowledge() {
     return (
         <>
             <article className={`knowledge-container`}>
-                <section className={`knowledge-header`}>
-                    <div className={`knowledge-header-description`}>
-                        <h1>CREATE DOCUMENTS</h1>
-                        <span>You can create a new document by uploading an existing document</span>
-                    </div>
-                    
-                    <div className={`knowledge-drag-drop-container`}>
-                        <div
-                            className={`knowledge-dropzone ${isDragging ? 'dragging' : ''}`}
-                            onDragEnter={handleDragEnter}
-                            onDragOver={handleDragOver}
-                            onDragLeave={handleDragLeave}
-                            onDrop={handleDrop}
-                            onClick={openFileDialog}
-                            style={{
-                                border: '2px dashed #aaa',
-                                borderRadius: '8px',
-                                padding: '20px',
-                                textAlign: 'center',
-                                cursor: 'pointer',
-                                transition: 'border-color 0.3s',
-                            }}
-                        >
-                            <p>{isDragging ? 'Drop your files here' : 'Drag and drop files here or click to select'}</p>
-                            <input
-                                type="file"
-                                multiple
-                                ref={fileInputRef}
-                                onChange={handleFileSelect}
-                                style={{ display: 'none' }}
-                                accept=".txt, .doc, .docx, .xls, .xlsx"
-                            />
+                <section className={`knowledge-left-side`}>
+                    <div className={`knowledge-upload-container`}>
+                        <div className={`knowledge-upload-description`}>
+                            <h1>CREATE DOCUMENTS</h1>
+                            
+                            <span>You can create a new document by uploading an existing document</span>
+                        </div>
+
+                        <div className={`knowledge-upload-drag-drop-container`}>
+                            <div
+                                className={`knowledge-dropzone ${isDragging ? 'dragging' : ''}`}
+                                onDragEnter={handleDragEnter}
+                                onDragOver={handleDragOver}
+                                onDragLeave={handleDragLeave}
+                                onDrop={handleDrop}
+                                onClick={openFileDialog}
+                            >
+                                <p>{isDragging ? 'Drop your files here' : 'Drag and drop files here or click to select'}</p>
+                                <input
+                                    type="file"
+                                    multiple
+                                    ref={fileInputRef}
+                                    onChange={handleFileSelect}
+                                    style={{display: 'none'}}
+                                    accept=".txt, .doc, .docx, .xls, .xlsx"
+                                />
+                            </div>
                         </div>
                     </div>
-                </section>
-                
-                <section className={`knowledge-documents`}>
-                    <div className={`knowledge-documents-header`}>
-                        <h1>Stored Documents</h1>
-                        <span>These imports will appear as stored after they are uploaded</span>
-                    </div>
-                    
-                    <div className={`knowledge-documents-list-container`}>
-                        <ul className={`knowledge-documents-list`}>
-                            {files.map((file, index) => (
-                                <KnowledgeDocument file={file} key={index} />
+
+                    <div className={`knowledge-documents-uploading`}>
+                        <span>These are the files that are currently being uploaded.</span>
+
+                        <ul className={`knowledge-documents-uploading-list`}>
+                            {filesUploading.map((file, index) => (
+                                <KnowledgeDocument file={file} key={index}/>
                             ))}
                         </ul>
+                    </div>
+                </section>
+
+                <section className={`knowledge-documents-container`}>
+                    <div className={`knowledge-documents-container-header`}>
+                        <h1>Stored Documents</h1>
+                    </div>
+
+                    <div className={`knowledge-documents-container-content`}>
+                        <div className={`knowledge-documents-retrieved`}>
+                            <span>These are the files you have uploaded.</span>
+                            
+                            <ul className={`knowledge-documents-retrieved-list`}>
+                                {files.map((file, index) => (
+                                    <KnowledgeDocument file={file} key={index} />
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </section>
             </article>
