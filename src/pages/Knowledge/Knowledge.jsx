@@ -67,14 +67,13 @@ function Knowledge() {
     
     const validateAndSetFiles = (incomingFiles) => {
         incomingFiles.forEach(async (file) => {
-            // Validate file type
+            
             if (!allowedFileTypes.includes(file.type)) {
                 setFileAlertName(file.name);
                 setIsFileUploadErrorAlertVisible(true);
                 setFileUploadErrorMessage(`${file.name} is not a supported file type.`);
             }
 
-            // Validate file size
             if (file.size > maxFileSize) {
                 setFileAlertName(file.name);
                 setIsFileUploadErrorAlertVisible(true);
@@ -85,8 +84,8 @@ function Knowledge() {
                 setFileAlertName(file.name);
                 setIsFileUploadSuccessAlertVisible(true);
                 setFileUploadSuccessMessage(`${file.name} is being uploaded.`);
-                
-                setFilesUploading([...filesUploading, file]);
+
+                setFilesUploading(prevFilesUploading => [...prevFilesUploading, {"file": file, "status": "uploading"}]);
 
                 const formData = new FormData();
                 formData.append('file', file);
@@ -101,14 +100,17 @@ function Knowledge() {
                         setFileAlertName(file.name);
                         setIsFileUploadErrorAlertVisible(true);
                         setFileUploadErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
+
+                        setFilesUploading(prevFilesUploading => prevFilesUploading.map(f => f.file === file ? {...f, status: "error"} : f));
+                        
                         throw new Error(`HTTP error! status: ${response.status}`);
                     } else {
                         setFileAlertName(file.name);
                         setIsFileUploadSuccessAlertVisible(true);
                         setFileUploadSuccessMessage(`${file.name} foi enviado com sucesso.`);
-                    }
 
-                    //setFilesUploading(filesUploading.filter((fileUploading) => fileUploading !== file));
+                        setFilesUploading(prevFilesUploading => prevFilesUploading.map(f => f.file === file ? {...f, status: "success"} : f));
+                    }
 
                     await getFiles();
                 } catch (error) {
@@ -117,6 +119,10 @@ function Knowledge() {
                     setFileUploadErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
                     console.error('Error uploading file:', error);
                 }
+
+                setTimeout(() => {
+                    setFilesUploading((prevFilesUploading) => prevFilesUploading.filter((fileUploading) => fileUploading.file !== file));
+                }, 5000);
             }
         });
     };
@@ -198,8 +204,8 @@ function Knowledge() {
                                 >No files are being uploaded.</span>
                             )}
                             
-                            {filesUploading.map((file, index) => (
-                                <KnowledgeDocument file={file} key={index} originFile={"local"}/>
+                            {filesUploading.map((fileObj, index) => (
+                                <KnowledgeDocument file={fileObj.file} key={index} originFile={"local"} status={fileObj.status}/>
                             ))}
                         </ul>
                     </div>
@@ -227,7 +233,7 @@ function Knowledge() {
                             
                             <ul className={`knowledge-documents-retrieved-list`}>
                                 {files.map((file, index) => (
-                                    <KnowledgeDocument file={file} key={index} originFile={"openai"} />
+                                    <KnowledgeDocument file={file} key={index} originFile={"openai"} status={"oi"} />
                                 ))}
                             </ul>
                         </div>

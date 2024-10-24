@@ -104,7 +104,7 @@
 }
 .knowledge-documents-uploading-list {
     height: 85%;
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -145,6 +145,7 @@
 }
 
 .knowledge-documents-retrieved {
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -153,7 +154,9 @@
 }
 
 .knowledge-documents-retrieved-list {
+    height: 100%;
     width: 95%;
+    margin: 0;
 }
 
 @media screen and (max-width: 1300px) {
