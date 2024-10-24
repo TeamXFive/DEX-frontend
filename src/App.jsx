@@ -37,7 +37,11 @@ export function App() {
     }, [location.key]);
 
     useEffect(() => {
-        if ((location.pathname === "/chat" || location.pathname === "/knowledge") && !authedUser) {
+        if (
+            (location.pathname === "/chat" ||
+                location.pathname === "/knowledge") &&
+            !authedUser
+        ) {
             setIsSignInVisible(true);
             setIsModalVisible(true);
         }
@@ -83,16 +87,16 @@ export function App() {
 
                 <div className="page-content">
                     <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        <Route path="/sobre" element={<About/>}/>
-                        <Route path="/chat" element={<Chat/>}/>
-                        <Route path="/knowledge" element={<Knowledge />}/>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/sobre" element={<About />} />
+                        <Route path="/chat" element={<Chat />} />
+                        <Route path="/knowledge" element={<Knowledge />} />
                         <Route
                             path="/authentication"
-                            element={<Authentication/>}
+                            element={<Authentication />}
                         />
-                        <Route path="/account" element={<Account/>}/>
-                        <Route path="*" element={<Navigate to="/"/>}/>
+                        <Route path="/account" element={<Account />} />
+                        <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </div>
             </React.Fragment>

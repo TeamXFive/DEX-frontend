@@ -9,14 +9,11 @@ Header.propTypes = {
     setScrollDirection: PropTypes.func.isRequired,
 };
 
-function Header({ scrollDirection, setScrollDirection }) {    
+function Header({ scrollDirection, setScrollDirection }) {
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const {
-        setIsModalVisible,
-        setIsSignInVisible,
-        authedUser
-    } = useAuthenticationContext();
+    const { setIsModalVisible, setIsSignInVisible, authedUser } =
+        useAuthenticationContext();
 
     const handleLogin = (event) => {
         if (authedUser) {
@@ -49,7 +46,7 @@ function Header({ scrollDirection, setScrollDirection }) {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [lastScrollY]);
+    }, [lastScrollY, setScrollDirection]);
 
     return (
         <header

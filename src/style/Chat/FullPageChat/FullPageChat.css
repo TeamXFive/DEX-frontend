@@ -12,6 +12,7 @@
         max-width: 20%;
         border-radius: 0.5rem;
         text-align: center;
+        flex: 1;
 
         .btn {
             margin: 1rem 0;
@@ -32,11 +33,37 @@
                 background-color: #1d1d1d;
                 cursor: pointer;
                 max-height: 4rem;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                text-wrap: wrap;
+                overflow: hidden;               
+                
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
 
-                &:hover {
+                &.active {
+                    background-color: rgba(113, 59, 136, 1);
+                    background: linear-gradient(
+                        90deg,
+                        rgba(113, 59, 136, 1) 0%,
+                        rgba(167, 46, 87, 1) 50%,
+                        rgba(213, 25, 47, 1) 100%
+                    );
+                    box-shadow: 0px 8px 5px 0.1rem rgba(0, 0, 0, 0.15);
+            
+                }
+                
+                & span {
+                    padding: 0.5rem;                    
+                    text-overflow: ellipsis;
+                    text-wrap: nowrap;
+                    overflow: hidden;
+                }
+
+                & button {
+                    font-size: 80%;
+                    padding: 0.25rem 0.5rem;
+                }
+
+                &:hover:not(.active) {
                     background-color: #131313;
                 }
             }
@@ -46,7 +73,7 @@
     .chat-wrapper:not(.widget) {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        flex: 1;
 
         & .chat-body {
             width: 100%;
@@ -126,6 +153,13 @@
                 & span {
                     white-space: pre-line;
                 }
+
+                &.typing :last-child::after {
+                    content: '';
+                    margin-left: 1rem;
+                    border: 3px solid white;
+                    animation: typing-marker 1s infinite;
+                }
             }
 
             &.ia {
@@ -149,5 +183,55 @@
                 color: #efefef;
             }
         }
+
+        & .typing-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0.75rem;
+
+            & span {
+                width: 1rem;
+                height: 1rem;
+                background-color: #ffffff;
+                border-radius: 50%;
+                margin-right: 0.25rem;
+                animation: typing-indicator 1s infinite;
+                animation-composition: ease-in-out;
+            }
+
+            
+        }
+    }
+}
+
+@keyframes typing-marker {
+    0% {
+        opacity: 0.25;        
+    }
+
+    50% {
+        opacity: 1;        
+    }
+
+    100% {
+        opacity: 0.25;        
+    }
+}
+
+@keyframes typing-indicator {
+    0% {
+        opacity: 0.25;
+        transform: scale(0.75);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.25;
+        transform: scale(0.75);
     }
 }

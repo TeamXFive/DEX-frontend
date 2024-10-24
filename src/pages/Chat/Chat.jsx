@@ -11,30 +11,34 @@ import { getRandomChatId } from "../../utils";
 const useRealApi = true;
 
 function Chat({ type }) {
-    const { authedUser } = useAuthenticationContext();
+    const { authedUser, chatHistory, setChatHistory } =
+        useAuthenticationContext();
 
     const navigate = useNavigate();
     const location = useLocation();
-    const chatId = new URLSearchParams(location.search).get("chatId");
+    const currentChatId = new URLSearchParams(location.search).get("chatId");
 
     const [isIaTyping, setIsIaTyping] = useState(false);
     const chatBodyRef = useRef();
 
-    const isWelcomeSent = useRef(false);
-
-    const [chatHistory, setChatHistory] = useState({});
+    const isWelcomeSent = useRef(true);
 
     useEffect(() => {
-        if (!chatId) {
+        if (!currentChatId && Object.keys(chatHistory).length === 0) {
             navigate(`/chat?chatId=${getRandomChatId()}`, {
                 replace: true,
             });
+        } else if (!currentChatId) {
+            const firstChatId = Object.keys(chatHistory)[0];
+            navigate(`/chat?chatId=${firstChatId}`, {
+                replace: true,
+            });
         }
-    }, [chatId, navigate]);
+    }, [currentChatId, navigate, chatHistory]);
 
     const messages = useMemo(
-        () => chatHistory[chatId]?.messages || [],
-        [chatHistory, chatId]
+        () => chatHistory[currentChatId]?.messages || [],
+        [chatHistory, currentChatId]
     );
 
     const setMessages = useCallback(
@@ -42,39 +46,56 @@ function Chat({ type }) {
             setChatHistory((prev) => {
                 return {
                     ...prev,
-                    [chatId]: {
-                        ...(prev[chatId] || {}),
-                        messages: prevFunc(prev[chatId]?.messages || []),
+                    [currentChatId]: {
+                        ...(prev[currentChatId] || {}),
+                        messages: prevFunc(prev[currentChatId]?.messages || []),
                     },
                 };
             });
         },
-        [chatId]
+        [currentChatId, setChatHistory]
     );
 
-    const handleSolveChat = useCallback((targetChatId) => {
-        setChatHistory((prev) => {
-            return {
-                ...prev,
-                [targetChatId]: {
-                    ...(prev[targetChatId] || {}),
-                    solved: true,
-                },
-            };
-        });
-    }, []);
+    const handleSolveChat = useCallback(
+        (targetChatId) => {
+            setChatHistory((prev) => {
+                return {
+                    ...prev,
+                    [targetChatId]: {
+                        ...(prev[targetChatId] || {}),
+                        solved: true,
+                    },
+                };
+            });
+        },
+        [setChatHistory]
+    );
 
-    const handleCloseChat = useCallback((targetChatId) => {
-        setChatHistory((prev) => {
-            return {
-                ...prev,
-                [targetChatId]: {
-                    ...(prev[targetChatId] || {}),
-                    status: "closed",
-                },
-            };
-        });
-    }, []);
+    const handleCloseChat = useCallback(
+        (targetChatId) => {
+            setChatHistory((prev) => {
+                return {
+                    ...prev,
+                    [targetChatId]: {
+                        ...(prev[targetChatId] || {}),
+                        status: "closed",
+                    },
+                };
+            });
+        },
+        [setChatHistory]
+    );
+
+    const handleDeleteChat = useCallback(
+        (targetChatId) => {
+            setChatHistory((prev) => {
+                const newChatHistory = { ...prev };
+                delete newChatHistory[targetChatId];
+                return newChatHistory;
+            });
+        },
+        [setChatHistory]
+    );
 
     const handleSendIaMessages = useCallback(
         async (messages) => {
@@ -124,6 +145,7 @@ function Chat({ type }) {
                                             timestamp:
                                                 lastMessage.timestamp ||
                                                 Date.now(),
+                                            typing: !isLastWord,
                                         },
                                     ];
                                 });
@@ -157,7 +179,7 @@ function Chat({ type }) {
                     {
                         label: "Sim",
                         action: () => {
-                            handleSolveChat(chatId);
+                            handleSolveChat(currentChatId);
                             handleSendIaMessages([
                                 {
                                     content:
@@ -175,7 +197,7 @@ function Chat({ type }) {
                                         {
                                             label: "Sim",
                                             action: () => {
-                                                handleCloseChat(chatId);
+                                                handleCloseChat(currentChatId);
                                                 handleSendIaMessages([
                                                     {
                                                         content: "Até mais!",
@@ -213,7 +235,7 @@ function Chat({ type }) {
                 ],
             },
         ]);
-    }, [handleSendIaMessages, handleCloseChat, chatId]);
+    }, [handleSendIaMessages, handleCloseChat, handleSolveChat, currentChatId]);
 
     const handleFakeApi = useCallback(
         (question) => {
@@ -433,12 +455,45 @@ function Chat({ type }) {
     );
 
     useEffect(() => {
-        if (isWelcomeSent.current || !authedUser) {
+        if (
+            !authedUser ||
+            !currentChatId ||
+            chatHistory[currentChatId]?.onboarded
+        ) {
             return;
         }
-        isWelcomeSent.current = true;
-        handleSendIaMessages(welcomeMessages);
-    }, [welcomeMessages, authedUser, handleSendIaMessages]);
+
+        const settleDownTimer = setTimeout(() => {
+            if (
+                authedUser &&
+                currentChatId &&
+                chatHistory[currentChatId]?.onboarded !== true
+            ) {
+                setChatHistory((prev) => {
+                    return {
+                        ...prev,
+                        [currentChatId]: {
+                            ...(prev[currentChatId] || {}),
+                            onboarded: true,
+                        },
+                    };
+                });
+
+                handleSendIaMessages(welcomeMessages);
+            }
+        }, 1000);
+
+        return () => {
+            clearTimeout(settleDownTimer);
+        };
+    }, [
+        authedUser,
+        currentChatId,
+        chatHistory,
+        handleSendIaMessages,
+        setChatHistory,
+        welcomeMessages,
+    ]);
 
     useEffect(() => {
         const iaPossibleMessages = [
@@ -505,7 +560,7 @@ function Chat({ type }) {
             return;
         }
 
-        const inactivityTimeInMs = 1000 * 60 * 3;
+        const inactivityTimeInMs = 1000 * 60 * 3; // milliseconds * seconds * minutes
 
         const inactivityTimer = setTimeout(() => {
             askForFeedback();
@@ -537,7 +592,8 @@ function Chat({ type }) {
             onNewMessage={setMessages}
             isIaTyping={isIaTyping}
             chatHistory={chatHistory}
-            chatId={chatId}
+            currentChatId={currentChatId}
+            onDeleteChat={handleDeleteChat}
         />
     );
 }
