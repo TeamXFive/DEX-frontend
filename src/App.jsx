@@ -18,11 +18,14 @@ import Account from "./pages/Account/Account.jsx";
 import About from "./pages/About/About.jsx";
 import Knowledge from "./pages/Knowledge/Knowledge.jsx";
 import KnowledgeAlerts from "./components/alertMessages/KnowledgeAlerts/KnowledgeAlerts.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 
 export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
     const location = useLocation();
     const navigate = useNavigate();
+    const hideHeaderRoutes = ['/dashboard']
+    const shouldHideHeader = hideHeaderRoutes.includes(location.pathname)
 
     const {
         isModalVisible,
@@ -80,10 +83,11 @@ export function App() {
             </section>
 
             <React.Fragment>
-                <Header
+                {!shouldHideHeader && <Header
                     scrollDirection={scrollDirection}
                     setScrollDirection={setScrollDirection}
-                />
+                />}
+                
 
                 <div className="page-content">
                     <Routes>
@@ -95,6 +99,8 @@ export function App() {
                             path="/authentication"
                             element={<Authentication />}
                         />
+                        <Route path="/dashboard" element={<Dashboard />} />
+
                         <Route path="/account" element={<Account />} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
