@@ -27,7 +27,8 @@ function Dashboard(){
                             <li>
                                 <div>
                                     <Chat />
-                                    <p>chat</p>
+                                    <Link to='/chat'>
+                                    <p>chat</p></Link>
                                 </div>
                             </li>
                             <li>
@@ -39,19 +40,22 @@ function Dashboard(){
                             <li>
                                 <div>
                                     <Person />
-                                    <p>profile</p>
+                                    <Link to='/account'>
+                                    <p>profile</p></Link>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <Home />
-                                    <p>home</p>
+                                    <Link to='/'>
+                                    <p>home</p></Link>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <Sobre />
-                                    <p>about us</p>
+                                    
+                                    <Sobre /><Link to='/sobre'>
+                                    <p>about us</p></Link>
                                 </div>
                             </li>
                         </ul>
