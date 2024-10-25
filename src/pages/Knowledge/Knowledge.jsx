@@ -58,11 +58,13 @@ function Knowledge() {
         setIsDragging(false);
         const droppedFiles = Array.from(e.dataTransfer.files); // Convert FileList to array
         validateAndSetFiles(droppedFiles);
+        e.dataTransfer.clearData();
     };
     
     const handleFileSelect = (e) => {
         const selectedFiles = Array.from(e.target.files); // Convert FileList to array
         validateAndSetFiles(selectedFiles);
+        e.target.value = '';
     };
     
     const validateAndSetFiles = (incomingFiles) => {
