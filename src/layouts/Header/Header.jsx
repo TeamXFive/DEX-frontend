@@ -71,6 +71,7 @@ function Header({ scrollDirection, setScrollDirection }) {
                         <Link to="/sobre">SOBRE O PROJETO</Link>
                         <Link to="/chat">CHAT</Link>
                         <Link to={"/knowledge"}>KNOWLEDGE</Link>
+                        <Link to="/dashboard">DASHBOARD</Link>
                     </div>
                 </nav>
 
