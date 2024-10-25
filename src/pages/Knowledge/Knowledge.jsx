@@ -91,7 +91,7 @@ function Knowledge() {
                 formData.append('file', file);
                 
                 try {
-                    const response = await fetch('dex-backend-five.vercel.app/upload', {
+                    const response = await fetch('https://dex-backend-two.vercel.app/upload', {
                         method: 'POST',
                         body: formData
                     });
@@ -131,7 +131,7 @@ function Knowledge() {
 
     const getFiles = async () => {
         try {
-            const response = await fetch('https://dex-backend-five.vercel.app/file_retrieval', {
+            const response = await fetch('https://dex-backend-two.vercel.app/file_retrieval', {
                 method: 'POST',
             });
             if (!response.ok) {
