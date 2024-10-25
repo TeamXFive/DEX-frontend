@@ -142,10 +142,58 @@
     margin-bottom: 5px;
 }
 
-.dadosLow div{
+.dadosLow .containerDados{
+    display: flex;
+    flex-direction: column;
     height: 100%;
     background-color: #252525;
     border-radius: 15px;
+}
+
+.titleDados{
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-family: 'Saira';
+    margin-top: 5px;
+}
+
+.numerosDados{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-left: 60px;
+}
+
+.numerosDados p{
+    line-height: 1.1;
+    font-size: 64px;
+    color: white;
+    margin-bottom: 0;
+}
+.spanConcluido{
+    display: grid;
+    justify-content: center;
+    align-items:center ;
+    font-size: 10px;
+    border-radius: 10px;
+    background-color: rgba(111, 243, 166, 0.6);
+    color: #277453;
+    width: 50px;
+    height: 20px;
+}
+.spanN3{
+    display: grid;
+    justify-content: center;
+    align-items:center ;
+    font-size: 10px;
+    border-radius: 10px;
+    background-color: rgba(155, 15, 230, 0.6);
+    color: #D722E0;
+    width: 50px;
+    height: 20px;
 }
 
 .insetContainerRight{
@@ -204,8 +252,10 @@
 }
 
 .contentTable{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    overflow-y: auto;
+    max-height: 45.2vh;
+
 }
 
 .lineContent{
@@ -226,13 +276,33 @@
     color: white;
 }
 
+.lineContent p:first-child{
+    max-width: 11ch;  
+    overflow: hidden;     
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+
 .lineContent button{
-    height: 40px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 80px;
+    background-color: rgba(96, 96, 96, 0.6);
+    border: 1px solid #606060;
+    color: #6f6f6f;
+    font-size: 13px;
+    white-space: nowrap;
+    font-weight: 500;
+    font-family: 'Saira';
+    padding: 0;
 }
 
 .InProcess{
     display: grid;
-    justify-content: center;align-items: center;
+    justify-content: center;
+    align-items: center;
     width: 90px;
     height: 25px;
     border-radius: 10px;
@@ -242,4 +312,56 @@
     font-size: 13px;
     font-family: 'Saira';
     background-color: rgba(240, 157, 89, 0.4);
+}
+
+.Done{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 25px;
+    border-radius: 10px;
+    font-weight: 500;
+    border: 1px solid #19876B;
+    color: #19876B;
+    font-size: 13px;
+    font-family: 'Saira';
+    background-color: rgba(54, 162, 145, 0.4);
+}
+
+.Canceled{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 25px;
+    border-radius: 10px;
+    font-weight: 500;
+    border: 1px solid #C42A2A;
+    color: #C42A2A;
+    font-size: 13px;
+    font-family: 'Saira';
+    background-color: rgba(255, 119, 119, 0.4);
+}
+.N3{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 25px;
+    border-radius: 10px;
+    font-weight: 500;
+    border: 1px solid #C809A9;
+    color: #D504B6;
+    font-size: 13px;
+    font-family: 'Saira';
+    background-color: rgba(240, 89, 180, 0.4);
+}
+
+.graphicPerformance{
+    display: grid;
+    grid-row: 2/2;
+    background-color: #252525;
+    margin-bottom: 5px;
+    border-radius: 15px;
 }
