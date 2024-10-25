@@ -73,19 +73,19 @@ function Knowledge() {
             if (!allowedFileTypes.includes(file.type)) {
                 setFileAlertName(file.name);
                 setIsFileUploadErrorAlertVisible(true);
-                setFileUploadErrorMessage(`${file.name} is not a supported file type.`);
+                setFileUploadErrorMessage(`${file.name} não é um arquivo suportado.`);
             }
 
             if (file.size > maxFileSize) {
                 setFileAlertName(file.name);
                 setIsFileUploadErrorAlertVisible(true);
-                setFileUploadErrorMessage(`${file.name} exceeds the 5MB size limit.`);
+                setFileUploadErrorMessage(`${file.name} excede o limite de 512 MB.`);
             }
             
             if (allowedFileTypes.includes(file.type) && file.size <= maxFileSize) {
                 setFileAlertName(file.name);
                 setIsFileUploadSuccessAlertVisible(true);
-                setFileUploadSuccessMessage(`${file.name} is being uploaded.`);
+                setFileUploadSuccessMessage(`${file.name} está sendo enviado para a nuvem.`);
 
                 setFilesUploading(prevFilesUploading => [...prevFilesUploading, {"file": file, "status": "uploading"}]);
 
@@ -103,9 +103,11 @@ function Knowledge() {
                     if (!response.ok) {
                         setFileAlertName(file.name);
                         setIsFileUploadErrorAlertVisible(true);
-                        setFileUploadErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
+                        setFileUploadErrorMessage(`Não foi possível realizar o upload de ${file.name}.`);
 
                         setFilesUploading(prevFilesUploading => prevFilesUploading.map(f => f.file === file ? {...f, status: "error"} : f));
+                        
+                        setIsFileUploadSuccessAlertVisible(false)
                         
                         throw new Error(`HTTP error! status: ${response.status}`);
                     } else {
