@@ -135,6 +135,9 @@ function Knowledge() {
                 method: 'POST',
             });
             if (!response.ok) {
+                console.log(response.headers);
+                console.log(response.body);
+                console.log(response.json());
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
