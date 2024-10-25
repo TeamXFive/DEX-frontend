@@ -1,0 +1,48 @@
+.knowledge-document-popover-btn {
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--black-gray);
+}
+.knowledge-document-popover {
+    min-width: 150px;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background-color: var(--black-gray);
+    border: 1px solid rgba(var(--medium-red-rgb), 1);
+    border-radius: .5em;
+    box-shadow: 0 4px 8px rgba(var(--black-gray-rgb) 1);
+    z-index: 1200;
+    transform: translateX(-50%);
+    transition: var(--all-200ms-ease-in-out);
+    overflow: hidden;
+}
+
+.knowledge-document-popover ul {
+    width: 100%;
+    height: 100%;
+}
+.knowledge-document-popover li {
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    padding: 10px 8px;
+    transition: var(--all-200ms-ease-in-out);
+}
+.knowledge-document-popover li:hover {
+    color: var(--medium-red);
+    cursor: pointer;
+    background-color: rgba(var(--medium-red-rgb), 0.1);
+}
+
+@media screen and (max-width: 1300px) {
+    .knowledge-document-popover li {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .knowledge-document-popover li {
+        font-size: 12px;
+    }
+}
