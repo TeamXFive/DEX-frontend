@@ -92,7 +92,6 @@ function Knowledge() {
                 
                 try {
                     
-                    // const response = await fetch('http://localhost:3000/api/upload', {
                     const response = await fetch('https://dex-backend-vercel-steel.vercel.app/api/upload', {
                         method: 'POST',
                         body: formData
@@ -134,7 +133,6 @@ function Knowledge() {
     const getFiles = async () => {
         try {
             const response = await fetch('https://dex-backend-vercel-steel.vercel.app/api/file_retrieval', {
-            // const response = await fetch('http://localhost:3000/api/file_retrieval', {
                 method: 'POST',
             });
             if (!response.ok) {
