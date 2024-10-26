@@ -108,7 +108,7 @@ function Knowledge() {
                         
                         setIsFileUploadSuccessAlertVisible(false)
                         
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        throw new Error(`HTTP error! status: ${response}`);
                     } else {
                         setFileAlertName(file.name);
                         setIsFileUploadSuccessAlertVisible(true);

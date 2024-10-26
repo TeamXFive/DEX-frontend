@@ -31,7 +31,7 @@ function KnowledgeDocumentPopover ({ file }) {
     const handleFileDeletion = async () => {
         try {
             //const response = await fetch('https://dex-backend-vercel-steel.vercel.app/api/file_deletion', {
-            const response = await fetch(`http://localhost:3000/api/file_deletion/${file.id}`, {
+            const response = await fetch(`https://dex-backend-vercel-steel.vercel.app/api/file_deletion/${file.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
