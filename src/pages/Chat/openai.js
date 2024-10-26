@@ -3,9 +3,7 @@ export const handleOpenAiRequest = async (prompt) => {
     let mensagem = prompt;
     prompt = "";
 
-    // Envia requisição com a mensagem para a API do ChatBot
-    // const resposta = await fetch("http://localhost:3000/api/chat", {
-    const resposta = await fetch("https://dex-backend-vercel-steel.vercel.app/api/chat", {
+    const resposta = await fetch("https://dex-backend-ten.vercel.app/api/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

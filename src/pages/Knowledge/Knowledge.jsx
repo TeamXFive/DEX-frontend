@@ -23,7 +23,6 @@ function Knowledge() {
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef(null);
 
-    // Allowed file types and max size (5MB for this example)
     const allowedFileTypes = [
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         "text/markdown",
@@ -54,13 +53,13 @@ function Knowledge() {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(false);
-        const droppedFiles = Array.from(e.dataTransfer.files); // Convert FileList to array
+        const droppedFiles = Array.from(e.dataTransfer.files);
         validateAndSetFiles(droppedFiles);
         e.dataTransfer.clearData();
     };
     
     const handleFileSelect = (e) => {
-        const selectedFiles = Array.from(e.target.files); // Convert FileList to array
+        const selectedFiles = Array.from(e.target.files);
         validateAndSetFiles(selectedFiles);
         e.target.value = '';
     };
@@ -92,8 +91,7 @@ function Knowledge() {
                 
                 try {
                     
-                    // const response = await fetch('http://localhost:3000/api/upload', {
-                    const response = await fetch('https://dex-backend-vercel-steel.vercel.app/api/upload', {
+                    const response = await fetch('https://dex-backend-ten.vercel.app/api/upload', {
                         method: 'POST',
                         body: formData
                     });
@@ -135,8 +133,7 @@ function Knowledge() {
 
     const getFiles = async () => {
         try {
-            const response = await fetch('https://dex-backend-vercel-steel.vercel.app/api/file_retrieval', {
-            // const response = await fetch('http://localhost:3000/api/file_retrieval', {
+            const response = await fetch('https://dex-backend-ten.vercel.app/api/file_retrieval', {
                 method: 'POST',
             });
             if (!response.ok) {
@@ -157,7 +154,6 @@ function Knowledge() {
         }
     }, [location.pathname]);
 
-    // Handle button click to open file input dialog
     const openFileDialog = () => {
         fileInputRef.current.click();
     };
