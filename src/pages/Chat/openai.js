@@ -1,4 +1,4 @@
-import { API_URL } from "../../../config";
+import { getApiEndpoint } from "../../../config";
 
 export const handleOpenAiRequest = async (prompt) => {
     if (prompt == "" || prompt == null) return;
@@ -7,7 +7,7 @@ export const handleOpenAiRequest = async (prompt) => {
 
     // Envia requisição com a mensagem para a API do ChatBot
     // const resposta = await fetch("http://localhost:3000/api/chat", {
-    const resposta = await fetch(`${API_URL}/chat`, {
+    const resposta = await fetch(`${getApiEndpoint()}/chat`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
