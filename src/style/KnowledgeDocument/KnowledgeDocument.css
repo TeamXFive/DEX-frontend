@@ -7,6 +7,7 @@
     justify-content: space-between;
     border-bottom: solid 1px var(--dark-gray);
     list-style: none;
+    padding: 0 2.5%;
     
     & .document-name {
         margin-left: 2.5%;
