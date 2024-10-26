@@ -7,7 +7,7 @@ export const handleOpenAiRequest = async (prompt) => {
 
     // Envia requisição com a mensagem para a API do ChatBot
     // const resposta = await fetch("http://localhost:3000/api/chat", {
-    const resposta = await fetch(`${API_URL}/api/chat`, {
+    const resposta = await fetch(`${API_URL}/chat`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
