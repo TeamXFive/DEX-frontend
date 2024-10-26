@@ -25,12 +25,10 @@ function Knowledge() {
 
     // Allowed file types and max size (5MB for this example)
     const allowedFileTypes = [
-        "text/plain",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        "application/vnd.ms-excel",
-        "application/vnd.openxmlformats-officedocument.wordprocessing",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "text/markdown",
+        "application/pdf",
+        "text/plain"
     ];
     const maxFileSize = 512 * 1024 * 1024; // 512MB
 
@@ -190,7 +188,7 @@ function Knowledge() {
                                     ref={fileInputRef}
                                     onChange={handleFileSelect}
                                     style={{display: 'none'}}
-                                    accept=".txt, .doc, .docx, .xls, .xlsx"
+                                    accept=".docx, .md, .pdf, .txt"
                                 />
                             </div>
                         </div>

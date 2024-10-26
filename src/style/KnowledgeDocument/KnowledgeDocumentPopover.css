@@ -2,6 +2,7 @@
     cursor: pointer;
     padding: 10px;
     background-color: var(--black-gray);
+    color: var(--white-gray);
 }
 .knowledge-document-popover {
     min-width: 150px;
