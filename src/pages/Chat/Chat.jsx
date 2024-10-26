@@ -25,12 +25,12 @@ function Chat({ type }) {
 
     useEffect(() => {
         if (!currentChatId && Object.keys(chatHistory).length === 0) {
-            navigate(`/chat?chatId=${getRandomChatId()}`, {
+            navigate(`/?chatId=${getRandomChatId()}`, {
                 replace: true,
             });
         } else if (!currentChatId) {
             const firstChatId = Object.keys(chatHistory)[0];
-            navigate(`/chat?chatId=${firstChatId}`, {
+            navigate(`/?chatId=${firstChatId}`, {
                 replace: true,
             });
         }
@@ -507,15 +507,6 @@ function Chat({ type }) {
         const lastMessage = messages.at(-1);
 
         if (lastMessage && lastMessage.author !== "ia" && !isIaTyping) {
-            // After a while in the conversation, ask if the problem was solved
-            if (
-                messages.filter((msg) => msg.author === "ia").length > 4 &&
-                messages.filter((msg) => msg.author === "user").length > 1
-            ) {
-                askForFeedback();
-                return;
-            }
-
             setIsIaTyping(true);
 
             const result = processQuestion(lastMessage.content);
@@ -575,7 +566,7 @@ function Chat({ type }) {
         messages,
     ]);
 
-    if (type === "widget" && location.pathname === "/chat") {
+    if (type === "widget" && location.pathname === "/") {
         return null;
     }
 
@@ -591,7 +582,6 @@ function Chat({ type }) {
             messages={messages}
             onNewMessage={setMessages}
             isIaTyping={isIaTyping}
-            chatHistory={chatHistory}
             currentChatId={currentChatId}
             onDeleteChat={handleDeleteChat}
         />

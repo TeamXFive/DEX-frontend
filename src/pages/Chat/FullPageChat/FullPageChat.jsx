@@ -3,16 +3,13 @@ import "../../../style/Chat/FullPageChat/FullPageChat.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { getRandomChatId } from "../../../utils";
+import useAuthenticationContext from "../../../hook/Authentication/useAuthenticationContext";
 
 export function FullPageChat(props) {
-    const {
-        messages,
-        onNewMessage,
-        isIaTyping,
-        chatHistory,
-        currentChatId,
-        onDeleteChat,
-    } = props;
+    const { messages, onNewMessage, isIaTyping, currentChatId, onDeleteChat } =
+        props;
+
+    const { authedUser, chatHistory } = useAuthenticationContext();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -36,7 +33,7 @@ export function FullPageChat(props) {
                 <button
                     className="btn btn-primary"
                     onClick={() => {
-                        navigate(`/chat?chatId=${getRandomChatId()}`);
+                        navigate(`/?chatId=${getRandomChatId()}`);
                     }}
                     type="button"
                 >
@@ -50,7 +47,7 @@ export function FullPageChat(props) {
                                 chatId === currentChatId ? "active" : ""
                             }`}
                             onClick={() => {
-                                navigate(`/chat?chatId=${chatId}`);
+                                navigate(`/?chatId=${chatId}`);
                             }}
                         >
                             <span>
@@ -134,7 +131,8 @@ export function FullPageChat(props) {
                         </div>
                     )}
                 </div>
-                {chatHistory[currentChatId]?.status !== "closed" ? (
+                {chatHistory[currentChatId]?.status !== "closed" &&
+                authedUser ? (
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();

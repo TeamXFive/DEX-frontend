@@ -18,12 +18,14 @@
     z-index: 801;
     padding: 10px 20px;
     border-radius: .75em;
-    transform: translateY(0);
+    opacity: 1;
     transition: var(--all-500ms-custom);
     background-color: var(--black-gray);
     color: var(--light-gray);
     border: solid 1px var(--dark-gray);
     position: absolute;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
 
     /*---=| display: flex |---*/
     flex-direction: column;
@@ -38,9 +40,8 @@
     flex-direction: column;
 }
 .hidden-authentication-card, .hidden-sign-in, .hidden-sign-up {
-    opacity: 1;
+    opacity: 0;
     visibility: hidden;
-    transform: translateY(-100vh);
     pointer-events: none;
 }
 
@@ -159,9 +160,8 @@
     }
 
     .hidden-authentication-card, .hidden-sign-in, .hidden-sign-up {
-        opacity: 1;
+        opacity: 0;
         visibility: hidden;
-        transform: translateY(-100vh);
         pointer-events: none;
     }
 
@@ -232,9 +232,6 @@
 
     .authentication-card-form input:focus {
         outline: solid 1px var(--light-gray);
-    }
-
-    .authentication-card-form input[type="submit"] {
     }
 }
 

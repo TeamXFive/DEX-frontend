@@ -13,8 +13,8 @@ function AuthenticationProvider({ children }) {
 
     //-----===| CARDS (+ modal) |===-----//
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isSignInVisible, setIsSignInVisible] = useState(false);
-    const [isSignUpVisible, setIsSignUpVisible] = useState(true);
+    const [isSignInVisible, setIsSignInVisible] = useState(true);
+    const [isSignUpVisible, setIsSignUpVisible] = useState(false);
     const [isShowSignInCloseBtn, setIsShowSignInCloseBtn] = useState(true);
 
     //-----===| USER |===-----//
@@ -59,7 +59,7 @@ function AuthenticationProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem(
-            AuthenticationProvider,
+            "AuthenticationProvider",
             JSON.stringify({
                 registeredUsersList,
                 authedUser,

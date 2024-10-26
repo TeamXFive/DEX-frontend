@@ -1,23 +1,17 @@
-import React from 'react';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function CallToActionButton() {
-
-
     const navigate = useNavigate();
 
     const redirectButton = () => {
-        navigate('/chat');
-    }
+        navigate("/");
+    };
 
     return (
-        <div className='call-button'>
-            <button onClick={redirectButton}>
-                Chatbot
-            </button>
+        <div className="call-button">
+            <button onClick={redirectButton}>Chatbot</button>
         </div>
-    )
-
+    );
 }
 
 export default CallToActionButton;

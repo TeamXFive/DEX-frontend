@@ -11,29 +11,43 @@ function SignUp() {
     const {
         // CARDS //
         setIsSignInVisible,
-        isSignUpVisible, setIsSignUpVisible,
+        isSignUpVisible,
+        setIsSignUpVisible,
 
         // USER //
         setAuthedUser,
-        registeredUsersList, setRegisteredUsersList,
+        registeredUsersList,
+        setRegisteredUsersList,
 
         // INPUT FIELDS //
-        user, setUser,
-        email, setEmail,
-        password, setPassword,
+        user,
+        setUser,
+        email,
+        setEmail,
+        password,
+        setPassword,
 
         // VALIDATIONS //
-        isUserValid, setIsUserValid,
-        isEmailValid, setIsEmailValid,
-        isPasswordMatch, setIsPasswordMatch,
-        isUserInputInvalid, setIsUserInputInvalid,
-        isEmailInputInvalid, setIsEmailInputInvalid,
-        isPasswordInputInvalid, setIsPasswordInputInvalid,
-        hasInteractedOnce, setHasInteractedOnce,
+        isUserValid,
+        setIsUserValid,
+        isEmailValid,
+        setIsEmailValid,
+        isPasswordMatch,
+        setIsPasswordMatch,
+        isUserInputInvalid,
+        setIsUserInputInvalid,
+        isEmailInputInvalid,
+        setIsEmailInputInvalid,
+        isPasswordInputInvalid,
+        setIsPasswordInputInvalid,
+        hasInteractedOnce,
+        setHasInteractedOnce,
 
-        isUserAlertVisible, setIsUserAlertVisible,
-        isEmailAlertVisible, setIsEmailAlertVisible,
-        isPasswordMatchAlertVisible, setIsPasswordMatchAlertVisible,
+        setIsUserAlertVisible,
+        isEmailAlertVisible,
+        setIsEmailAlertVisible,
+        isPasswordMatchAlertVisible,
+        setIsPasswordMatchAlertVisible,
     } = useAuthenticationContext();
 
     const handleUserValidation = () => {
@@ -114,7 +128,18 @@ function SignUp() {
         setIsUserAlertVisible(false);
         setIsEmailAlertVisible(false);
         setIsPasswordMatchAlertVisible(false);
-    }, [location.key]);
+    }, [
+        setUser,
+        setEmail,
+        setPassword,
+        setConfirmPassword,
+        setIsUserInputInvalid,
+        setIsEmailInputInvalid,
+        setIsPasswordInputInvalid,
+        setIsUserAlertVisible,
+        setIsEmailAlertVisible,
+        setIsPasswordMatchAlertVisible,
+    ]);
 
     useEffect(() => {
         if (isPasswordMatchAlertVisible) {
@@ -125,7 +150,12 @@ function SignUp() {
         if (isEmailAlertVisible) {
             setIsUserAlertVisible(false);
         }
-    }, [isUserAlertVisible, isEmailAlertVisible, isPasswordMatchAlertVisible]);
+    }, [
+        isPasswordMatchAlertVisible,
+        isEmailAlertVisible,
+        setIsUserAlertVisible,
+        setIsEmailAlertVisible,
+    ]);
 
     // tirando alertas ao mudar de card (Sign Up -> Sign In)
     useEffect(() => {
@@ -136,7 +166,12 @@ function SignUp() {
         setIsUserAlertVisible(false);
         setIsEmailAlertVisible(false);
         setIsPasswordMatchAlertVisible(false);
-    }, [isSignUpVisible]);
+    }, [
+        isSignUpVisible,
+        setIsUserAlertVisible,
+        setIsEmailAlertVisible,
+        setIsPasswordMatchAlertVisible,
+    ]);
 
     return (
         <>
