@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import '../../style/KnowledgeDocument/KnowledgeDocumentPopover.css';
 import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
-import { API_URL } from '../../../config.js';
+import { getApiEndpoint } from '../../../config.js';
 
 function KnowledgeDocumentPopover ({ file }) {
 
@@ -48,7 +48,7 @@ function KnowledgeDocumentPopover ({ file }) {
         try {
             setIsOpen(false);
             
-            const response = await fetch(`${API_URL}/file_deletion/${file.id}`, {
+            const response = await fetch(`${getApiEndpoint()}/file_deletion/${file.id}`, {
             // const response = await fetch(`http://localhost:3000/api/file_deletion/${file.id}`, {
                 method: 'DELETE',
                 headers: {

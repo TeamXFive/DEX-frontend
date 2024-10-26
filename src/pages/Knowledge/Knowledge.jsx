@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import KnowledgeDocument from "../../components/KnowledgeDocument/KnowledgeDocument.jsx";
-import { API_URL } from '../../../config.js';
+import { getApiEndpoint } from '../../../config.js';
 
 function Knowledge() {
 
@@ -93,9 +93,9 @@ function Knowledge() {
                 
                 try {
                     
-                    const response = await fetch(`${API_URL}/upload`, {
+                    const response = await fetch(`${getApiEndpoint()}/upload`, {
                         method: 'POST',
-                        body: formData
+                        body: formData,
                     });
 
                     if (!response.ok) {
@@ -135,7 +135,7 @@ function Knowledge() {
 
     const getFiles = async () => {
         try {
-            const response = await fetch(`${API_URL}/file_retrieval`, {
+            const response = await fetch(`${getApiEndpoint()}/file_retrieval`, {
                 method: 'POST',
             });
             if (!response.ok) {
