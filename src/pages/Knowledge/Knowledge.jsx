@@ -3,6 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import useKnowledgeContext from "../../hook/Knowledge/useKnowledgeContext.jsx";
 import useAuthenticationContext from "../../hook/Authentication/useAuthenticationContext.jsx";
 import KnowledgeDocument from "../../components/KnowledgeDocument/KnowledgeDocument.jsx";
+import { API_URL } from '../../../config.js';
 
 function Knowledge() {
 
@@ -92,8 +93,7 @@ function Knowledge() {
                 
                 try {
                     
-                    // const response = await fetch('http://localhost:3000/api/upload', {
-                    const response = await fetch('https://dex-backend-vercel-steel.vercel.app/api/upload', {
+                    const response = await fetch(`${API_URL}/upload`, {
                         method: 'POST',
                         body: formData
                     });
@@ -135,8 +135,7 @@ function Knowledge() {
 
     const getFiles = async () => {
         try {
-            const response = await fetch('https://dex-backend-vercel-steel.vercel.app/api/file_retrieval', {
-            // const response = await fetch('http://localhost:3000/api/file_retrieval', {
+            const response = await fetch(`${API_URL}/file_retrieval`, {
                 method: 'POST',
             });
             if (!response.ok) {

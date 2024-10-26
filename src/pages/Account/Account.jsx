@@ -9,10 +9,11 @@ import useAuthenticationContext from "../../hook/Authentication/useAuthenticatio
 function Account() {
     const navigate = useNavigate();
 
-    const { setAuthedUser } = useAuthenticationContext();
+    const { setAuthedUser, setChatHistory } = useAuthenticationContext();
 
     const handleLogout = () => {
         setAuthedUser(undefined);
+        setChatHistory({});
         navigate("/");
     };
 
@@ -29,7 +30,7 @@ function Account() {
                         </li>
                     </ul>
                 </section>
-                
+
                 <section className={`window-account`}>
                     <PersonalInfo />
                     <Preferences />
