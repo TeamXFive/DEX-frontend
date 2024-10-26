@@ -5,10 +5,10 @@ import {useEffect} from "react";
 function KnowledgeAlerts() {
     
     const {
-        isFileUploadErrorAlertVisible, setIsFileUploadErrorAlertVisible,
-        fileUploadErrorMessage,
-        isFileUploadSuccessAlertVisible, setIsFileUploadSuccessAlertVisible,
-        fileUploadSuccessMessage
+        isDocumentErrorAlertVisible, setIsDocumentErrorAlertVisible,
+        documentErrorMessage,
+        isDocumentSuccessAlertVisible, setIsDocumentSuccessAlertVisible,
+        documentSuccessMessage
     } = useKnowledgeContext();
 
     useEffect(() => {
@@ -16,37 +16,37 @@ function KnowledgeAlerts() {
             return;
         }
 
-        setIsFileUploadErrorAlertVisible(false);
-        setIsFileUploadSuccessAlertVisible(false);
+        setIsDocumentErrorAlertVisible(false);
+        setIsDocumentSuccessAlertVisible(false);
     }, [location.pathname]);
 
     useEffect(() => {
-        if (isFileUploadErrorAlertVisible) {
+        if (isDocumentErrorAlertVisible) {
             const timer = setTimeout(() => {
-                setIsFileUploadErrorAlertVisible(false);
+                setIsDocumentErrorAlertVisible(false);
             }, 2500);
 
             return () => clearTimeout(timer);
         }
 
-        if (isFileUploadSuccessAlertVisible) {
+        if (isDocumentSuccessAlertVisible) {
             const timer = setTimeout(() => {
-                setIsFileUploadSuccessAlertVisible(false);
+                setIsDocumentSuccessAlertVisible(false);
             }, 2500);
 
             return () => clearTimeout(timer);
         }
         
-    }, [isFileUploadErrorAlertVisible, isFileUploadSuccessAlertVisible]);
+    }, [isDocumentErrorAlertVisible, isDocumentSuccessAlertVisible]);
 
     return (
         <section className="knowledge-card-alerts">
-            <span className={`knowledge-card-error-alert glass-effect ${isFileUploadErrorAlertVisible && "show-card-alert"}`}>
-                {fileUploadErrorMessage}
+            <span className={`knowledge-card-error-alert glass-effect ${isDocumentErrorAlertVisible && "show-card-alert"}`}>
+                {documentErrorMessage}
             </span>
 
-            <span className={`knowledge-card-success-alert glass-effect ${isFileUploadSuccessAlertVisible && "show-card-alert"}`}>
-                {fileUploadSuccessMessage}
+            <span className={`knowledge-card-success-alert glass-effect ${isDocumentSuccessAlertVisible && "show-card-alert"}`}>
+                {documentSuccessMessage}
             </span>
         </section>
     );

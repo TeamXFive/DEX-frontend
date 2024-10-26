@@ -8,10 +8,10 @@ function Knowledge() {
 
     const {
         setFileAlertName,
-        setIsFileUploadErrorAlertVisible,
-        setFileUploadErrorMessage,
-        setIsFileUploadSuccessAlertVisible,
-        setFileUploadSuccessMessage,
+        setIsDocumentErrorAlertVisible,
+        setDocumentErrorMessage,
+        setIsDocumentSuccessAlertVisible,
+        setDocumentSuccessMessage,
         files, setFiles
     } = useKnowledgeContext();
     
@@ -25,12 +25,10 @@ function Knowledge() {
 
     // Allowed file types and max size (5MB for this example)
     const allowedFileTypes = [
-        "text/plain",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        "application/vnd.ms-excel",
-        "application/vnd.openxmlformats-officedocument.wordprocessing",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "text/markdown",
+        "application/pdf",
+        "text/plain"
     ];
     const maxFileSize = 512 * 1024 * 1024; // 512MB
 
@@ -72,20 +70,20 @@ function Knowledge() {
             
             if (!allowedFileTypes.includes(file.type)) {
                 setFileAlertName(file.name);
-                setIsFileUploadErrorAlertVisible(true);
-                setFileUploadErrorMessage(`${file.name} não é um arquivo suportado.`);
+                setIsDocumentErrorAlertVisible(true);
+                setDocumentErrorMessage(`${file.name} não é um arquivo suportado.`);
             }
 
             if (file.size > maxFileSize) {
                 setFileAlertName(file.name);
-                setIsFileUploadErrorAlertVisible(true);
-                setFileUploadErrorMessage(`${file.name} excede o limite de 512 MB.`);
+                setIsDocumentErrorAlertVisible(true);
+                setDocumentErrorMessage(`${file.name} excede o limite de 512 MB.`);
             }
             
             if (allowedFileTypes.includes(file.type) && file.size <= maxFileSize) {
                 setFileAlertName(file.name);
-                setIsFileUploadSuccessAlertVisible(true);
-                setFileUploadSuccessMessage(`${file.name} está sendo enviado para a nuvem.`);
+                setIsDocumentSuccessAlertVisible(true);
+                setDocumentSuccessMessage(`${file.name} está sendo enviado para a nuvem.`);
 
                 setFilesUploading(prevFilesUploading => [...prevFilesUploading, {"file": file, "status": "uploading"}]);
 
@@ -102,18 +100,18 @@ function Knowledge() {
 
                     if (!response.ok) {
                         setFileAlertName(file.name);
-                        setIsFileUploadErrorAlertVisible(true);
-                        setFileUploadErrorMessage(`Não foi possível realizar o upload de ${file.name}.`);
+                        setIsDocumentErrorAlertVisible(true);
+                        setDocumentErrorMessage(`Não foi possível realizar o upload de ${file.name}.`);
 
                         setFilesUploading(prevFilesUploading => prevFilesUploading.map(f => f.file === file ? {...f, status: "error"} : f));
                         
-                        setIsFileUploadSuccessAlertVisible(false)
+                        setIsDocumentSuccessAlertVisible(false)
                         
                         throw new Error(`HTTP error! status: ${response.status}`);
                     } else {
                         setFileAlertName(file.name);
-                        setIsFileUploadSuccessAlertVisible(true);
-                        setFileUploadSuccessMessage(`${file.name} foi enviado com sucesso.`);
+                        setIsDocumentSuccessAlertVisible(true);
+                        setDocumentSuccessMessage(`${file.name} foi enviado com sucesso.`);
 
                         setFilesUploading(prevFilesUploading => prevFilesUploading.map(f => f.file === file ? {...f, status: "success"} : f));
                     }
@@ -121,15 +119,15 @@ function Knowledge() {
                     await getFiles();
                 } catch (error) {
                     setFileAlertName(file.name);
-                    setIsFileUploadErrorAlertVisible(true);
-                    setFileUploadErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
+                    setIsDocumentErrorAlertVisible(true);
+                    setDocumentErrorMessage(`Não foi possível fazer o upload de ${file.name}.`);
 
                     setFilesUploading(prevFilesUploading => prevFilesUploading.map(f => f.file === file ? {...f, status: "error"} : f));
                     console.error('Error uploading file:', error);
                 }
 
                 setTimeout(() => {
-                    setFilesUploading((prevFilesUploading) => prevFilesUploading.filter((fileUploading) => fileUploading.file !== file));
+                    setFilesUploading((prevFilesUploading) => prevFilesUploading.filter((Documenting) => Documenting.file !== file));
                 }, 5000);
             }
         });
@@ -146,6 +144,7 @@ function Knowledge() {
             }
 
             const result = await response.json();
+            
             setFiles(result)
         } catch (error) {
             console.error('Error retrieving files:', error);
@@ -156,7 +155,7 @@ function Knowledge() {
         if (location.pathname === "/knowledge" && authedUser) {
             getFiles().then(() => {});
         }
-    }, [location.pathname], setFiles, files);
+    }, [location.pathname]);
 
     // Handle button click to open file input dialog
     const openFileDialog = () => {
@@ -190,7 +189,7 @@ function Knowledge() {
                                     ref={fileInputRef}
                                     onChange={handleFileSelect}
                                     style={{display: 'none'}}
-                                    accept=".txt, .doc, .docx, .xls, .xlsx"
+                                    accept=".docx, .md, .pdf, .txt"
                                 />
                             </div>
                         </div>
@@ -228,7 +227,7 @@ function Knowledge() {
                     </div>
 
                     <div className={`knowledge-documents-container-content`}>
-                    <div className={`knowledge-documents-retrieved`}>
+                        <div className={`knowledge-documents-retrieved`}>
                             {files.length === 0 && (
                                 <span
                                     style={{
@@ -242,7 +241,7 @@ function Knowledge() {
                             
                             <ul className={`knowledge-documents-retrieved-list`}>
                                 {files.map((file, index) => (
-                                    <KnowledgeDocument file={file} key={index} originFile={"openai"} status={"oi"} />
+                                    <KnowledgeDocument file={file} key={index} originFile={"openai"} status={"ok"} />
                                 ))}
                             </ul>
                         </div>
