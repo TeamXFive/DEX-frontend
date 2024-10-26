@@ -66,7 +66,7 @@ function KnowledgeDocumentPopover ({ file }) {
 
                 setTimeout(() => {
                     setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "normal"} : f));
-                }, 2000)
+                }, 2500)
                 
                 setIsDocumentSuccessAlertVisible(false);
                 
@@ -98,7 +98,7 @@ function KnowledgeDocumentPopover ({ file }) {
 
             setTimeout(() => {
                 setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "normal"} : f));
-            }, 2000)
+            }, 2500)
 
             setIsDocumentSuccessAlertVisible(false);
 
