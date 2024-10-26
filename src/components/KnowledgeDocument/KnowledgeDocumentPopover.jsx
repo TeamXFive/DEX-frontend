@@ -63,6 +63,8 @@ function KnowledgeDocumentPopover ({ file }) {
                 setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "error"} : f));
                 
                 setDisplay("inline-block");
+
+                setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "normal"} : f));
                 
                 setIsDocumentSuccessAlertVisible(false);
                 
@@ -91,6 +93,8 @@ function KnowledgeDocumentPopover ({ file }) {
             setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "error"} : f));
             
             setDisplay("inline-block");
+
+            setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "normal"} : f));
 
             setIsDocumentSuccessAlertVisible(false);
 
