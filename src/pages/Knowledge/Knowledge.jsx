@@ -154,7 +154,7 @@ function Knowledge() {
         if (location.pathname === "/knowledge" && authedUser) {
             getFiles().then(() => {});
         }
-    }, [location.pathname]);
+    }, [location.pathname], setFiles, files);
 
     // Handle button click to open file input dialog
     const openFileDialog = () => {

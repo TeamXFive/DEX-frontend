@@ -11,7 +11,7 @@ function KnowledgeDocument({ file, index, originFile, status }) {
             {(originFile === "local") ? (
                 <span className={`document-status`}>{status}</span>
             ) : (
-                <KnowledgeDocumentPopover></KnowledgeDocumentPopover>
+                <KnowledgeDocumentPopover file={file}></KnowledgeDocumentPopover>
             )}
         </li>
     );
