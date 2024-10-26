@@ -241,7 +241,7 @@ function Knowledge() {
                             
                             <ul className={`knowledge-documents-retrieved-list`}>
                                 {files.map((file, index) => (
-                                    <KnowledgeDocument file={file} key={index} originFile={"openai"} status={"ok"} />
+                                    <KnowledgeDocument file={file} key={index} originFile={"openai"} status={file.status} />
                                 ))}
                             </ul>
                         </div>

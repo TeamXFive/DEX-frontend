@@ -16,7 +16,8 @@
     }
 }
 
-.knowledge-documents-item-uploading {
+.knowledge-documents-item-uploading,
+.knowledge-documents-item-deleting {
     background-color: rgba(var(--medium-orange-rgb), .05);
 }
 .knowledge-documents-item-error {
