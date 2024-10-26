@@ -14,8 +14,8 @@ function KnowledgeDocumentPopover ({ file }) {
         files, setFiles
     } = useKnowledgeContext();
 
-    const [filesDeleting, setFilesDeleting] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [display, setDisplay] = useState("inline-block");
     const popoverRef = useRef(null);
 
     const togglePopover = () => {
@@ -39,8 +39,10 @@ function KnowledgeDocumentPopover ({ file }) {
         setFileAlertName(file.filename);
         setIsDocumentSuccessAlertVisible(true);
         setDocumentSuccessMessage(`${file.filename} está sendo deletado.`);
+
+        setDisplay("none");
         
-        setFilesDeleting(prevFilesDeleting => [...prevFilesDeleting, {"file": file, "status": "deleting"}]);
+        setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "deleting"} : f));
         
         try {
             setIsOpen(false);
@@ -58,21 +60,27 @@ function KnowledgeDocumentPopover ({ file }) {
                 setIsDocumentErrorAlertVisible(true);
                 setDocumentErrorMessage(`Não foi possível realizar a exclusão de ${file.filename}.`);
                 
-                setFilesDeleting(prevFilesDeleting => prevFilesDeleting.map(f => f.file === file ? {...f, status: "error"} : f));
-
+                setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "error"} : f));
+                
+                setDisplay("inline-block");
+                
                 setIsDocumentSuccessAlertVisible(false);
                 
                 throw new Error(`HTTP error! status: ${response.status}`);
             } else {
-                setIsDocumentSuccessAlertVisible(false);
-                
                 setFileAlertName(file.filename);
                 setIsDocumentSuccessAlertVisible(true);
                 setDocumentSuccessMessage(`${file.filename} foi deletado com sucesso.`);
             
-                setFilesDeleting(prevFilesDeleting => prevFilesDeleting.map(f => f.file === file ? {...f, status: "success"} : f));
-            
-                setFiles(files.filter(f => f.id !== file.id));
+                setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "success"} : f));
+                
+                setDisplay("none");
+                
+                setTimeout(() => {
+                    setFiles(files.filter(f => f.id !== file.id));
+                    setDisplay("inline-block");
+                }, 5000)
+                
             }
 
         } catch (error) {
@@ -80,22 +88,18 @@ function KnowledgeDocumentPopover ({ file }) {
             setIsDocumentErrorAlertVisible(true);
             setDocumentErrorMessage(`Não foi possível fazer a deleção de ${file.filename}.`);
             
-            setFilesDeleting(prevFilesDeleting => prevFilesDeleting.map(f => f.file === file ? {...f, status: "error"} : f));
+            setFiles(prevFile => prevFile.map(f => f.id === file.id ? {...f, status: "error"} : f));
+            
+            setDisplay("inline-block");
 
             setIsDocumentSuccessAlertVisible(false);
 
             console.error('Error retrieving files:', error);
         }
-
-        setTimeout(() => {
-            setFilesDeleting((prevFilesDeleting) => prevFilesDeleting.filter((Documenting) => Documenting.file !== file));
-        }, 5000);
-        
-        console.log(filesDeleting);
     }
 
     return (
-        <div style={{position: 'relative', display: 'inline-block'}}>
+        <div style={{position: 'relative', display: display}}>
             {/* Button to toggle the popover */}
             <button className={`knowledge-document-popover-btn`} onClick={togglePopover}>
                 <i className="bi bi-three-dots-vertical"></i>
