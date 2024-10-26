@@ -79,7 +79,7 @@ function KnowledgeDocumentPopover ({ file }) {
                 setTimeout(() => {
                     setFiles(files.filter(f => f.id !== file.id));
                     setDisplay("inline-block");
-                }, 5000)
+                }, 2500)
                 
             }
 
