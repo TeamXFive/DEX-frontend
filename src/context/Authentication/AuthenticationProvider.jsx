@@ -7,17 +7,9 @@ AuthenticationProvider.propTypes = {
 };
 
 function AuthenticationProvider({ children }) {
-    const salt_key = "rUbmak-kihpyf-9tiffo";
-    const salt_value = "zehvuj-biKzi1-festij";
     const storedInitialValues =
-        localStorage.getItem(btoa(salt_key + "AuthenticationProvider")) || //btoa = Base 64 TO Alpha
-        btoa(salt_value + "{}");
-    const decryptedInitialValues = atob(storedInitialValues).replace(
-        //atob = Alpha TO Base 64
-        salt_value,
-        ""
-    );
-    const initialValues = JSON.parse(decryptedInitialValues);
+        localStorage.getItem("AuthenticationProvider") || "{}";
+    const initialValues = JSON.parse(storedInitialValues);
 
     //-----===| CARDS (+ modal) |===-----//
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -67,15 +59,12 @@ function AuthenticationProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem(
-            btoa(salt_key + "AuthenticationProvider"),
-            btoa(
-                salt_value +
-                    JSON.stringify({
-                        registeredUsersList,
-                        authedUser,
-                        chatHistory,
-                    })
-            )
+            AuthenticationProvider,
+            JSON.stringify({
+                registeredUsersList,
+                authedUser,
+                chatHistory,
+            })
         );
     }, [registeredUsersList, authedUser, chatHistory]);
 
