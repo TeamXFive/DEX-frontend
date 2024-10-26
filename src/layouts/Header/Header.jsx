@@ -10,25 +10,9 @@ Header.propTypes = {
 };
 
 function Header({ scrollDirection, setScrollDirection }) {
+    const { authedUser } = useAuthenticationContext();
+
     const [lastScrollY, setLastScrollY] = useState(0);
-
-    const { setIsModalVisible, setIsSignInVisible, authedUser } =
-        useAuthenticationContext();
-
-    const handleLogin = (event) => {
-        if (authedUser) {
-            return;
-        }
-
-        if (location.pathname === "/authentication") {
-            setIsModalVisible(false);
-        } else {
-            setIsModalVisible(true);
-            setIsSignInVisible(true);
-        }
-
-        event.preventDefault();
-    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -67,19 +51,15 @@ function Header({ scrollDirection, setScrollDirection }) {
 
                 <nav className="header-nav">
                     <div className="header-nav-links">
-                        <Link to="/">HOME</Link>
+                        {authedUser && <Link to="/">CHAT</Link>}
                         <Link to="/sobre">SOBRE O PROJETO</Link>
-                        <Link to="/chat">CHAT</Link>
-                        <Link to={"/knowledge"}>KNOWLEDGE</Link>
-                        <Link to="/dashboard">DASHBOARD</Link>
+                        {authedUser && <Link to={"/knowledge"}>KNOWLEDGE</Link>}
+                        {authedUser && <Link to="/dashboard">DASHBOARD</Link>}
                     </div>
                 </nav>
 
                 <div className="auth-menu">
-                    <Link
-                        to={authedUser ? "/account" : "/authentication"}
-                        onClick={handleLogin}
-                    >
+                    <Link to={authedUser ? "/account" : "/authentication"}>
                         {authedUser ? `${authedUser.username}` : "LOGIN"}
                     </Link>
                 </div>

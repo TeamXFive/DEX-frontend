@@ -1,4 +1,3 @@
-import React from "react";
 import "../../style/Dashboard/Dashboard.css"
 import Chat from  '../../assets/icons/chat-dash.svg?react'
 import Grid from  '../../assets/icons/grid.svg?react'
@@ -27,7 +26,7 @@ function Dashboard(){
                             <li>
                                 <div>
                                     <Chat />
-                                    <Link to='/chat'>
+                                    <Link to='/'>
                                     <p>chat</p></Link>
                                 </div>
                             </li>

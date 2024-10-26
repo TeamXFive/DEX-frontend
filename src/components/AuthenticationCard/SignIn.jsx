@@ -48,7 +48,10 @@ function SignIn() {
             setAuthedUser({ ...user, password: undefined });
             setIsSignInVisible(false);
             setIsModalVisible(false);
-            if (location.pathname !== "/chat") {
+            if (
+                location.pathname !== "/" &&
+                location.pathname !== "/authentication"
+            ) {
                 navigate("/account");
             }
         } else {
@@ -79,7 +82,7 @@ function SignIn() {
 
             return () => clearTimeout(timer);
         }
-    }, [isSignInErrorAlertVisible]);
+    }, [isSignInErrorAlertVisible, setIsSignInErrorAlertVisible]);
 
     useEffect(() => {
         if (isSignInSuccessfulAlertVisible) {
@@ -89,11 +92,12 @@ function SignIn() {
 
             return () => clearTimeout(timer);
         }
-    }, [isSignInSuccessfulAlertVisible]);
+        setIsSignInSuccessfulAlertVisible(false);
+    }, [isSignInSuccessfulAlertVisible, setIsSignInSuccessfulAlertVisible]);
 
     useEffect(() => {
         setIsTesterAlertVisible(isSignInVisible);
-    }, [isSignInVisible]);
+    }, [isSignInVisible, setIsTesterAlertVisible]);
 
     return (
         <>

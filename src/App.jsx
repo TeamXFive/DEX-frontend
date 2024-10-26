@@ -7,7 +7,6 @@ import {
     useLocation,
     useNavigate,
 } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import Chat from "./pages/Chat/Chat";
 import Authentication from "./pages/Authentication/Authentication.jsx";
 import SignIn from "./components/AuthenticationCard/SignIn.jsx";
@@ -24,13 +23,16 @@ export function App() {
     const [scrollDirection, setScrollDirection] = useState("up");
     const location = useLocation();
     const navigate = useNavigate();
-    const hideHeaderRoutes = ['/dashboard']
-    const shouldHideHeader = hideHeaderRoutes.includes(location.pathname)
+    const hideHeaderRoutes = ["/dashboard"];
+    const shouldHideHeader = hideHeaderRoutes.includes(location.pathname);
 
     const {
         isModalVisible,
         setIsModalVisible,
         setIsSignInVisible,
+        setIsSignUpVisible,
+        isSignInVisible,
+        isSignUpVisible,
         authedUser,
         setIsShowSignInCloseBtn,
     } = useAuthenticationContext();
@@ -41,21 +43,32 @@ export function App() {
 
     useEffect(() => {
         if (
-            (location.pathname === "/chat" ||
-                location.pathname === "/knowledge") &&
-            !authedUser
+            ((location.pathname === "/" && !authedUser) ||
+                location.pathname === "/authentication") &&
+            !isSignInVisible &&
+            !isSignUpVisible
         ) {
+            setIsSignInVisible(true);
+            setIsModalVisible(false);
+        }
+
+        if (location.pathname === "/knowledge" && !authedUser) {
             setIsSignInVisible(true);
             setIsModalVisible(true);
         }
 
-        if (location.pathname === "/" || location.pathname === "/sobre") {
+        if (location.pathname === "/sobre") {
             setIsSignInVisible(false);
             setIsModalVisible(false);
         }
 
+        if ((authedUser && isSignInVisible) || isSignUpVisible) {
+            setIsSignInVisible(false);
+            setIsSignUpVisible(false);
+        }
+
         if (
-            location.pathname === "/chat" ||
+            location.pathname === "/" ||
             location.pathname === "/authentication" ||
             location.pathname === "/knowledge"
         ) {
@@ -67,7 +80,17 @@ export function App() {
         if (location.pathname === "/account" && !authedUser) {
             navigate("/authentication");
         }
-    }, [authedUser, location.pathname, navigate]);
+    }, [
+        location.pathname,
+        authedUser,
+        isSignInVisible,
+        isSignUpVisible,
+        setIsModalVisible,
+        setIsSignInVisible,
+        setIsSignUpVisible,
+        setIsShowSignInCloseBtn,
+        navigate,
+    ]);
 
     return (
         <div className="page">
@@ -83,26 +106,44 @@ export function App() {
             </section>
 
             <React.Fragment>
-                {!shouldHideHeader && <Header
-                    scrollDirection={scrollDirection}
-                    setScrollDirection={setScrollDirection}
-                />}
-                
+                {!shouldHideHeader && (
+                    <Header
+                        scrollDirection={scrollDirection}
+                        setScrollDirection={setScrollDirection}
+                    />
+                )}
 
                 <div className="page-content">
                     <Routes>
-                        <Route path="/" element={<Home />} />
                         <Route path="/sobre" element={<About />} />
-                        <Route path="/chat" element={<Chat />} />
-                        <Route path="/knowledge" element={<Knowledge />} />
-                        <Route
-                            path="/authentication"
-                            element={<Authentication />}
-                        />
-                        <Route path="/dashboard" element={<Dashboard />} />
+                        {!authedUser ? (
+                            <>
+                                <Route
+                                    path="/authentication"
+                                    element={<Authentication />}
+                                />
+                                <Route
+                                    path="*"
+                                    element={<Navigate to="/authentication" />}
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <Route path="/" element={<Chat />} />
 
-                        <Route path="/account" element={<Account />} />
-                        <Route path="*" element={<Navigate to="/" />} />
+                                <Route
+                                    path="/knowledge"
+                                    element={<Knowledge />}
+                                />
+                                <Route
+                                    path="/dashboard"
+                                    element={<Dashboard />}
+                                />
+
+                                <Route path="/account" element={<Account />} />
+                                <Route path="*" element={<Navigate to="/" />} />
+                            </>
+                        )}
                     </Routes>
                 </div>
             </React.Fragment>
